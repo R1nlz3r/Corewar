@@ -1,0 +1,48 @@
+/*
+** ASM
+*/
+
+./asm champion.s
+
+Compile les .s en .cor (bytecode hexa (cf sujet))
+
+/*
+** COREWAR
+*/
+
+./coreward [-dump nbr_cycles] [[-n number] champion1.cor] ...
+
+La vm est composée de registres, cases mémoires accédées par les champions.
+Le numéro de chaque champion est généré au lancement (ou en paramètre par la vm avec -n) par le registre r1. Tous les autres registres sont mis à 0 sauf PC.
+Si l'option -dump est utilisée, la mémoire est dump sur la sortie standard au bout de nbr_cycles puis quitte la partie. La mémoire est dump en hexadécimal.
+Les champions commencent à distance équitable les uns des autres.
+Tous les "CYCLE_TO_DIE" cycles, si un champion n'a pas executé "live", ce champion est tué.
+S'il y a eu au moins NBR_LIVE "live" à une vérification de CYCLE_TO_DIE, CYCLE_TO_DIE est décrémenté de CYCLE_DELTA.
+Quand il n'y a plus de joueur en vie, la partie s'arrête. Le gagnant est le dernier joueur a avoir exécuté "live".
+A la fin de la partie, affiche "le joueur x(nom_champion) a gagne", x étant le numéro du champion et nom_champion le nom du champion.
+L'instruction "live" fait afficher à la vm "un processus dit que le joueur x(nom_champion) est en vie".
+La mémoire de la VM fait MEM_SIZE octets et est circulaire.
+Si CYCLE_TO_DIE n'a pas été décrémenté depuis MAX_CHECKS vérifications, on décrémente CYCLE_TO_DIE.
+
+
+- REG_NUMBER : nombre de registres
+- REG_SIZE : taille des registres en octet
+
+- Program Counter (PC) où on trouve l'adresse de la prochaine instruction
+- flag carry pour savoir si la dernière instruction a réussi
+
+/*
+** CHAMPION
+*/
+
+Un champion contient un nom et une description après les flags NAME_CMD_STRING et COMMENT_CMD_STRING.
+Un champion ne peut pas dépasser CHAMP_MAX_SIZE octet
+Un champion doit faire un "live" avec son numéro (r1) pour dire qu'il est en vie. S'il donne un autre numéro tant pis pour lui.
+Une instruction par ligne.
+Un label optionnel composé des caractères compris dans LABEL_CHARS suivi de LABEL_CHAR.
+Une instruction peut être composée d'un label (optionnel), un opcode (instruction?) et ses paramètres.
+Un paramètre peut être :
+- Un registre (r1, r2, rx...)
+- Direct, DIRECT_CHAR suivi d'un label (précédé par LABEL_CHAR) ou d'un nombre
+- Indirect, une valeur ou un label (précédé par LABEL_CHAR) qui représente la valeur qui se trouve à l'adresse du paramètre, relativement au PC du process
+Une fausse instruction utilisera un cycle et ne fera rien d'autre

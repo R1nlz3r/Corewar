@@ -6,11 +6,14 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:53 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/11/13 15:20:02 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/11/22 12:53:45 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "asm.h"
+
 int				main(int ac, char **av)
 {
+	asm_error("test");
 	return (0);
 }
