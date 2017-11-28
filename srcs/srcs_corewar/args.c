@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/11/28 13:37:10 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/11/28 13:48:50 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,8 @@ static int		manage_args(t_data *data, int ac, char **av)
 				return (-1);
 			i += 2;
 		}
-		else
-			if (prepare_champion(data, av[i], -512) == -1)
-				return (-1);
+		else if (prepare_champion(data, av[i], -512) == -1)
+			return (-1);
 	}
 	return (1);
 }
