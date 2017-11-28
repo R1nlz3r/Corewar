@@ -6,9 +6,12 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2017/11/24 12:34:44 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/11/28 13:51:57 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef OP_H
+# define OP_H
 
 /*
 ** Toutes les tailles sont en octets.
@@ -19,11 +22,9 @@
 #define REG_SIZE				4
 #define DIR_SIZE				REG_SIZE
 
-
 # define REG_CODE				1
 # define DIR_CODE				2
 # define IND_CODE				3
-
 
 #define MAX_ARGS_NUMBER			4
 #define MAX_PLAYERS				4
@@ -90,3 +91,5 @@ typedef struct					s_op
 	int							has_pcode;
 	int							has_idx;
 }								t_op;
+
+#endif

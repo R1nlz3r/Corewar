@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/11/28 13:23:17 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/11/28 13:51:27 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "libft.h"
 # include "op.h"
 
-static const char		hex_tab[] =
+static const char		g_hex_tab[] =
 {
 	'0', '1', '2', '3', '4', '5', '6', '7',
 	'8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
@@ -47,20 +47,17 @@ typedef struct			s_data
 	t_champion			*champions;
 }						t_data;
 
-
 /*
 ** args.c
 */
 
 t_data					*init_data(int ac, char **av);
 
-
 /*
 ** read_champion.c
 */
 
 t_champion				*read_champion(char *file);
-
 
 /*
 ** error.c
