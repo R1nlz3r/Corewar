@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2017/11/28 13:53:06 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/11/28 13:53:37 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define MAX_CHECKS				10
 
 /*
-**
+** Arg types
 */
 
 typedef char	t_arg_type;
@@ -61,7 +61,7 @@ typedef char	t_arg_type;
 # define T_LAB					8
 
 /*
-**
+** Champion info
 */
 
 # define PROG_NAME_LENGTH		(128)
