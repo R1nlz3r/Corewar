@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2017/11/29 14:02:21 by cyrillefrouin    ###   ########.fr        #
+#    Updated: 2017/11/29 18:45:41 by kda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS_ASM_DIR		=	srcs/srcs_asm/
 
 SRCS_ASM			=	main.c \
 						op.c \
-						error.c
+						error.c \
+						parsing_champ.c
 
 SRCS_ASM_FULL		=	$(addprefix $(SRCS_ASM_DIR), $(SRCS_ASM))
 
