@@ -6,7 +6,7 @@
 #    By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/08 16:44:57 by kda-silv          #+#    #+#              #
-#    Updated: 2017/10/04 21:05:56 by kda-silv         ###   ########.fr        #
+#    Updated: 2017/11/29 14:03:02 by cyrillefrouin    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -136,15 +136,28 @@ OBJS	=	$(SRCS:.c=.o)
 
 all:		$(NAME)
 
+%.o : %.c
+			@gcc -g -o $@ -c $< $(CFLAGS)
+			@echo "\033[K\033[34mLibft :\033[0m [ Compiling :\033[33m $^\033[0m]\033[1A"
+
 $(NAME):	$(OBJS)
-			ar rc $(NAME) $(OBJS)
-			ranlib $(NAME)
+			@ar rc $(NAME) $(OBJS)
+			@ranlib $(NAME)
+			@echo "\033[K\033[32m============LIBFT===============\033[0m"
+			@echo "\033[34mCompiling\033[0m" [ $(NAME) ] "\033[K\033[32mSuccessful\033[00m"
+			@echo "\033[32m================================\033[00m"
 
 clean:
-			$(RM) $(OBJS)
+			@$(RM) $(OBJS)
+			@echo "\033[K\033[31m============LIBFT============\033[0m"
+			@echo "\033[31mCleaning\033[00m  " [ "*.o" ] "  \033[32mComplete\033[00m"
+			@echo "\033[K\033[31m=============================\033[0m"
 
-fclean:		clean
-			$(RM) $(NAME)
+fclean:
+			@$(RM) $(NAME)
+			@echo "\033[K\033[31m============LIBFT============\033[0m"
+			@echo "\033[31mRemoving\033[00m" [ $(NAME) ] "\033[32mComplete\033[00m"
+			@echo "\033[K\033[31m=============================\033[0m"
 
 re:			fclean all
 
