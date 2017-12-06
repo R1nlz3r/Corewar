@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/06 17:30:01 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/12/06 17:32:14 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int				main(int ac, char **av)
 	t_node		*node = data->map;
 	do
 	{
-		printf("%s ", node->content);
+		printf("%s|", node->content);
 		node = node->next;
 	} while (node->id != 0);
 
