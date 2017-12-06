@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_champion.c                                    :+:      :+:    :+:   */
+/*   read_champions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:34:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/11/28 11:18:52 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/12/06 16:12:03 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,40 @@ static void			read_file(int fd, t_champion *champion)
 		bzero(buff, 1);
 		bzero(tmp_hex, 3);
 	}
+	champion->size = ft_strlen(champion->code) / 3;
 }
 
-t_champion			*read_champion(char *file)
+int					read_champion(t_champion *champion)
 {
 	int				fd;
-	t_champion		*champion;
 
-	if ((champion = malloc(sizeof(t_champion))) == NULL)
-		corewar_error("Error when allocating champion.\n");
-	if ((fd = open(file, O_RDONLY)) == -1)
+	if ((fd = open(champion->filename, O_RDONLY)) == -1)
 		corewar_error("Can't open champion.\n");
 	read_file(fd, champion);
+	if (champion->size > CHAMP_MAX_SIZE)
+	{
+		free(champion);
+		return (-1);
+	}
 	close(fd);
-	return (champion);
+	return (1);
+}
+
+int					read_champions(t_data *data)
+{
+	t_champion		*node;
+	int				i;
+
+	node = data->champions;
+	i = 0;
+	while (node)
+	{
+		i++;
+		if (i > MAX_PLAYERS)
+			return (-1);
+		if (read_champion(node) != 1)
+			return (-1);
+		node = node->next;
+	}
+	return (1);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   args.c                                             :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/11/28 13:48:50 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/12/06 17:28:14 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ static int		prepare_champion(t_data *data, char *filename, int number)
 	}
 	if (new_champion(data, filename, number) == -1)
 		return (-1);
+	data->nb_champion++;
 	return (1);
 }
 
@@ -113,10 +114,12 @@ t_data			*init_data(int ac, char **av)
 	if ((data = malloc(sizeof(t_data))) == NULL)
 		return (NULL);
 	data->champions = NULL;
+	data->nb_champion = 0;
 	if (manage_args(data, ac, av) == -1)
 	{
 		free(data);
 		return (NULL);
 	}
+	data->map = NULL;
 	return (data);
 }

@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/11/28 13:51:27 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/12/06 17:25:59 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,23 @@ typedef struct			s_champion
 	struct s_champion	*next;
 }						t_champion;
 
+typedef struct			s_node
+{
+	int					id;
+	int					player;
+	char				content[3];
+	int					contentn;
+
+	struct s_node		*next;
+	struct s_node		*prev;
+}						t_node;
+
 typedef struct			s_data
 {
 	int					dump;
 	t_champion			*champions;
+	int					nb_champion;
+	t_node				*map;
 }						t_data;
 
 /*
@@ -57,7 +70,13 @@ t_data					*init_data(int ac, char **av);
 ** read_champion.c
 */
 
-t_champion				*read_champion(char *file);
+int						read_champions(t_data *data);
+
+/*
+** init_map.c
+*/
+
+int						init_map(t_data *data);
 
 /*
 ** error.c
