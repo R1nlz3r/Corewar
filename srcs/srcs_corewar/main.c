@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/06 17:32:46 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/12/07 17:41:47 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,19 @@ int				main(int ac, char **av)
 		return (-1);
 	}
 
-	t_node		*node = data->map;
-	do
-	{
-		printf("% 2s|", node->content);
-		node = node->next;
-	} while (node->id != 0);
+	printf("%d\n", data->champions->size);
+
+	// t_node		*node = data->map;
+	// do
+	// {
+	// 	for (int i = 0; i < 64; i++) {
+	// 		printf("% 2s|", node->content);
+	// 		node = node->next;
+	// 		if (node->id == 0)
+	// 		break ;
+	// 	}
+	// 	printf("\n");
+	// } while (node->id != 0);
 
 	// t_champion	*tmp;
     //

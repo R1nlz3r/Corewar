@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2017/12/06 17:31:24 by cyrillefrouin    ###   ########.fr        #
+#    Updated: 2017/12/07 17:58:45 by cfrouin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,4 +82,6 @@ fclean:				clean
 
 re:					fclean all
 
-.PHONY:				all clean fclean re
+ren:				clean $(NAME_ASM) $(NAME_COREWAR)
+
+.PHONY:				all clean fclean re ren

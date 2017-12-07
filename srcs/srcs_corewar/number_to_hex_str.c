@@ -6,13 +6,38 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:55:38 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/11/28 13:51:11 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/12/07 14:35:48 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	number_to_hex_str(unsigned char n, unsigned char (*str)[])
+static int		get_index_tab(const char tab[], char c)
+{
+	int			i;
+
+	i = 0;
+	while (tab[i] && tab[i] != c)
+		i++;
+	if (tab[i] == c)
+		return (i);
+	return (-1);
+}
+
+int				str_hex_to_number(char str[3])
+{
+	int			nbr;
+	int			i;
+
+	nbr = 0;
+	i = get_index_tab(g_hex_tab, str[0]);
+	nbr = 16 * i;
+	i = get_index_tab(g_hex_tab, str[1]);
+	nbr += i;
+	return (nbr);
+}
+
+void			number_to_hex_str(unsigned char n, unsigned char (*str)[])
 {
 	if (n < 16)
 	{
