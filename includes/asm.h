@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:31:04 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/11/29 18:45:21 by kda-silv         ###   ########.fr       */
+/*   Updated: 2017/12/07 19:18:46 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 typedef	struct		s_data
 {
 	t_header		header;
+	int				line;
 }					t_data;
 
 /*
@@ -36,6 +37,7 @@ void			parsing_champ(int fd, t_data *data);
 /*
 ** error.c
 */
-void			asm_error(char *error);
+void			header_error(char *cmd, int id, t_data *data);
+void			asm_error(char *error, int flag, t_data *data);
 
 #endif
