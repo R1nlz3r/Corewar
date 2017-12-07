@@ -1,7 +1,17 @@
 .name "zork"
 .comment "just a basic living prog"
 
-l2:	sti	r1,%:live,%0
-	and	r1,%0,r1
+start:	sti	r1, %:live, %1
+		ld %52, r3
+		ld %0, r2
+		fork %:end
+		and %1, %0, r2
+		aff r3
+		zjmp %:live
+
 live:	live	%1
-	zjmp	%:live
+		and %1, %0, r2
+		zjmp %:live
+
+end:	aff r3
+		aff r3

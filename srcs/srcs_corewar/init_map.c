@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:12:24 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/06 17:29:58 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/12/07 15:42:06 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int				write_player(t_data *data, t_champion *champion, size_t pos)
 
 	i = 0;
 	map = data->map;
-	while (i < pos)
+	while (i++ < pos)
 		map = map->next;
 	i = 0;
 	while (i < champion->size)
@@ -27,6 +27,7 @@ int				write_player(t_data *data, t_champion *champion, size_t pos)
 		map->content[0] = champion->code[(i * 3)];
 		map->content[1] = champion->code[(i * 3) + 1];
 		map->content[2] = 0;
+		map->contentn = str_hex_to_number(map->content);
 		i++;
 		map = map->next;
 	}
@@ -86,6 +87,7 @@ int				init_map(t_data *data)
 	{
 		if (write_player(data, tmp, (MEM_SIZE / data->nb_champion) * i) == -1)
 			return (-1);
+		printf("%s player entered the game\n", tmp->name);
 		tmp = tmp->next;
 		i++;
 	}
