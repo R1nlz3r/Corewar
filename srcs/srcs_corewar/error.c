@@ -44,6 +44,7 @@ void			corewar_error(t_data *data, char *error)
 	{
 		free_champions(data->champions);
 		free_map(data->map);
+		free(data);
 	}
 	ft_putstr_fd(RED, 2);
 	ft_putstr_fd(error, 2);
