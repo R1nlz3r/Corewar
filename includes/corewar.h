@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/07 14:39:34 by cfrouin          ###   ########.fr       */
+/*   Updated: 2017/12/13 19:01:33 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,20 @@
 # include "libft.h"
 # include "op.h"
 
-static const char		g_hex_tab[] =
+const char				g_hex_tab[] =
 {
 	'0', '1', '2', '3', '4', '5', '6', '7',
 	'8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
 };
+
+typedef struct			s_process
+{
+	unsigned int		id;
+	unsigned int		player;
+	unsigned int		pos;
+	char				carry;
+	unsigned int		timeleft;
+}						t_process;
 
 typedef struct			s_champion
 {
@@ -77,6 +86,12 @@ int						read_champions(t_data *data);
 */
 
 int						init_map(t_data *data);
+
+/*
+** init_processes.c
+*/
+
+int						init_processes(t_data *data);
 
 /*
 ** error.c
