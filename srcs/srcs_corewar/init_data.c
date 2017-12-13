@@ -22,6 +22,8 @@ static int		new_champion(t_data *data, char *filename, int number)
 		tmp = tmp->next;
 	if ((new = malloc(sizeof(t_champion))) == NULL)
 		return (-1);
+	new->prev = NULL;
+	new->next = NULL;
 	if ((new->filename = strdup(filename)) == NULL)
 	{
 		free(new);
@@ -83,7 +85,7 @@ static int		manage_args(t_data *data, int ac, char **av)
 {
 	int			i;
 
-	i = 0;
+	i = 1;
 	while (++i < ac)
 	{
 		if (strcmp(av[i], "-dump") == 0)
@@ -111,8 +113,12 @@ t_data			*init_data(int ac, char **av)
 {
 	t_data		*data;
 
+	if (ac == 1)
+		corewar_error(NULL, "Usage: ./corewar [-dump X] [[-n] champion.cor]\n");
 	if ((data = malloc(sizeof(t_data))) == NULL)
 		return (NULL);
+	data->map = NULL;
+	data->dump = 0;
 	data->champions = NULL;
 	data->nb_champion = 0;
 	if (manage_args(data, ac, av) == -1)

@@ -66,6 +66,11 @@ static int		create_map(t_data *data)
 	{
 		if ((new = malloc(sizeof(t_node))) == NULL)
 			return (-1);
+		if (node != NULL)
+		{
+			node->next = NULL;
+			node->prev = NULL;
+		}
 		new->id = i;
 		add_node(data, new, node);
 		node = new;

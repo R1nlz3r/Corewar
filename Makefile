@@ -70,6 +70,12 @@ clean:
 					@echo "\033[K\033[31m=============================\033[0m"
 					@make -C libs/libft clean
 
+rclean:
+					@rm -f $(OBJS_ASM) $(OBJS_COREWAR)
+					@echo "\033[K\033[31m===========COREWAR===========\033[0m"
+					@echo "\033[31mCleaning\033[00m  " [ "*.o" ] "  \033[32mComplete\033[00m"
+					@echo "\033[K\033[31m=============================\033[0m"
+
 fclean:				clean
 					@rm -f $(NAME_ASM) $(NAME_COREWAR)
 					@echo "\033[K\033[31m===========COREWAR===========\033[0m"
@@ -80,8 +86,17 @@ fclean:				clean
 					@echo "\033[K\033[31m=============================\033[0m"
 					@make -C libs/libft fclean
 
+rfclean:			rclean
+					@rm -f $(NAME_ASM) $(NAME_COREWAR)
+					@echo "\033[K\033[31m===========COREWAR===========\033[0m"
+					@echo "\033[31mRemoving\033[00m  " [ "asm" ] "  \033[32mComplete\033[00m"
+					@echo "\033[K\033[31m=============================\033[0m"
+					@echo "\033[K\033[31m===========COREWAR===========\033[0m"
+					@echo "\033[31mRemoving\033[00m" [ "corewar" ] "\033[32mComplete\033[00m"
+					@echo "\033[K\033[31m=============================\033[0m"
+
 re:					fclean all
 
-ren:				clean $(NAME_ASM) $(NAME_COREWAR)
+ren:				rfclean all
 
 .PHONY:				all clean fclean re ren

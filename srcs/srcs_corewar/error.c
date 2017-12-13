@@ -12,8 +12,39 @@
 
 #include "corewar.h"
 
-void			corewar_error(char *error)
+static void		free_champions(t_champion *list)
 {
+	t_champion	*tmp;
+
+	while (list != NULL)
+	{
+		tmp = list;
+		list = list->next;
+		free(tmp->filename);
+		free(tmp);
+	}
+}
+
+static void		free_map(t_node *list)
+{
+	t_node		*tmp;
+
+	list->prev->next = NULL;
+	while (list != NULL)
+	{
+		tmp = list;
+		list = list->next;
+		free(tmp);
+	}
+}
+
+void			corewar_error(t_data *data, char *error)
+{
+	if (data != NULL)
+	{
+		free_champions(data->champions);
+		free_map(data->map);
+	}
 	ft_putstr_fd(RED, 2);
 	ft_putstr_fd(error, 2);
 	ft_putstr_fd(RESET, 2);

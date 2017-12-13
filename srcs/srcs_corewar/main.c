@@ -17,42 +17,10 @@ int				main(int ac, char **av)
 	t_data		*data;
 
 	if ((data = init_data(ac, av)) == NULL)
-	{
-		corewar_error("Couldn't initialize data\n");
-		return (-1);
-	}
+		corewar_error(data, "Couldn't initialize data\n");
 	if (read_champions(data) == -1)
-	{
-		corewar_error("Couldn't initialize data\n");
-		return (-1);
-	}
-	if (init_map(data) == -1)
-	{
-		corewar_error("Couldn't initialize map\n");
-		return (-1);
-	}
-
-	printf("%d\n", data->champions->size);
-
-	// t_node		*node = data->map;
-	// do
-	// {
-	// 	for (int i = 0; i < 64; i++) {
-	// 		printf("% 2s|", node->content);
-	// 		node = node->next;
-	// 		if (node->id == 0)
-	// 		break ;
-	// 	}
-	// 	printf("\n");
-	// } while (node->id != 0);
-
-	// t_champion	*tmp;
-    //
-	// tmp = data->champions;
-	// while (tmp)
-	// {
-	// 	ft_printf("%d\n%s\n", tmp->size, tmp->code);
-	// 	tmp = tmp->next;
-	// }
+		corewar_error(data, "Couldn't initialize champions\n");
+	if (init_map(data))
+		corewar_error(data, "Couldn't initialize map\n");
 	return (0);
 }

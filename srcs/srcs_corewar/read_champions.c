@@ -12,7 +12,7 @@
 
 #include "corewar.h"
 
-static void			read_file(int fd, t_champion *champion)
+static void			read_file(t_data *data, int fd, t_champion *champion)
 {
 	int				index;
 	char			buff[1];
@@ -20,7 +20,7 @@ static void			read_file(int fd, t_champion *champion)
 	t_header		tmp;
 
 	if (read(fd, &tmp, sizeof(t_header)) <= 0)
-		corewar_error("Error when reading champion's header.\n");
+		corewar_error(data, "Error when reading champion's header.\n");
 	ft_strcpy(champion->name, tmp.prog_name);
 	ft_strcpy(champion->comment, tmp.comment);
 	champion->magic = tmp.magic;
@@ -40,17 +40,17 @@ static void			read_file(int fd, t_champion *champion)
 	champion->size = ft_strlen(champion->code) / 3;
 }
 
-int					read_champion(t_champion *champion)
+static int			read_champion(t_data *data, t_champion *champion)
 {
 	int				fd;
 
 	if ((fd = open(champion->filename, O_RDONLY)) == -1)
-		corewar_error("Can't open champion.\n");
-	read_file(fd, champion);
+		corewar_error(data, "Can't open champion.\n");
+	read_file(data, fd, champion);
 	if (champion->size > CHAMP_MAX_SIZE)
 	{
 		free(champion);
-		return (-1);
+		corewar_error(data, "Champion is too big.\n");
 	}
 	close(fd);
 	return (1);
@@ -68,7 +68,7 @@ int					read_champions(t_data *data)
 		i++;
 		if (i > MAX_PLAYERS)
 			return (-1);
-		if (read_champion(node) != 1)
+		if (read_champion(data, node) != 1)
 			return (-1);
 		node = node->next;
 	}

@@ -82,7 +82,7 @@ int						init_map(t_data *data);
 ** error.c
 */
 
-void					corewar_error(char *str);
+void					corewar_error(t_data *data, char *str);
 
 /*
 ** number_to_hex_str.c
