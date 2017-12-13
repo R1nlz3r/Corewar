@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2017/12/07 17:58:45 by cfrouin          ###   ########.fr        #
+#    Updated: 2017/12/13 18:34:44 by cfrouin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS_COREWAR_DIR	=	srcs/srcs_corewar/
 SRCS_COREWAR		=	main.c \
 						init_data.c \
 						read_champions.c \
+						init_processes.c \
 						init_map.c \
 						number_to_hex_str.c \
 						error.c
