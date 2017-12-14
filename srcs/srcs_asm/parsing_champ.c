@@ -6,25 +6,34 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:53:06 by kda-silv          #+#    #+#             */
-/*   Updated: 2017/12/07 19:41:17 by kda-silv         ###   ########.fr       */
+/*   Updated: 2017/12/13 20:10:30 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
+static int		skip_space(int count, char *line)
+{
+	while (line[count] == ' ' || line[count] == '\t')
+		++count;
+		return (count);
+}
+
 static int		fill_header(char *line, char *cmd, char *source, t_data *data)
 {
 	int			count;
 	int			count2;
+	int			tmp;
 
+	count2 = skip_space(0, line);
 	count = (int)ft_strlen(cmd);
-	if (strncmp(cmd, line, count) != 0)
+	if ((tmp = strncmp(cmd, (line + count2), count)) != 0)
 		header_error(cmd, 0, data);
 	count2 = 0;
-	while ((line[count] == ' ' || line[count] == '\t') && line[count] != '\0')
-		++count;
+	count = skip_space(count + 1, line);
 	if (line[count] != '\"')
 		header_error(cmd, 1, data);
+	++count;
 	while (line[count] != '\"')
 	{
 		//if (count2 >)
@@ -32,7 +41,10 @@ static int		fill_header(char *line, char *cmd, char *source, t_data *data)
 		++count;
 		++count2;
 	}
-	if (line[count] == '\"' && line[count + 1] != '\0')
+	if (line[count] != '\"')
+		header_error(cmd, 1, data);
+	count = skip_space((count + 1), line);
+	if (line[count] != '\0')
 		header_error(cmd, 1, data);
 	source[count2] = '\0';
 	return (1);
@@ -56,4 +68,8 @@ void			parsing_champ(int fd, t_data *data)
 			fill_header(line, COMMENT_CMD_STRING, data->header.comment, data);
 		free(line);
 	}
+	if (data->header.prog_name[0] == '\0')
+		asm_error("Syntaxe error: need a program name", 1, data);
+	if (data->header.comment[0] == '\0')
+		asm_error("Syntaxe error: need a comment", 1, data);
 }
