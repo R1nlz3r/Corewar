@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:43:56 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/14 18:12:03 by cfrouin          ###   ########.fr       */
+/*   Updated: 2017/12/14 18:41:03 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,17 @@ static void		free_processes(t_process *list)
 		tmp = list;
 		list = list->next;
 		free(tmp);
+	}
+}
+
+void			free_data(t_data *data)
+{
+	if (data != NULL)
+	{
+		free_champions(data->champions);
+		free_map(data->map);
+		free_processes(data->processes);
+		free(data);
 	}
 }
 

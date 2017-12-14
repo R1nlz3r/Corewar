@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/14 15:36:22 by cfrouin          ###   ########.fr       */
+/*   Updated: 2017/12/14 18:41:11 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int						init_processes(t_data *data);
 ** error.c
 */
 
+void					free_data(t_data *data);
 void					corewar_error(t_data *data, char *str);
 
 /*
