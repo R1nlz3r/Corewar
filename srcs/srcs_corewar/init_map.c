@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:12:24 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/07 15:42:06 by cfrouin          ###   ########.fr       */
+/*   Updated: 2017/12/14 15:32:39 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int				init_map(t_data *data)
 	{
 		if (write_player(data, tmp, (MEM_SIZE / data->nb_champion) * i) == -1)
 			return (-1);
-		printf("%s player entered the game\n", tmp->name);
+		ft_printf("%d - %s player entered the game\n", i, tmp->name);
 		tmp = tmp->next;
 		i++;
 	}

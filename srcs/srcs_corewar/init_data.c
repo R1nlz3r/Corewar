@@ -6,11 +6,12 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/06 17:28:14 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2017/12/14 15:42:52 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
 
 static int		new_champion(t_data *data, char *filename, int number)
 {
@@ -29,6 +30,7 @@ static int		new_champion(t_data *data, char *filename, int number)
 		free(new);
 		return (-1);
 	}
+	new->lo = data->nb_champion;
 	new->number = number;
 	if (data->champions == NULL)
 		data->champions = new;
@@ -85,7 +87,7 @@ static int		manage_args(t_data *data, int ac, char **av)
 {
 	int			i;
 
-	i = 1;
+	i = 0;
 	while (++i < ac)
 	{
 		if (strcmp(av[i], "-dump") == 0)
@@ -121,6 +123,7 @@ t_data			*init_data(int ac, char **av)
 	data->dump = 0;
 	data->champions = NULL;
 	data->nb_champion = 0;
+	data->processes = NULL;
 	if (manage_args(data, ac, av) == -1)
 	{
 		free(data);
