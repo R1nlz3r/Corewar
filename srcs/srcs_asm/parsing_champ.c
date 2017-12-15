@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:53:06 by kda-silv          #+#    #+#             */
-/*   Updated: 2017/12/13 20:10:30 by kda-silv         ###   ########.fr       */
+/*   Updated: 2017/12/15 17:48:10 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ static int		fill_header(char *line, char *cmd, char *source, t_data *data)
 	count2 = skip_space(0, line);
 	count = (int)ft_strlen(cmd);
 	if ((tmp = strncmp(cmd, (line + count2), count)) != 0)
-		header_error(cmd, 0, data);
+		header_error(cmd, 0, data, line);
 	count2 = 0;
 	count = skip_space(count + 1, line);
 	if (line[count] != '\"')
-		header_error(cmd, 1, data);
+		header_error(cmd, 1, data, line);
 	++count;
 	while (line[count] != '\"')
 	{
@@ -42,10 +42,10 @@ static int		fill_header(char *line, char *cmd, char *source, t_data *data)
 		++count2;
 	}
 	if (line[count] != '\"')
-		header_error(cmd, 1, data);
+		header_error(cmd, 1, data, line);
 	count = skip_space((count + 1), line);
 	if (line[count] != '\0')
-		header_error(cmd, 1, data);
+		header_error(cmd, 1, data, line);
 	source[count2] = '\0';
 	return (1);
 }
@@ -60,7 +60,7 @@ void			parsing_champ(int fd, t_data *data)
 	while ((error = get_next_line(fd, &line)))
 	{
 		if (error == -1)
-			asm_error("error gnl", 1, data);
+			asm_error("Error gnl", 1, data, NULL);
 		++data->line;
 		if (ft_strstr(line, NAME_CMD_STRING))
 			fill_header(line, NAME_CMD_STRING, data->header.prog_name, data);
@@ -69,7 +69,7 @@ void			parsing_champ(int fd, t_data *data)
 		free(line);
 	}
 	if (data->header.prog_name[0] == '\0')
-		asm_error("Syntaxe error: need a program name", 1, data);
+		asm_error("Syntaxe error: need a program name", 1, data, NULL);
 	if (data->header.comment[0] == '\0')
-		asm_error("Syntaxe error: need a comment", 1, data);
+		asm_error("Syntaxe error: need a comment", 1, data, NULL);
 }
