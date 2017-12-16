@@ -6,30 +6,30 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:50:54 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/13 18:50:04 by kda-silv         ###   ########.fr       */
+/*   Updated: 2017/12/15 17:48:43 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-void			header_error(char *cmd, int id, t_data *data)
+void			header_error(char *cmd, int id, t_data *data, char *str)
 {
 	if (id == 0)
 	{
-		asm_error("tmp", 0, data);
+		asm_error("tmp", 0, data, NULL);
 		ft_putstr_fd(cmd, 2);
-		asm_error(" must be at the beginning of the line", 1, data);
+		asm_error(" must be at the beginning of the line", 1, data, str);
 	}
 	if (id == 1)
 	{
-		asm_error("tmp", 0, data);
+		asm_error("tmp", 0, data, NULL);
 		ft_putstr_fd("syntaxe muste be: ", 2);
 		ft_putstr_fd(cmd, 2);
-		asm_error(" \"text\"", 1, data);
+		asm_error(" \"text\"", 1, data, str);
 	}
 }
 
-void			asm_error(char *error, int flag, t_data *data)
+void			asm_error(char *error, int flag, t_data *data, char *str)
 {
 	char		*line;
 
@@ -43,6 +43,8 @@ void			asm_error(char *error, int flag, t_data *data)
 		ft_putstr_fd("]: ", 2);
 		return ;
 	}
+	if (str != NULL)
+		free(str);
 	ft_putstr_fd(error, 2);
 	ft_putstr_fd("\n", 2);
 	ft_putstr_fd(RESET, 2);
