@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2017/12/14 16:32:20 by cfrouin          ###   ########.fr        #
+#    Updated: 2017/12/15 17:39:30 by cfrouin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,8 @@ SRCS_COREWAR		=	main.c \
 						init_processes.c \
 						init_map.c \
 						number_to_hex_str.c \
+						vm.c \
+						vm_check_live.c \
 						error.c
 
 SRCS_COREWAR_FULL	=	$(addprefix $(SRCS_COREWAR_DIR), $(SRCS_COREWAR))
