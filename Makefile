@@ -6,11 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2017/12/15 17:39:30 by cfrouin          ###   ########.fr        #
-=======
-#    Updated: 2017/12/15 15:48:09 by kda-silv         ###   ########.fr        #
->>>>>>> 499acdbf3cc7eb36a8dee5b37b43882691d8bf34
+#    Updated: 2017/12/17 12:51:53 by cfrouin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +36,23 @@ SRCS_COREWAR		=	main.c \
 						number_to_hex_str.c \
 						vm.c \
 						vm_check_live.c \
-						error.c
+						error.c \
+						cmd/add.c \
+						cmd/aff.c \
+						cmd/and.c \
+						cmd/fork.c \
+						cmd/ld.c \
+						cmd/ldi.c \
+						cmd/lfork.c \
+						cmd/live.c \
+						cmd/lld.c \
+						cmd/lldi.c \
+						cmd/or.c \
+						cmd/st.c \
+						cmd/sti.c \
+						cmd/sub.c \
+						cmd/xor.c \
+						cmd/zjmp.c
 
 SRCS_COREWAR_FULL	=	$(addprefix $(SRCS_COREWAR_DIR), $(SRCS_COREWAR))
 
