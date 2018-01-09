@@ -6,17 +6,17 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/14 15:42:52 by cfrouin          ###   ########.fr       */
+/*   Updated: 2017/12/16 16:35:51 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 
-static int		new_champion(t_data *data, char *filename, int number)
+static int			new_champion(t_data *data, char *filename, int number)
 {
-	t_champion	*tmp;
-	t_champion	*new;
+	t_champion		*tmp;
+	t_champion		*new;
 
 	tmp = data->champions;
 	while (tmp && tmp->next)
@@ -25,6 +25,8 @@ static int		new_champion(t_data *data, char *filename, int number)
 		return (-1);
 	new->prev = NULL;
 	new->next = NULL;
+	new->processes = NULL;
+	new->live = 0;
 	if ((new->filename = strdup(filename)) == NULL)
 	{
 		free(new);
@@ -36,14 +38,15 @@ static int		new_champion(t_data *data, char *filename, int number)
 		data->champions = new;
 	else
 		tmp->next = new;
+	new->prev = tmp;
 	return (1);
 }
 
-static int		get_new_number(t_data *data)
+static int			get_new_number(t_data *data)
 {
-	int			nbr;
-	int			flag;
-	t_champion	*tmp;
+	unsigned int	nbr;
+	int				flag;
+	t_champion		*tmp;
 
 	nbr = 1;
 	flag = 1;
@@ -73,7 +76,7 @@ static int		prepare_champion(t_data *data, char *filename, int number)
 	tmp = data->champions;
 	while (tmp)
 	{
-		if (tmp->number == number)
+		if (tmp->number == (unsigned int)number)
 			return (-1);
 		tmp = tmp->next;
 	}
@@ -83,9 +86,9 @@ static int		prepare_champion(t_data *data, char *filename, int number)
 	return (1);
 }
 
-static int		manage_args(t_data *data, int ac, char **av)
+static int			manage_args(t_data *data, int ac, char **av)
 {
-	int			i;
+	int				i;
 
 	i = 0;
 	while (++i < ac)
@@ -111,9 +114,9 @@ static int		manage_args(t_data *data, int ac, char **av)
 	return (1);
 }
 
-t_data			*init_data(int ac, char **av)
+t_data				*init_data(int ac, char **av)
 {
-	t_data		*data;
+	t_data			*data;
 
 	if (ac == 1)
 		corewar_error(NULL, "Usage: ./corewar [-dump X] [[-n] champion.cor]\n");
@@ -123,7 +126,10 @@ t_data			*init_data(int ac, char **av)
 	data->dump = 0;
 	data->champions = NULL;
 	data->nb_champion = 0;
-	data->processes = NULL;
+	data->cycle = 0;
+	data->cyclec = 0;
+	data->cycletodie = CYCLE_TO_DIE;
+	data->live = 0;
 	if (manage_args(data, ac, av) == -1)
 	{
 		free(data);
