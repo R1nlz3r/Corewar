@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/09 17:24:18 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/09 18:58:20 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void		get_one_param(t_champion *champion, int argsize, int n, int pos)
 		nb += node->contentn << ((argsize - (i + 1)) * 8);
 		i++;
 	}
+	champion->args[n] = nb;
 }
 
 static void		get_params(t_champion *champion)
@@ -65,6 +66,7 @@ static void		get_params(t_champion *champion)
 			argsize = IND_SIZE;
 		get_one_param(champion, argsize, i, pos);
 		pos += argsize;
+		i++;
 	}
 }
 
@@ -79,6 +81,7 @@ int				do_next_op(t_data *data)
 	{
 		get_params_type(champion);
 		get_params(champion);
+		champion = champion->prev;
 	}
 	return (1);
 }

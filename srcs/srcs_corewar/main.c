@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/09 14:38:46 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/01/09 19:06:07 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ void			display_map(t_data *data)
 
 	node = data->map;
 	do {
-		ft_printf("% 2s|", node->content);
+		if (node->player != -1)
+			ft_printf("\e[41m%02s|" RESET, node->content);
+		else
+			ft_printf("\e[100m%02s|" RESET, node->content);
 		node = node->next;
 		if (node->id % 70 == 0)
 			ft_printf("\n");
@@ -54,8 +57,8 @@ int				main(int ac, char **av)
 	display_map(data);
 	// if (init_processes(data) == -1)
 	// 	corewar_error(data, "Couldn't initialize processes\n");
-	// if (vm_start(data) == -1)
-	// 	corewar_error(data, "Error during vm execution\n");
+	if (vm_start(data) == -1)
+		corewar_error(data, "Error during vm execution\n");
 	win(data);
 	free_data(data);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/09 16:56:51 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/09 18:49:04 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdbool.h>
 
 # include "libft.h"
-# include "op.h"
+# include "op_corewar.h"
 
 extern char				g_hex_tab[];
 extern t_op				g_op_tab[];

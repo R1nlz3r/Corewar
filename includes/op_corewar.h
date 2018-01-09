@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/01/09 18:48:54 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/09 15:56:31 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct					s_op
 	char						*description;
 	int							has_pcode;
 	int							has_idx;
+	int							(*func)(t_data *data, t_champion *champion);
 }								t_op;
 
 #endif
