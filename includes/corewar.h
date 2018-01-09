@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/09 15:58:45 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/01/09 16:56:51 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ typedef struct			s_champion
 	unsigned char		code[MEM_SIZE];
 	char				comment[COMMENT_LENGTH + 1];
 	unsigned char		reg[REG_NUMBER + 1][REG_SIZE];
-	char				encode[9];
+	char				argsType[3];
+	int					args[3];
 
 	struct s_champion	*prev;
 	struct s_champion	*next;

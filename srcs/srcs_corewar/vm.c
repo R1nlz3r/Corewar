@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/01/09 15:53:02 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/01/09 16:28:02 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int				vm_start(t_data *data)
 	while (1)
 	{
 		prepare_next_op(data);
+		do_next_op(data);
 		// if (champion == NULL || data->nb_champion == 1)
 		// 	break ;
 		// if (data->cyclec == data->cycletodie)
