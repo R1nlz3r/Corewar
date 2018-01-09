@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:53:06 by kda-silv          #+#    #+#             */
-/*   Updated: 2017/12/15 17:48:10 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/01/09 13:37:56 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,8 @@ static int		fill_header(char *line, char *cmd, char *source, t_data *data)
 	int			count2;
 	int			tmp;
 
-	count2 = skip_space(0, line);
 	count = (int)ft_strlen(cmd);
-	if ((tmp = strncmp(cmd, (line + count2), count)) != 0)
+	if ((tmp = strncmp(cmd, (line + skip_space(0, line)), count)) != 0)
 		header_error(cmd, 0, data, line);
 	count2 = 0;
 	count = skip_space(count + 1, line);
@@ -36,7 +35,12 @@ static int		fill_header(char *line, char *cmd, char *source, t_data *data)
 	++count;
 	while (line[count] != '\"')
 	{
-		//if (count2 >)
+		if ((cmd == NAME_CMD_STRING && count2 > (PROG_NAME_LENGTH - 1))
+			|| (cmd == COMMENT_CMD_STRING && count2 > (COMMENT_LENGTH - 1)))
+			{
+				asm_error("yolo", 0, data, NULL);
+				asm_error("\"text\" too long", 1, data, NULL);
+			}
 		source[count2] = line[count];
 		++count;
 		++count2;
