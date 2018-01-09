@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 16:53:18 by kda-silv          #+#    #+#             */
-/*   Updated: 2017/12/13 18:42:22 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/09 11:57:04 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int					ft_longlonglen_unsigned(unsigned long long nbr);
 char				*ft_longlong_to_binaire(unsigned long long nbr);
 char				*ft_longlong_to_hexa(unsigned long long n, char *value);
 char				*ft_longlong_to_octal(unsigned long long n);
-void				ft_lstadd(t_list **alst, t_list *new);
+void				ft_lstadd(t_list **alst, t_list *nlist);
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));

@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/16 19:05:22 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/09 14:38:46 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,22 @@ void			win(t_data *data)
 	t_champion	*player;
 
 	player = data->champions;
-	if (player == NULL)
-		ft_printf("Match ended in a draw\n");
-	else
-		ft_printf("Player %d (%s) won!\n", player->number, player->name);
+	while (player->next != NULL)
+		player = player->next;
+	ft_printf("Player %d (%s) won!\n", player->number, player->name);
+}
+
+void			display_map(t_data *data)
+{
+	t_node		*node;
+
+	node = data->map;
+	do {
+		ft_printf("% 2s|", node->content);
+		node = node->next;
+		if (node->id % 70 == 0)
+			ft_printf("\n");
+	} while (node != data->map);
 }
 
 int				main(int ac, char **av)
@@ -39,11 +51,11 @@ int				main(int ac, char **av)
 		corewar_error(data, "Couldn't initialize champions\n");
 	if (init_map(data) == -1)
 		corewar_error(data, "Couldn't initialize map\n");
-	if (init_processes(data) == -1)
-		corewar_error(data, "Couldn't initialize processes\n");
-	ft_printf("%d player entered the game.\n", data->nb_champion);
-	if (vm_start(data) == -1)
-		corewar_error(data, "Error during vm execution\n");
+	display_map(data);
+	// if (init_processes(data) == -1)
+	// 	corewar_error(data, "Couldn't initialize processes\n");
+	// if (vm_start(data) == -1)
+	// 	corewar_error(data, "Error during vm execution\n");
 	win(data);
 	free_data(data);
 	return (0);

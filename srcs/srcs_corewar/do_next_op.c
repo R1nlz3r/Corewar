@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   add.c                                              :+:      :+:    :+:   */
+/*   do_next_op.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/16 16:59:00 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/01/04 16:13:21 by cyrillefrouin    ###   ########.fr       */
+/*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
+/*   Updated: 2018/01/09 15:53:08 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int					corewar_add(t_data *data, t_champion *champ)
+int				do_next_op(t_data *data)
 {
 	return (1);
 }

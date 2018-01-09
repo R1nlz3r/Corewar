@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/16 16:35:31 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/09 15:58:45 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,13 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <unistd.h>
+# include <stdbool.h>
 
 # include "libft.h"
 # include "op.h"
 
 extern char				g_hex_tab[];
-
-typedef struct			s_process
-{
-	unsigned int		id;
-	unsigned int		player;
-	unsigned int		pos;
-	char				carry;
-	unsigned int		timeleft;
-	unsigned int		lastlive;
-
-	struct s_process	*next;
-	struct s_process	*prev;
-}						t_process;
-
-typedef struct			s_champion
-{
-	unsigned int		magic;
-	int					lo;
-	int					live;
-	unsigned int		number;
-	char				*filename;
-	char				name[PROG_NAME_LENGTH + 1];
-	unsigned int		size;
-	char				comment[COMMENT_LENGTH + 1];
-	char				code[1024];
-	t_process			*processes;
-
-	struct s_champion	*prev;
-	struct s_champion	*next;
-}						t_champion;
+extern t_op				g_op_tab[];
 
 typedef struct			s_node
 {
@@ -63,6 +35,30 @@ typedef struct			s_node
 	struct s_node		*next;
 	struct s_node		*prev;
 }						t_node;
+
+typedef struct			s_champion
+{
+	bool				carry;
+	int					lastLive;
+	int					liveNbr;
+	t_node				*pc;
+	int					ipc;
+	char				name[PROG_NAME_LENGTH + 1];
+	int					wait;
+	bool				alive;
+	unsigned int		number;
+	int					nextOp;
+	t_op				op;
+	char				*filename;
+	unsigned int		size;
+	unsigned char		code[MEM_SIZE];
+	char				comment[COMMENT_LENGTH + 1];
+	unsigned char		reg[REG_NUMBER + 1][REG_SIZE];
+	char				encode[9];
+
+	struct s_champion	*prev;
+	struct s_champion	*next;
+}						t_champion;
 
 typedef struct			s_data
 {
@@ -123,6 +119,18 @@ void					number_to_hex_str(unsigned char n,
 											unsigned char (*str)[]);
 
 /*
+** do_next_op.c
+*/
+
+int						do_next_op(t_data *data);
+
+/*
+** prepare_next_op.c
+*/
+
+int						prepare_next_op(t_data *data);
+
+/*
 ** vm.c
 ** Start the VM after everything has been initialized
 */
@@ -136,5 +144,26 @@ int						vm_start(t_data *data);
 */
 
 int						vm_check_live(t_data *data);
+
+/*
+** Commands
+*/
+
+int						corewar_add(t_data *data, t_champion *champ);
+int						corewar_aff(t_data *data, t_champion *champ);
+int						corewar_and(t_data *data, t_champion *champ);
+int						corewar_fork(t_data *data, t_champion *champ);
+int						corewar_ld(t_data *data, t_champion *champ);
+int						corewar_ldi(t_data *data, t_champion *champ);
+int						corewar_lfork(t_data *data, t_champion *champ);
+int						corewar_live(t_data *data, t_champion *champ);
+int						corewar_lld(t_data *data, t_champion *champ);
+int						corewar_lldi(t_data *data, t_champion *champ);
+int						corewar_or(t_data *data, t_champion *champ);
+int						corewar_st(t_data *data, t_champion *champ);
+int						corewar_sti(t_data *data, t_champion *champ);
+int						corewar_sub(t_data *data, t_champion *champ);
+int						corewar_xor(t_data *data, t_champion *champ);
+int						corewar_zjmp(t_data *data, t_champion *champ);
 
 #endif

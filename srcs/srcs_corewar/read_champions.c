@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:34:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/06 16:12:03 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/01/04 16:10:33 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ static void			read_file(t_data *data, int fd, t_champion *champion)
 		corewar_error(data, "Error when reading champion's header.\n");
 	ft_strcpy(champion->name, tmp.prog_name);
 	ft_strcpy(champion->comment, tmp.comment);
-	champion->magic = tmp.magic;
 	index = 0;
 	bzero(buff, 1);
 	bzero(tmp_hex, 3);
