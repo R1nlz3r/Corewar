@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:12:24 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/09 19:01:23 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/31 18:46:04 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int				write_player(t_data *data, t_champion *champion, size_t pos)
 	map = data->map;
 	while (i++ < pos)
 		map = map->next;
+	champion->pc = map;
 	i = 0;
 	while (i < champion->size)
 	{

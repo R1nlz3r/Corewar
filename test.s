@@ -1,4 +1,4 @@
 .name "Poulet"
 .comment "KFC"
 
-live %1
+sti	r12,%1,%2

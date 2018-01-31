@@ -1,2 +1,5 @@
 *.o
 .clang_complete
+asm
+corewar
+libft.a

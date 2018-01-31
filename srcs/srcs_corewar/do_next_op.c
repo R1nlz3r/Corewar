@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:20 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/31 19:15:37 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@ static void		get_params_type(t_champion *champion)
 	char		byte;
 	int			i;
 
-	i = 0;
+	i = champion->op.nb_params - 1;
 	node = champion->pc->next;
 	byte = node->contentn;
-	while (i < champion->op.nb_params)
+	while (i >= 0)
 	{
 		byte = byte >> 2;
 		champion->argsType[i] = byte & 0b11;
+		i--;
 	}
 }
 
@@ -34,15 +35,16 @@ static void		get_one_param(t_champion *champion, int argsize, int n, int pos)
 	int			nb;
 	t_node		*node;
 
-	i = 0;
+	i = -1;
 	nb = 0;
 	node = champion->pc;
-	while (i < pos)
+	while (++i < pos)
 		node = node->next;
 	i = 0;
 	while (i < argsize)
 	{
-		nb += node->contentn << ((argsize - (i + 1)) * 8);
+		nb += (node->contentn << ((argsize - (i + 1)) * 8));
+		node = node->next;
 		i++;
 	}
 	champion->args[n] = nb;
@@ -80,7 +82,13 @@ int				do_next_op(t_data *data)
 	while (champion != NULL)
 	{
 		get_params_type(champion);
+		ft_printf("argsType\n");
+		for (int i = 0; i < champion->op.nb_params; i++)
+			ft_printf("%d\n", champion->argsType[i]);
 		get_params(champion);
+		ft_printf("args\n");
+		for (int i = 0; i < champion->op.nb_params; i++)
+			ft_printf("%d\n", champion->args[i]);
 		champion = champion->prev;
 	}
 	return (1);
