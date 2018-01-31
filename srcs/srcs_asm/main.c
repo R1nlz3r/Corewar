@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:53 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/15 18:00:45 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/01/31 14:43:22 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int				main(int ac, char **av)
 	fd = 0;
 	fd = check_file(&data, fd, av);
 	data.header.magic = COREWAR_EXEC_MAGIC;
+	data.name = 0;
+	data.comment = 0;
 	parsing_champ(fd, &data);
 	close(fd);
 	printf("|%s|\n", data.header.prog_name);

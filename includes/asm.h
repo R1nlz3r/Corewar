@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:31:04 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/15 17:46:24 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/01/31 15:32:24 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <stdbool.h>
 
 /*
 ** structure
@@ -26,6 +27,8 @@
 typedef	struct		s_data
 {
 	t_header		header;
+	bool			name;
+	bool			comment;
 	int				line;
 }					t_data;
 
@@ -38,6 +41,11 @@ void			do_cor(t_data *data, char *source);
 ** parsing_champ.c
 */
 void			parsing_champ(int fd, t_data *data);
+
+/*
+** header.c
+*/
+void			header(char *line, t_data *data);
 
 /*
 ** error.c
