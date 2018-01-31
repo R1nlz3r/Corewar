@@ -6,8 +6,13 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 16:59:39 by cfrouin           #+#    #+#             */
-/*   Updated: 2017/12/16 16:59:42 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/09 17:29:24 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+int					corewar_st(t_data *data, t_champion *champ)
+{
+	return (1);
+}

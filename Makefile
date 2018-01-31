@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/01/31 15:04:20 by kda-silv         ###   ########.fr        #
+#    Updated: 2018/01/31 16:04:19 by kda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,12 +30,14 @@ SRCS_ASM_FULL		=	$(addprefix $(SRCS_ASM_DIR), $(SRCS_ASM))
 SRCS_COREWAR_DIR	=	srcs/srcs_corewar/
 
 SRCS_COREWAR		=	main.c \
+						op.c \
 						init_data.c \
 						read_champions.c \
-						init_processes.c \
 						init_map.c \
 						number_to_hex_str.c \
 						vm.c \
+						prepare_next_op.c \
+						do_next_op.c \
 						vm_check_live.c \
 						error.c \
 						cmd/add.c \

@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/16 16:35:51 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/04 16:10:22 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,13 @@ static int			new_champion(t_data *data, char *filename, int number)
 		return (-1);
 	new->prev = NULL;
 	new->next = NULL;
-	new->processes = NULL;
-	new->live = 0;
+	new->alive = true;
 	if ((new->filename = strdup(filename)) == NULL)
 	{
 		free(new);
 		return (-1);
 	}
-	new->lo = data->nb_champion;
+	// new->lo = data->nb_champion;
 	new->number = number;
 	if (data->champions == NULL)
 		data->champions = new;

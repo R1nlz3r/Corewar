@@ -6,23 +6,11 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:43:56 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/15 15:57:07 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/04 16:13:04 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-static void		free_processes(t_process *list)
-{
-	t_process	*tmp;
-
-	while (list != NULL)
-	{
-		tmp = list;
-		list = list->next;
-		free(tmp);
-	}
-}
 
 static void		free_champions(t_champion *list)
 {
@@ -30,7 +18,6 @@ static void		free_champions(t_champion *list)
 
 	while (list != NULL)
 	{
-		free_processes(list->processes);
 		tmp = list;
 		list = list->next;
 		free(tmp->filename);

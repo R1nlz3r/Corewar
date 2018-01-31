@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/06 16:12:24 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/14 15:32:39 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/09 19:01:23 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int				write_player(t_data *data, t_champion *champion, size_t pos)
 	i = 0;
 	while (i < champion->size)
 	{
+		map->player = champion->number;
 		map->content[0] = champion->code[(i * 3)];
 		map->content[1] = champion->code[(i * 3) + 1];
 		map->content[2] = 0;
@@ -66,6 +67,7 @@ static int		create_map(t_data *data)
 	{
 		if ((new = malloc(sizeof(t_node))) == NULL)
 			return (-1);
+		new->player = -1;
 		if (node != NULL)
 		{
 			node->next = NULL;
