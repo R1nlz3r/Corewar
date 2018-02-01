@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 14:57:25 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/01 15:32:06 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/01 15:39:18 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		corewar_add(t_data *data, t_champion *champ)
 	|| champ->argsType[2] != 1)
 		return (-1);
 	champ->args[0] = champ->args[1] + champ->args[2];
-	champ->carry = (champ->carry == 1) ? 0 : 1;
+	if (champ->args[0] == 0)
+		champ->carry = (champ->carry == 1) ? 0 : 1;
 	return (1);
 }
