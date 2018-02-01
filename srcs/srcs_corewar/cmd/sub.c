@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/16 16:59:29 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/01/09 17:29:31 by cfrouin          ###   ########.fr       */
+/*   Created: 2018/02/01 15:47:26 by dwald             #+#    #+#             */
+/*   Updated: 2018/02/01 15:54:19 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 int					corewar_sub(t_data *data, t_champion *champ)
 {
+	
+	if (champ->argsType[0] != 1 || champ->argstType[1] != 1
+	|| champ->argsType[2] != 1)
+		return (-1);
+	champ->args[3] = champ->args[1] - champ->args[2];
+	champ->carry = (champ->args[3] == 0) ? 1 : 0;
 	return (1);
 }
