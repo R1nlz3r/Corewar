@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 16:53:18 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/01/09 11:57:04 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/01/31 23:17:22 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,6 +191,7 @@ int					ft_wputchar(wchar_t c);
 int					ft_wstrlen(wchar_t *s);
 int					get_next_line(const int fd, char **line);
 int					write_octet(char *mask);
+char				*ft_strtolower(const char *s);
 
 /*
 ** ft_printf

@@ -6,7 +6,7 @@
 #    By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/08 16:44:57 by kda-silv          #+#    #+#              #
-#    Updated: 2017/12/17 12:48:20 by cfrouin          ###   ########.fr        #
+#    Updated: 2018/01/31 23:17:05 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,7 +130,8 @@ SRCS	=	ft_printf/ft_printf.c \
 			ft_wputchar_write.c \
 			ft_wstrlen.c \
 			ft_error_close.c \
-			ft_error_str.c
+			ft_error_str.c \
+			ft_strtolower.c
 
 OBJS	=	$(SRCS:.c=.o)
 

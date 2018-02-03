@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/01 17:51:43 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/02/06 17:29:19 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include <stdbool.h>
+
+# include <stdio.h>
+# include <termios.h>
+# include <unistd.h>
+# include <fcntl.h>
 
 # include "libft.h"
 # include "op_corewar.h"
@@ -72,6 +77,7 @@ typedef struct			s_data
 	unsigned int		cyclec;
 	unsigned int		cycletodie;
 	unsigned int		lastlive;
+	bool				pause;
 }						t_data;
 
 /*
@@ -145,6 +151,23 @@ int						vm_start(t_data *data);
 */
 
 int						vm_check_live(t_data *data);
+
+/*
+** display_vm.c
+** display_vm_2.c
+** Display nodes and stats of the vm
+*/
+
+void					display_map(t_data *data);
+void					update_legend(t_data *data);
+
+/*
+** tty.c
+** Change settings of tty to get keys
+*/
+
+void					set_mode(int want_key);
+int						get_key();
 
 /*
 ** Commands
