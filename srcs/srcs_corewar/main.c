@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/09 19:06:07 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/02/03 17:41:58 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,10 @@ void			win(t_data *data)
 	ft_printf("Player %d (%s) won!\n", player->number, player->name);
 }
 
-void			display_map(t_data *data)
-{
-	t_node		*node;
-
-	node = data->map;
-	do {
-		if (node->player != -1)
-			ft_printf("\e[41m%02s|" RESET, node->content);
-		else
-			ft_printf("\e[100m%02s|" RESET, node->content);
-		node = node->next;
-		if (node->id % 70 == 0)
-			ft_printf("\n");
-	} while (node != data->map);
-}
-
 int				main(int ac, char **av)
 {
 	t_data		*data;
+	int			c;
 
 	if ((data = init_data(ac, av)) == NULL)
 		corewar_error(data, "Couldn't initialize data\n");
@@ -54,11 +39,25 @@ int				main(int ac, char **av)
 		corewar_error(data, "Couldn't initialize champions\n");
 	if (init_map(data) == -1)
 		corewar_error(data, "Couldn't initialize map\n");
-	display_map(data);
+	while (1)
+	{
+		display_map(data);
+		set_mode(1);
+		c = get_key();
+		if (c == 27)
+		{
+			ft_putstr("\033[H\033[J\e[?25h");
+			break ;
+		}
+		else if (c == 32 && data->pause)
+			data->pause = 0;
+		else if (c == 32)
+			data->pause = 1;
+	}
 	// if (init_processes(data) == -1)
 	// 	corewar_error(data, "Couldn't initialize processes\n");
-	if (vm_start(data) == -1)
-		corewar_error(data, "Error during vm execution\n");
+	//if (vm_start(data) == -1)
+	//	corewar_error(data, "Error during vm execution\n");
 	win(data);
 	free_data(data);
 	return (0);

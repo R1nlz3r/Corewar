@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/04 16:10:22 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/03 17:17:11 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +129,7 @@ t_data				*init_data(int ac, char **av)
 	data->cyclec = 0;
 	data->cycletodie = CYCLE_TO_DIE;
 	data->live = 0;
+	data->pause = 1;
 	if (manage_args(data, ac, av) == -1)
 	{
 		free(data);

@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/01/09 17:32:16 by cfrouin          ###   ########.fr        #
+#    Updated: 2018/02/03 18:17:42 by mapandel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,9 @@ SRCS_COREWAR		=	main.c \
 						prepare_next_op.c \
 						do_next_op.c \
 						vm_check_live.c \
+						display_vm.c \
+						display_vm_2.c \
+						tty.c \
 						error.c \
 						cmd/add.c \
 						cmd/aff.c \
