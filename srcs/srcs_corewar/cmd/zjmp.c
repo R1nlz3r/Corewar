@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zjmp.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/16 16:59:18 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/01/09 17:30:09 by cfrouin          ###   ########.fr       */
+/*   Created: 2018/02/05 11:46:06 by dwald             #+#    #+#             */
+/*   Updated: 2018/02/05 12:19:55 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,18 @@
 
 int					corewar_zjmp(t_data *data, t_champion *champ)
 {
+	short	dest_address;
+	t_node	tmp;
+
+	tmp = champ->pc;
+	if (champ->argsType[0] != 2)
+		return (-1);
+	if (champ->carry == 1)
+	{
+		dest_address = champ->args[0] + ipc;
+		while (tmp->ipc != dest_address)
+			tmp = tmp->next;
+		champ->pc = tmp;
+	}
 	return (1);
 }
