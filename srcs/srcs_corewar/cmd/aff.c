@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 12:21:27 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/02 16:09:17 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/05 15:44:44 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		corewar_aff(t_data *data, t_champion *champ)
 	int	character;
 
 	character = 'nul';
-	if (champ->argsType[0] != 1)
+	if (champ->argsType[0] != T_REG)
 		return (-1);
 	if ((char)(champ->reg[args[0]]) == 'nul')
 		champ->carry = 1;
