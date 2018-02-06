@@ -6,15 +6,15 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 15:53:45 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/06 14:31:34 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/06 17:44:46 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
 /*
-** Takes a registry and a registry or an indirect and store the value of 
-** the registry toward a second argument. For example, st r1, 42 store 
+** Takes a registry and a registry or an indirect and store the value of
+** the registry toward a second argument. For example, st r1, 42 store
 ** the value of r1 at the address (PC + (42 % IDX_MOD))
 ** If the first parameter is zero, carry changes to 1, otherwise carry is 0.
 */
@@ -22,7 +22,7 @@
 int		corewar_st(t_data *data, t_champion *champ)
 {
 	t_node	*tmp;
-	int		pc_dest;
+	short	pc_dest;
 
 	tmp = champ->pc;
 	if (champ->argsType[0] != T_REG || (champ->argsType[1] != T_IND
