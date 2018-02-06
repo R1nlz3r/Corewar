@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:46:06 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/05 15:43:30 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/06 15:51:12 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 int		corewar_zjmp(t_data *data, t_champion *champ)
 {
-	short	dest_address;
-	t_node	tmp;
+	short	pc_dest;
+	t_node	*tmp;
 
 	tmp = champ->pc;
 	if (champ->argsType[0] != T_DIR)
 		return (-1);
 	if (champ->carry == 1)
 	{
-		dest_address = champ->args[0] + champ->ipc;
-		while (tmp->ipc != dest_address)
+		pc_dest = champ->args[0] + champ->ipc;
+		while (champ->ipc > pc_dest--)
 			tmp = tmp->next;
-		champ->pc = tmp;
+		champ->pc = tmp;							//assigning new node pointer
+		champ->ipc = champ->args[0] + champ->ipc;	//changing PC accordingly
 	}
 	return (1);
 }

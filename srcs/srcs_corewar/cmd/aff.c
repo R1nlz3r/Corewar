@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 12:21:27 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/05 15:44:44 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/06 13:45:19 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,18 @@ int		corewar_aff(t_data *data, t_champion *champ)
 {
 	int	character;
 
-	character = 'nul';
+	character = 0;
 	if (champ->argsType[0] != T_REG)
 		return (-1);
-	if ((char)(champ->reg[args[0]]) == 'nul')
+	if ((char)(champ->reg[champ->args[0]]) == 0)
 		champ->carry = 1;
 	else
 	{
 		champ->carry = 0;
-		c = (int)champ->reg[args[0]] % 256;
+		character = (int)champ->reg[champ->args[0]] % 256;
 //ambiguity: modulo of variable cast in char or modulo of an int?
 	}
 	ft_printf("champion %d: aff %c\n",
-	champ->number, (char)(champ->reg[args[0]]));
+	champ->number, (char)(champ->reg[champ->args[0]]));
 	return (1);
 }
