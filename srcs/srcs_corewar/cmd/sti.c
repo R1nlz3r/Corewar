@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/06 15:42:30 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/06 17:44:57 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 int		corewar_sti(t_data *data, t_champion *champ)
 {
 	t_node	*tmp;
-	int		pc_dest;
+	short	pc_dest;
 	int		parameter[2];
 
 	tmp = champ->pc;
@@ -45,7 +45,8 @@ int		corewar_sti(t_data *data, t_champion *champ)
 		parameter[1] = champ->reg[champ->args[2]];
 	else if (champ->argsType[2] == T_DIR)
 		parameter[1] = champ->args[2];
-	pc_dest = parameter[0] + parameter[1]; //get final address
+//get final address and stock there reg[param1]
+	pc_dest = parameter[0] + parameter[1];
 	champ->carry = (pc_dest == 0) ? 1 : 0;
 	tmp = champ->pc;
 	while (champ->ipc > pc_dest--)

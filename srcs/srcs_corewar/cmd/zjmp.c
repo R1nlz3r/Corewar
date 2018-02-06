@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:46:06 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/06 15:51:12 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/06 17:44:12 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ int		corewar_zjmp(t_data *data, t_champion *champ)
 		pc_dest = champ->args[0] + champ->ipc;
 		while (champ->ipc > pc_dest--)
 			tmp = tmp->next;
-		champ->pc = tmp;							//assigning new node pointer
-		champ->ipc = champ->args[0] + champ->ipc;	//changing PC accordingly
+//assigning new node pointer (memory emplacement in VM's RAM)
+		champ->pc = tmp;
+//changing PC accordingly
+		champ->ipc = champ->args[0] + champ->ipc;
 	}
 	return (1);
 }
