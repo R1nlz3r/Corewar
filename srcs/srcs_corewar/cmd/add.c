@@ -3,16 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   add.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/16 16:59:00 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/01/04 16:13:21 by cyrillefrouin    ###   ########.fr       */
+/*   Created: 2018/02/01 14:57:25 by dwald             #+#    #+#             */
+/*   Updated: 2018/02/06 13:42:19 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int					corewar_add(t_data *data, t_champion *champ)
+/*
+** Take three registries, add the first two, and place the result in the third,
+** right before modifying the carry.
+** T_REG param[2] = T_REG param[0] + T_REG param[1]
+*/
+
+int		corewar_add(t_data *data, t_champion *champ)
 {
+	if (champ->argsType[0] != T_REG || champ->argsType[1] != T_REG
+	|| champ->argsType[2] != T_REG)
+		return (-1);
+	champ->args[0] = champ->args[1] + champ->args[2];
+	champ->carry = (champ->args[0] == 0) ? 1 : 0;
 	return (1);
 }

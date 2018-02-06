@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 13:31:15 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/15 11:42:17 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/06 17:14:05 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int				get_next_op(t_champion *champion)
 			champion->op = g_op_tab[i];
 			return (champion->op.nb_cycles);
 		}
+		i++;
 	}
 	return (-1);
 }
@@ -40,7 +41,9 @@ int				prepare_next_op(t_data *data)
 	while (champion != NULL)
 	{
 		if (champion->nextOp <= 0)
+		{
 			champion->nextOp = get_next_op(champion);
+		}
 		else
 			champion->nextOp--;
 		champion = champion->prev;

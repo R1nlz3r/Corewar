@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   live.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/14 18:50:08 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/01/09 17:31:58 by cfrouin          ###   ########.fr       */
+/*   Created: 2018/02/01 14:57:35 by dwald             #+#    #+#             */
+/*   Updated: 2018/02/06 14:18:15 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,11 @@
 
 int					corewar_live(t_data *data, t_champion *champ)
 {
+	ft_putendl_fd("Player ", 1);
+	ft_putendl_fd(champ->name, 1);
+	ft_putendl_fd(" was reported alive\n", 1);
+	champ->alive = 1;
+	data->live++;
+	data->lastlive = champ->number;
 	return (1);
 }

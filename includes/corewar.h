@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/09 18:49:04 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/02/01 17:51:43 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct			s_node
 	int					id;
 	int					player;
 	char				content[3];
-	int					contentn;
+	char				contentn;
 
 	struct s_node		*next;
 	struct s_node		*prev;
@@ -39,22 +39,22 @@ typedef struct			s_node
 typedef struct			s_champion
 {
 	bool				carry;
-	int					lastLive;
-	int					liveNbr;
+	int					lastLive; //capitals in variable name not allowed by Norme
+	int					liveNbr; //capitals in variable name not allowed by Norme
 	t_node				*pc;
 	int					ipc;
 	char				name[PROG_NAME_LENGTH + 1];
 	int					wait;
 	bool				alive;
 	unsigned int		number;
-	int					nextOp;
+	int					nextOp; //capitals in variable name not allowed by Norme
 	t_op				op;
 	char				*filename;
 	unsigned int		size;
 	unsigned char		code[MEM_SIZE];
 	char				comment[COMMENT_LENGTH + 1];
-	unsigned char		reg[REG_NUMBER + 1][REG_SIZE];
-	char				argsType[3];
+	int					reg[REG_NUMBER + 1];
+	char				argsType[3];//capitals in variable name not allowed by Norme
 	int					args[3];
 
 	struct s_champion	*prev;

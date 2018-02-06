@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/01/09 18:58:42 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/01/31 18:43:35 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,16 @@ int				vm_start(t_data *data)
 {
 	// while (1)
 	// {
+		ft_printf("nothing worked?\n");
 		prepare_next_op(data);
+		ft_printf("prepare_next_op worked?\n");
 		do_next_op(data);
+		ft_printf("do_next_op worked?\n");
+		// printf("argsType[0] : %d\nargsType[1] : %d\nargsType[2] : %d\n",
+			// data->champions->argsType[0], data->champions->argsType[1], data->champions->argsType[2]);
+		// printf("args[0] : %d\nargs[1] : %d\nargs[2] : %d\n",
+			// data->champions->args[0], data->champions->args[1], data->champions->args[2]);
+		// data->champion
 		// if (champion == NULL || data->nb_champion == 1)
 		// 	break ;
 		// if (data->cyclec == data->cycletodie)

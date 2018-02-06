@@ -6,52 +6,45 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:53:06 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/01/09 13:37:56 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/01/31 19:13:12 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int		skip_space(int count, char *line)
-{
-	while (line[count] == ' ' || line[count] == '\t')
-		++count;
-		return (count);
-}
-
-static int		fill_header(char *line, char *cmd, char *source, t_data *data)
+static bool		cmp_label_chars(char c)
 {
 	int			count;
-	int			count2;
-	int			tmp;
+	bool		flag;
+	char		*tmp;
 
-	count = (int)ft_strlen(cmd);
-	if ((tmp = strncmp(cmd, (line + skip_space(0, line)), count)) != 0)
-		header_error(cmd, 0, data, line);
-	count2 = 0;
-	count = skip_space(count + 1, line);
-	if (line[count] != '\"')
-		header_error(cmd, 1, data, line);
-	++count;
-	while (line[count] != '\"')
+	flag = 1;
+	count = -1;
+	tmp = LABEL_CHARS;
+	while (tmp[++count] != '\0')
+		if (c == tmp[count])
+			flag = 0;
+	return (flag);
+}
+
+static void		label(char *line, t_data *data)
+{
+	int			count;
+	bool		flag;
+
+	count = -1;
+	flag = 0;
+	while (line[++count] != '\0')
 	{
-		if ((cmd == NAME_CMD_STRING && count2 > (PROG_NAME_LENGTH - 1))
-			|| (cmd == COMMENT_CMD_STRING && count2 > (COMMENT_LENGTH - 1)))
-			{
-				asm_error("yolo", 0, data, NULL);
-				asm_error("\"text\" too long", 1, data, NULL);
-			}
-		source[count2] = line[count];
-		++count;
-		++count2;
+		if (flag == 1 && line[count] == ':'
+			&& count > 0 && line[count - 1] != '%')
+		{
+			asm_error("yolo", 0, data, NULL);
+			asm_error("Bad name of label", 1, data, line);
+		}
+		if (cmp_label_chars(line[count]) == 1)
+			flag = 1;
 	}
-	if (line[count] != '\"')
-		header_error(cmd, 1, data, line);
-	count = skip_space((count + 1), line);
-	if (line[count] != '\0')
-		header_error(cmd, 1, data, line);
-	source[count2] = '\0';
-	return (1);
 }
 
 void			parsing_champ(int fd, t_data *data)
@@ -66,14 +59,13 @@ void			parsing_champ(int fd, t_data *data)
 		if (error == -1)
 			asm_error("Error gnl", 1, data, NULL);
 		++data->line;
-		if (ft_strstr(line, NAME_CMD_STRING))
-			fill_header(line, NAME_CMD_STRING, data->header.prog_name, data);
-		if (ft_strstr(line, COMMENT_CMD_STRING))
-			fill_header(line, COMMENT_CMD_STRING, data->header.comment, data);
+		header(line, data);
+		if (data->name == 1 && data->comment == 1)
+			label(line, data);
 		free(line);
 	}
-	if (data->header.prog_name[0] == '\0')
+	if (data->name == 0)
 		asm_error("Syntaxe error: need a program name", 1, data, NULL);
-	if (data->header.comment[0] == '\0')
+	if (data->comment == 0)
 		asm_error("Syntaxe error: need a comment", 1, data, NULL);
 }

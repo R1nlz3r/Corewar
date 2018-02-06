@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:34:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/04 16:10:33 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/01/31 18:29:10 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void			read_file(t_data *data, int fd, t_champion *champion)
 		bzero(buff, 1);
 		bzero(tmp_hex, 3);
 	}
-	champion->size = ft_strlen(champion->code) / 3;
+	champion->size = ft_strlen((char*)champion->code) / 3;
 }
 
 static int			read_champion(t_data *data, t_champion *champion)
