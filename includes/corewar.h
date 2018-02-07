@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/07 19:46:17 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/07 20:46:27 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ typedef struct			s_data
 	unsigned int		cycletodie;
 	unsigned int		lastlive;
 	bool				pause;
-	unsigned int		speed;
+	int					speed;
 }						t_data;
 
 /*
