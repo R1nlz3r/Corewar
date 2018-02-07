@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/07 11:34:18 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/07 18:27:05 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void			win(t_data *data)
 int				main(int ac, char **av)
 {
 	t_data		*data;
-	// int			c;
 
 	if ((data = init_data(ac, av)) == NULL)
 		corewar_error(data, "Couldn't initialize data\n");
@@ -39,23 +38,8 @@ int				main(int ac, char **av)
 		corewar_error(data, "Couldn't initialize champions\n");
 	if (init_map(data) == -1)
 		corewar_error(data, "Couldn't initialize map\n");
-	// while (1)
-	// {
-	// 	display_map(data);
-	// 	set_mode(1);
-	// 	c = get_key();
-	// 	if (c == 27)
-	// 	{
-	// 		ft_putstr("\033[H\033[J\e[?25h");
-	// 		break ;
-	// 	}
-	// 	else if (c == 32 && data->pause)
-	// 		data->pause = 0;
-	// 	else if (c == 32)
-	// 		data->pause = 1;
-	// }
-	// if (init_processes(data) == -1)
-	// 	corewar_error(data, "Couldn't initialize processes\n");
+	//if (init_processes(data) == -1)
+	//	corewar_error(data, "Couldn't initialize processes\n");
 	if (vm_start(data) == -1)
 		corewar_error(data, "Error during vm execution\n");
 	win(data);
