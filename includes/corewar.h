@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/07 11:30:04 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/07 17:58:17 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,11 +171,10 @@ void					update_legend(t_data *data);
 
 /*
 ** tty.c
-** Change settings of tty to get keys
+** Change settings of tty and get keys
 */
 
-void					set_mode(int want_key);
-int						get_key();
+void					key_hub(t_data *data);
 
 /*
 ** Commands
