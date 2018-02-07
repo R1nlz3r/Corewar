@@ -6,13 +6,13 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 23:34:24 by mapandel          #+#    #+#             */
-/*   Updated: 2018/02/01 16:39:58 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/07 17:58:10 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void	set_mode(int want_key)
+static void		set_mode(int want_key)
 {
 	static struct termios	old;
 	static struct termios	new;
@@ -28,7 +28,7 @@ void	set_mode(int want_key)
 	tcsetattr(STDIN_FILENO, TCSANOW, &new);
 }
 
-int		get_key()
+static int		get_key()
 {
 	int				c;
 	struct timeval	tv;
@@ -46,4 +46,21 @@ int		get_key()
 		set_mode(0);
 	}
 	return c;
+}
+
+void			key_hub(t_data *data)
+{
+	int		c;
+
+	set_mode(1);
+	c = get_key();
+	if (c == 27)
+	{
+		ft_putstr("\033[H\033[J\e[?25h");
+		exit(0); //FREE
+	}
+	else if (c == 32 && data->pause)
+		data->pause = 0;
+	else if (c == 32)
+		data->pause = 1;
 }
