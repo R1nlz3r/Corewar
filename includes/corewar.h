@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/07 17:58:17 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/07 18:29:03 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,8 @@ t_data					*init_data(int ac, char **av);
 */
 
 int						read_champions(t_data *data);
+int						prepare_champion(t_data *data, char *filename,
+						int number, bool isfork);
 
 /*
 ** init_map.c
@@ -196,5 +198,5 @@ int						corewar_sti(t_data *data, t_champion *champ);
 int						corewar_sub(t_data *data, t_champion *champ);
 int						corewar_xor(t_data *data, t_champion *champ);
 int						corewar_zjmp(t_data *data, t_champion *champ);
-
+t_node					*find_pc_node(t_champion *champ, short pc_dest);
 #endif

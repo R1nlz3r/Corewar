@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/03 17:17:11 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/07 18:25:12 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ static int			get_new_number(t_data *data)
 	return (nbr);
 }
 
-static int		prepare_champion(t_data *data, char *filename, int number)
+int		prepare_champion(t_data *data, char *filename, int number, bool isfork)
 {
 	t_champion	*tmp;
 
@@ -75,7 +75,7 @@ static int		prepare_champion(t_data *data, char *filename, int number)
 	tmp = data->champions;
 	while (tmp)
 	{
-		if (tmp->number == (unsigned int)number)
+		if ((isfork == false) && tmp->number == (unsigned int)number)
 			return (-1);
 		tmp = tmp->next;
 	}
@@ -103,11 +103,11 @@ static int			manage_args(t_data *data, int ac, char **av)
 		{
 			if (i + 2 >= ac || !ft_isnumber(av[i + 1]))
 				return (-1);
-			if (prepare_champion(data, av[i + 2], ft_atoi(av[i + 1])) == -1)
+			if (prepare_champion(data, av[i + 2], ft_atoi(av[i + 1]), 0) == -1)
 				return (-1);
 			i += 2;
 		}
-		else if (prepare_champion(data, av[i], -512) == -1)
+		else if (prepare_champion(data, av[i], -512, 0) == -1)
 			return (-1);
 	}
 	return (1);

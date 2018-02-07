@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 13:32:14 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/06 15:46:14 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/07 18:16:59 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int		corewar_ld(t_data *data, t_champion *champ)
 		champ->reg[champ->args[1]] = champ->args[0];
 	else if (champ->argsType[0] == T_IND)
 	{
-		pc_dest = champ->ipc + (champ->args[0] % IDX_MOD);
+		pc_dest = champ->ipc + (champ->args[0] % IDX_MOD); // remove % for lld 
 		while (champ->ipc > pc_dest--)
 			tmp = tmp->next;
 		champ->reg[champ->args[1]] = (int)tmp->contentn;
