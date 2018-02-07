@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/02/06 17:37:19 by cyrillefrouin    ###   ########.fr        #
+#    Updated: 2018/02/07 11:30:21 by cyrillefrouin    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS_ASM_FULL		=	$(addprefix $(SRCS_ASM_DIR), $(SRCS_ASM))
 SRCS_COREWAR_DIR	=	srcs/srcs_corewar/
 
 SRCS_COREWAR		=	main.c \
+						dump.c \
 						op.c \
 						init_data.c \
 						read_champions.c \

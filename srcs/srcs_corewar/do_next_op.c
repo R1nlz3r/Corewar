@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/01/31 20:51:59 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/02/07 10:57:58 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,38 @@ static void		get_params_type(t_champion *champion)
 	}
 }
 
-static void		get_one_param(t_champion *champion, int argsize, int n, int pos)
+static void		get_one_param(t_champion *champion, int argsize, int n, int *pos)
 {
 	int			i;
 	int			nb;
 	t_node		*node;
 
+	// i = 0;
+	// if (len == DIR && g_op_tab[player->next_op].has_idx == 1)
+	// 	len = 2;
+	// tmp = T_LAB - len;
+	// while (i < len)
+	// {
+	// 	arg = ((player->pc) + *index + 1 + g_op_tab[player->next_op].has_pcode);
+	// 	player->op_args[arg_nbr][tmp] = ft_hex2intdec(arg->hex);
+	// 	(*index)++;
+	// 	tmp++;
+	// 	i++;
+	// }
 	i = -1;
 	nb = 0;
 	node = champion->pc;
-	while (++i < pos)
+	while (++i < *pos)
 		node = node->next;
-	i = 0;
-	while (i < argsize)
+	if (n == DIR_SIZE && champion->op.has_idx == 1)
+		argsize = 2;
+	i = -1;
+	while (++i < argsize)
 	{
 		nb += (node->contentn << ((argsize - (i + 1)) * 8));
 		node = node->next;
-		i++;
 	}
+	*pos += i;
 	champion->args[n] = nb;
 }
 
@@ -57,7 +71,7 @@ static void		get_params(t_champion *champion)
 	int			argsize;
 
 	i = 0;
-	pos = 2;
+	pos = 0;
 	while (i < champion->op.nb_params)
 	{
 		if (champion->argsType[i] == REG_CODE)
@@ -66,8 +80,7 @@ static void		get_params(t_champion *champion)
 			argsize = DIR_SIZE;
 		else if (champion->argsType[i] == IND_CODE)
 			argsize = IND_SIZE;
-		get_one_param(champion, argsize, i, pos);
-		pos += argsize;
+		get_one_param(champion, argsize, i, &pos);
 		i++;
 	}
 }
@@ -82,13 +95,7 @@ int				do_next_op(t_data *data)
 	while (champion != NULL)
 	{
 		get_params_type(champion);
-		ft_printf("argsType\n");
-		for (int i = 0; i < champion->op.nb_params; i++)
-			ft_printf("%d\n", champion->argsType[i]);
 		get_params(champion);
-		ft_printf("args\n");
-		for (int i = 0; i < champion->op.nb_params; i++)
-			ft_printf("%d\n", champion->args[i]);
 		champion = champion->prev;
 	}
 	return (1);

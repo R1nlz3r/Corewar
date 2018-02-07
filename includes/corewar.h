@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/06 17:32:48 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/07 11:30:04 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,14 @@ typedef struct			s_data
 	unsigned int		lastlive;
 	bool				pause;
 }						t_data;
+
+/*
+** dump.c
+** Manage the -dump arg
+*/
+
+void					dump(t_data *data);
+
 
 /*
 ** args.c
