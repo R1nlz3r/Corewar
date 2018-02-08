@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/02/07 21:29:59 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/08 00:54:15 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,13 @@ int				vm_start(t_data *data)
 				display_map(data);
 			else if (data->speed < 0)
 			{
-				i = data->speed * -1;
-				while (i--)
+				i = data->speed;
+				while (i++)
 				{
+					if (i < data->speed && data->speed < 0)
+						i = data->speed;
+					else if (data->speed > 0)
+						break ;
 					display_map(data);
 					key_hub(data);
 				}
