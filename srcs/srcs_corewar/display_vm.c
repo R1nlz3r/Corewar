@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 20:04:16 by mapandel          #+#    #+#             */
-/*   Updated: 2018/02/03 17:29:35 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/07 20:18:49 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,10 @@ static void		init_legend_2(t_data *data)
 		(data->nb_champion - 1) * 4 + 26, NBR_LIVE);
 	ft_printf("\033[%d;200HMAX_CHECKS : %d",
 		(data->nb_champion - 1) * 4 + 28, MAX_CHECKS);
-	ft_putstr("\033[64;200HKeys :\033[65;202HEsc   - Quit");
-	ft_putstr("\033[66;202HSpace - Pause / Resume");
+	ft_putstr("\033[62;200HKeys :\033[63;202HQ     - Quit");
+	ft_putstr("\033[64;202HSpace - Pause / Resume");
+	ft_putstr("\033[65;202HA     - Speed up");
+	ft_putstr("\033[66;202HD     - Speed down");
 }
 
 static void		init_legend(t_data *data)
@@ -70,7 +72,8 @@ static void		init_legend(t_data *data)
 
 	tmp = data->champions;
 	i = 0;
-	ft_putstr("\033[0;97m\033[8;200HCycle :");
+	ft_putstr("\033[0;97m\033[5;200HSpeed :");
+	ft_putstr("\033[8;200HCycle :");
 	ft_putstr("\033[10;200HProcesses :");
 	while (i < data->nb_champion)
 	{

@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/03 17:28:05 by mapandel          #+#    #+#             */
-/*   Updated: 2018/02/03 17:28:19 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/07 20:12:13 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		update_legend(t_data *data)
 		ft_putstr("\033[0;97m\033[3;200H** PAUSED ** ");
 	else
 		ft_putstr("\033[0;97m\033[3;200H** RUNNING **");
-	// Cycles / sec
+	ft_printf("\033[5;208H%dx%-10", data->speed);
 	ft_putstr("\033[8;208H");
 	ft_putnbr(data->cycle);
 	// Processes

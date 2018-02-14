@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 23:34:24 by mapandel          #+#    #+#             */
-/*   Updated: 2018/02/07 17:58:10 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/07 21:14:03 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,17 @@ void			key_hub(t_data *data)
 
 	set_mode(1);
 	c = get_key();
-	if (c == 27)
+	if (c == 113)
 	{
 		ft_putstr("\033[H\033[J\e[?25h");
 		exit(0); //FREE
 	}
+	else if ((c == 97 && data->speed == 1) || (c == 100 && data->speed == -1))
+		data->speed *= -1;
+	else if ((c == 97 && data->speed > 1) || (c == 100 && data->speed < -1))
+		data->speed /= 2;
+	else if ((c == 97 && data->speed > -1024) || (c == 100 && data->speed < 1024))
+		data->speed *= 2;
 	else if (c == 32 && data->pause)
 		data->pause = 0;
 	else if (c == 32)
