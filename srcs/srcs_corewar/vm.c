@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/02/14 13:14:25 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/14 17:03:25 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int				vm_start(t_data *data)
 				}
 			}
 		}
-		else if (data->pause)
+		else if (data->dump != 0 && data->pause)
 			display_map(data);
 		// printf("argsType[0] : %d\nargsType[1] : %d\nargsType[2] : %d\n",
 			// data->champions->argsType[0], data->champions->argsType[1], data->champions->argsType[2]);
