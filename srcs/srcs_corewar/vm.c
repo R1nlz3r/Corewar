@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/02/07 18:44:52 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/07 19:22:40 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int				vm_start(t_data *data)
 		key_hub(data);
 		if (data->pause != 1)
 		{
-			usleep(100000);
+			usleep(10000);
 			prepare_next_op(data);
 			do_next_op(data);
 			data->cycle++;
