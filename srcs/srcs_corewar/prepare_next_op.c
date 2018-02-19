@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 13:31:15 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/06 17:14:05 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/19 11:33:48 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int				get_next_op(t_champion *champion)
 		if (g_op_tab[i].opcode == opn)
 		{
 			champion->op = g_op_tab[i];
+			(g_op_tab[i].func)(data, champion);
 			return (champion->op.nb_cycles);
 		}
 		i++;
