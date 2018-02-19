@@ -6,12 +6,11 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/07 19:47:10 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/14 18:07:06 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
 
 static int			new_champion(t_data *data, char *filename, int number)
 {
@@ -31,7 +30,7 @@ static int			new_champion(t_data *data, char *filename, int number)
 		free(new);
 		return (-1);
 	}
-	// new->lo = data->nb_champion;
+	new->carry = 0;
 	new->number = number;
 	if (data->champions == NULL)
 		data->champions = new;
@@ -129,7 +128,7 @@ t_data				*init_data(int ac, char **av)
 	data->cyclec = 0;
 	data->cycletodie = CYCLE_TO_DIE;
 	data->live = 0;
-	data->pause = 1;
+	data->pause = 0;
 	data->speed = 1;
 	if (manage_args(data, ac, av) == -1)
 	{
