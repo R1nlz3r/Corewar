@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/14 18:07:06 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/20 16:05:57 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static int			new_champion(t_data *data, char *filename, int number)
 	}
 	new->carry = 0;
 	new->number = number;
+	new->reg[0] = number;
 	if (data->champions == NULL)
 		data->champions = new;
 	else
@@ -128,13 +129,13 @@ t_data				*init_data(int ac, char **av)
 	data->cyclec = 0;
 	data->cycletodie = CYCLE_TO_DIE;
 	data->live = 0;
-	data->pause = 0;
 	data->speed = 1;
 	if (manage_args(data, ac, av) == -1)
 	{
 		free(data);
 		return (NULL);
 	}
+	data->pause = ((data->dump == 0) ? 1 : 0);
 	data->map = NULL;
 	return (data);
 }
