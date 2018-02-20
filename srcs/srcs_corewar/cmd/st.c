@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 15:53:45 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/06 17:44:46 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/13 14:34:14 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		corewar_st(t_data *data, t_champion *champ)
 		while (champ->ipc > pc_dest--)
 			tmp = tmp->next;
 		tmp->contentn = champ->reg[champ->args[1]];
-		number_to_hex_str(tmp->contentn, &tmp->content);
+		number_to_hex_str(tmp->contentn,(unsigned char(*)[]) &(tmp->content));
 	}
 	champ->carry = (champ->args[0] == 0) ? 1 : 0;
 	return (1);

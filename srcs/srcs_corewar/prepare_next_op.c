@@ -6,13 +6,13 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 13:31:15 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/06 17:14:05 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/19 14:07:11 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int				get_next_op(t_champion *champion)
+static int		get_next_op(t_champion *champion, t_data *data)
 {
 	int			opn;
 	int			i;
@@ -24,6 +24,7 @@ int				get_next_op(t_champion *champion)
 		if (g_op_tab[i].opcode == opn)
 		{
 			champion->op = g_op_tab[i];
+			(g_op_tab[i].func)(data, champion);
 			return (champion->op.nb_cycles);
 		}
 		i++;
@@ -42,7 +43,7 @@ int				prepare_next_op(t_data *data)
 	{
 		if (champion->nextOp <= 0)
 		{
-			champion->nextOp = get_next_op(champion);
+			champion->nextOp = get_next_op(champion, data);
 		}
 		else
 			champion->nextOp--;
