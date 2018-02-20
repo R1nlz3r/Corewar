@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 14:55:38 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/14 18:11:13 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/20 16:29:48 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ int				str_hex_to_number(char str[3])
 	return (nbr);
 }
 
-void			number_to_hex_str(unsigned char n, unsigned char (*str)[])
+void			number_to_hex_str(int n, unsigned char (*str)[])
 {
+	if (n < 0)
+		n = 255 + n;
 	if (n < 16)
 	{
 		(*str)[0] = '0';

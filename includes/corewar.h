@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/07 20:46:27 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/20 16:26:58 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void					corewar_error(t_data *data, char *str);
 */
 
 int						str_hex_to_number(char str[3]);
-void					number_to_hex_str(unsigned char n,
+void					number_to_hex_str(int n,
 											unsigned char (*str)[]);
 
 /*
