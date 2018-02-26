@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:00:20 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/02/08 17:45:15 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/26 15:07:31 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 int					corewar_and(t_data *data, t_champion *champ)
 {
+	(void)data;
 	if (champ->argsType[0] != T_REG || champ->argsType[1] != T_REG
 	|| champ->argsType[2] != T_REG)
 		return (-1);
