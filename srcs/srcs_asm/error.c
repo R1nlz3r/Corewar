@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:50:54 by cyrillef          #+#    #+#             */
-/*   Updated: 2017/12/15 17:48:43 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/02/26 15:24:35 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void			header_error(char *cmd, int id, t_data *data, char *str)
 {
 	if (id == 0)
 	{
-		asm_error("tmp", 0, data, NULL);
+		asm_error("", 0, data, NULL);
 		ft_putstr_fd(cmd, 2);
 		asm_error(" must be at the beginning of the line", 1, data, str);
 	}
 	if (id == 1)
 	{
-		asm_error("tmp", 0, data, NULL);
+		asm_error("", 0, data, NULL);
 		ft_putstr_fd("syntaxe muste be: ", 2);
 		ft_putstr_fd(cmd, 2);
 		asm_error(" \"text\"", 1, data, str);
