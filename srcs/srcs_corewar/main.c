@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/07 18:27:05 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/26 17:43:41 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int				main(int ac, char **av)
 		corewar_error(data, "Couldn't initialize map\n");
 	//if (init_processes(data) == -1)
 	//	corewar_error(data, "Couldn't initialize processes\n");
+	// dump(data);
 	if (vm_start(data) == -1)
 		corewar_error(data, "Error during vm execution\n");
 	win(data);
