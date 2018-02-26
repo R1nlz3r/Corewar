@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 15:53:45 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/13 14:34:14 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/26 15:09:29 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int		corewar_st(t_data *data, t_champion *champ)
 	t_node	*tmp;
 	short	pc_dest;
 
+	(void)data;
 	tmp = champ->pc;
 	if (champ->argsType[0] != T_REG || (champ->argsType[1] != T_IND
 	&& champ->argsType[1] != T_REG))

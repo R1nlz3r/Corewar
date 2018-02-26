@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 17:20:48 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/07 18:16:24 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/26 15:08:24 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int		corewar_ldi(t_data *data, t_champion *champ)
 	short	pc_dest;
 	int		parameter[2];
 
+	(void)data;
 	tmp = champ->pc;
 	if ((champ->argsType[1] != T_DIR && champ->argsType[1] != T_REG)
 	|| champ->argsType[2] != T_REG)
