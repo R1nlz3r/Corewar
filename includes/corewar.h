@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/20 16:26:58 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/26 17:20:51 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ typedef struct			s_node
 typedef struct			s_champion
 {
 	bool				carry;
-	int					lastLive; //capitals in variable name not allowed by Norme
+	int					lastLive; //number of the cycle where he called live
 	int					liveNbr; //capitals in variable name not allowed by Norme
 	t_node				*pc;
 	int					ipc;
@@ -72,11 +72,11 @@ typedef struct			s_data
 	t_champion			*champions;
 	int					nb_champion;
 	t_node				*map;
-	unsigned int		live;
-	unsigned int		cycle;
-	unsigned int		cyclec;
-	unsigned int		cycletodie;
-	unsigned int		lastlive;
+	unsigned int		live; //total of live processus starting from last CTDie
+	unsigned int		cycle; //total of cycles from the start
+	unsigned int		cyclec; //total starting from last cycleToDie
+	unsigned int		cycletodie; //same as the define - used to decrement
+	unsigned int		lastlive; //id of the vinner
 	bool				pause;
 	int					speed;
 }						t_data;
