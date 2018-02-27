@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/17 16:53:18 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/01/31 23:17:22 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/02/27 11:45:32 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,6 +187,8 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strtrim(char const *s);
 int					ft_tolower(int c);
 int					ft_toupper(int c);
+char				**ft_word_tab(char *str);
+void				ft_word_tab_free(char **tab);
 int					ft_wputchar(wchar_t c);
 int					ft_wstrlen(wchar_t *s);
 int					get_next_line(const int fd, char **line);

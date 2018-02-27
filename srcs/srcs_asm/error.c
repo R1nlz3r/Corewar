@@ -6,11 +6,37 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:50:54 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/26 15:24:35 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/02/26 17:42:43 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
+
+void			bad_char(char *line, t_data *data)
+{
+	int			count;
+	int			count2;
+	int			flag;
+	char		*tmp;
+
+	count = -1;
+	tmp = GOOD_CHAR;
+	while (line[++count] != '\0')
+	{
+		if (line[count] == '#')
+			break;
+		flag = 0;
+		count2 = -1;
+		while (tmp[++count2] != '\0')
+			if (tmp[count2] == line[count])
+				++flag;
+		if (flag == 0)
+			{
+				asm_error("", 0, data, NULL);
+				asm_error("Bad char in instruction", 1, data, line);
+			}
+	}
+}
 
 void			header_error(char *cmd, int id, t_data *data, char *str)
 {
