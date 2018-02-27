@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 11:23:49 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/07 11:38:00 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/26 17:30:43 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,18 @@ void				dump(t_data *data)
 
 	i = 0;
 	node = data->map;
-	while (node->id != 0 || i == 0)
+	while (i < MEM_SIZE)
 	{
-		if (i % 32 == 0)
+		if (i % 64 == 0)
 		{
 			if (i != 0)
 				ft_putchar('\n');
-			ft_printf("0x%04x : ", i * 2);
+			ft_printf("0x%04x : ", i);
 		}
-		ft_printf("0x%02x ", node->contentn);
+		if (node->contentn < 0)
+			ft_printf(RED"%s "RESET, node->content);
+		else
+			ft_printf("%s ", node->content);
 		i++;
 		node = node->next;
 	}

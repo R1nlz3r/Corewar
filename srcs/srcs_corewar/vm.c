@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/02/26 17:20:56 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/27 10:38:30 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int				vm_start(t_data *data)
 {
 	int		i;
 
+	printf("%d\n", data->champions->reg[0]);
 	if (data->dump == 0)
 		display_map(data);
 	while (1)
