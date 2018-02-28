@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/02 12:21:27 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/28 15:17:45 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/28 16:16:24 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int		corewar_aff(t_data *data, t_champion *champ)
 {
 	int	character;
 
-	ft_printf("AFF called\n");
 	(void)data;
 	character = 0;
 	if (champ->argsType[0] != T_REG)

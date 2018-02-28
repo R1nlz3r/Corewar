@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/28 15:30:00 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/28 16:16:15 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	short	pc_dest;
 	int		parameter[2];
 
-	ft_printf("STI called at cycle %d\n", data->cycle);
+	// Display tests
+	// ft_printf("STI called at cycle %d\n", data->cycle);
+	// ft_printf(PF_GREEN"arg type %d args[0] = %d\n"PF_EOC, champ->argsType[0], champ->args[0]);
+	// ft_printf(PF_GREEN"arg type %d args[1] = %d\n"PF_EOC, champ->argsType[1], champ->args[1]);
+	// ft_printf(PF_GREEN"arg type %d args[2] = %d\n"PF_EOC, champ->argsType[2], champ->args[2]);
 	// ft_printf(PF_YELLOW"****HELLO******\n");
-	ft_printf(PF_GREEN"arg type %d args[0] = %d\n"PF_EOC, champ->argsType[0], champ->args[0]);
-	ft_printf(PF_GREEN"arg type %d args[1] = %d\n"PF_EOC, champ->argsType[1], champ->args[1]);
-	ft_printf(PF_GREEN"arg type %d args[2] = %d\n"PF_EOC, champ->argsType[2], champ->args[2]);
 	// ft_printf(PF_YELLOW"\n*****arg type %d r[%d] = %d*****\n"PF_EOC, champ->argsType[0], champ->args[0], champ->reg[champ->args[0]]);
 	// ft_printf(PF_YELLOW"\nchampion register reg[%d] = %x\n"PF_EOC, 0, champ->reg[0]);
 	(void)data;
