@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 13:31:15 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/20 18:01:10 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/28 15:11:21 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ static int		get_next_op(t_champion *champion, t_data *data)
 		if (g_op_tab[i].opcode == opn)
 		{
 			champion->op = g_op_tab[i];
-			ft_printf("nb_cycles %d\n", (champion->op.nb_cycles));
-ft_printf("\nchampion register reg[%d] = %o\n", 0, champion->reg[0]);
-ft_printf("\nchampion register reg[%d] = %o\n", 0, champion->reg[1]);
-			(g_op_tab[i].func)(data, champion);
+			// ft_printf("nb_cycles %d\n", (champion->op.nb_cycles));
+// ft_printf("\nchampion register reg[%d] = %o\n", 0, champion->reg[0]);
+// ft_printf("\nchampion register reg[%d] = %o\n", 0, champion->reg[1]);
+			// (g_op_tab[i].func)(data, champion);
 			return (champion->op.nb_cycles);
 		}
 		i++;
@@ -45,11 +45,8 @@ int				prepare_next_op(t_data *data)
 	while (champion != NULL)
 	{
 		if (champion->nextOp <= 0)
-		{
 			champion->nextOp = get_next_op(champion, data);
-		}
-		else
-			champion->nextOp--;
+		champion->nextOp--;
 		champion = champion->prev;
 	}
 	return (1);

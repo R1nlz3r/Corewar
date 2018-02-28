@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/26 17:20:51 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/28 14:23:20 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct			s_node
 	int					id;
 	int					player;
 	char				content[3];
-	char				contentn;
+	short				contentn;
 
 	struct s_node		*next;
 	struct s_node		*prev;

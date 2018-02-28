@@ -6,13 +6,13 @@
 #    By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/02/08 16:44:57 by kda-silv          #+#    #+#              #
-#    Updated: 2018/02/27 11:44:58 by kda-silv         ###   ########.fr        #
+#    Updated: 2018/02/28 14:10:36 by cyrillefrouin    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC		=	gcc
 RM		=	rm -f
-CFLAGS	=	-Wall -Wextra -Werror -I./ -Weverything
+CFLAGS	=	-Wall -Wextra -I./ -Weverything
 NAME	=	libft.a
 SRCS	=	ft_printf/ft_printf.c \
 			ft_printf/run_printf.c \

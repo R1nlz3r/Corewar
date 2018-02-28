@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/20 16:30:17 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/28 14:47:43 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,10 +122,10 @@ t_data				*init_data(int ac, char **av)
 	if ((data = malloc(sizeof(t_data))) == NULL)
 		return (NULL);
 	data->map = NULL;
-	data->dump = 0;
+	data->dump = -1;
 	data->champions = NULL;
 	data->nb_champion = 0;
-	data->cycle = 0;
+	data->cycle = 1;
 	data->cyclec = 0;
 	data->cycletodie = CYCLE_TO_DIE;
 	data->live = 0;
@@ -135,7 +135,7 @@ t_data				*init_data(int ac, char **av)
 		free(data);
 		return (NULL);
 	}
-	data->pause = ((data->dump == 0) ? 1 : 0);
+	data->pause = ((data->dump == -1) ? 1 : 0);
 	data->map = NULL;
 	return (data);
 }

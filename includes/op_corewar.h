@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/01/31 19:13:05 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/02/28 16:01:20 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 ** On part du principe qu'un int fait 32 bits. Est-ce vrai chez vous ?
 */
 
-# define IND_SIZE				2
 # define REG_SIZE				1
 # define DIR_SIZE				2
+# define IND_SIZE				2
 
 # define REG_CODE				1
 # define DIR_CODE				2

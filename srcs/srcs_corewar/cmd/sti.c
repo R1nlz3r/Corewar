@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sti.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/26 17:05:48 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/28 15:30:00 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,13 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	short	pc_dest;
 	int		parameter[2];
 
-	ft_printf(PF_YELLOW"****HELLO******\n");
-	ft_printf(PF_GREEN"\n*****arg type %d args[0] = %d*****\n"PF_EOC, champ->argsType[0], champ->args[0]);
-	ft_printf(PF_YELLOW"\n*****arg type %d r[%d] = %d*****\n"PF_EOC, champ->argsType[0], champ->args[0], champ->reg[champ->args[0]]);
-	ft_printf(PF_YELLOW"\nchampion register reg[%d] = %x\n"PF_EOC, 0, champ->reg[0]);
+	ft_printf("STI called at cycle %d\n", data->cycle);
+	// ft_printf(PF_YELLOW"****HELLO******\n");
+	ft_printf(PF_GREEN"arg type %d args[0] = %d\n"PF_EOC, champ->argsType[0], champ->args[0]);
+	ft_printf(PF_GREEN"arg type %d args[1] = %d\n"PF_EOC, champ->argsType[1], champ->args[1]);
+	ft_printf(PF_GREEN"arg type %d args[2] = %d\n"PF_EOC, champ->argsType[2], champ->args[2]);
+	// ft_printf(PF_YELLOW"\n*****arg type %d r[%d] = %d*****\n"PF_EOC, champ->argsType[0], champ->args[0], champ->reg[champ->args[0]]);
+	// ft_printf(PF_YELLOW"\nchampion register reg[%d] = %x\n"PF_EOC, 0, champ->reg[0]);
 	(void)data;
 	tmp = champ->pc;
 	if (champ->argsType[0] != T_REG || (champ->argsType[2] != T_DIR
@@ -62,16 +65,16 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	else if (champ->argsType[2] == T_DIR)
 		parameter[1] = champ->args[2];
 //get final address and stock there reg[param1]
-	ft_printf(PF_YELLOW"\n*****carry = %d*****\n"PF_EOC,champ->carry);
+	// ft_printf(PF_YELLOW"\n*****carry = %d*****\n"PF_EOC,champ->carry);
 	pc_dest = parameter[0] + parameter[1];
 	champ->carry = (pc_dest == 0) ? 1 : 0;
 	tmp = champ->pc;
-	ft_printf(PF_YELLOW"\n*****sti pc = %d*****\n"PF_EOC, tmp->id);
-	ft_printf(PF_RED"\n*****carry = %d*****\n"PF_EOC,champ->carry);
+	// ft_printf(PF_YELLOW"\n*****sti pc = %d*****\n"PF_EOC, tmp->id);
+	// ft_printf(PF_RED"\n*****carry = %d*****\n"PF_EOC,champ->carry);
 	while (champ->ipc > pc_dest--)
 		tmp = tmp->next;
-	ft_printf(PF_RED"****HELLO******\n");
-	ft_printf(PF_RED"\n*****sti pc = %d*****\n"PF_EOC, tmp->id);
+	// ft_printf(PF_RED"****HELLO******\n");
+	// ft_printf(PF_RED"\n*****sti pc = %d*****\n"PF_EOC, tmp->id);
 	tmp->contentn = champ->reg[champ->args[0]];
 	number_to_hex_str(tmp->contentn, (unsigned char(*)[])&(tmp->content)); //wrong param format
 	return (1);

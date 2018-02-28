@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ldi.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 17:20:48 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/26 15:08:24 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/28 15:39:40 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int		corewar_ldi(t_data *data, t_champion *champ)
 	short	pc_dest;
 	int		parameter[2];
 
+	ft_printf("LDI called at cycle %d\n", data->cycle);
+	ft_printf("arg type %d args[0] = %d\n", champ->argsType[0], champ->args[0]);
+	ft_printf("arg type %d args[1] = %d\n", champ->argsType[1], champ->args[1]);
+	ft_printf("arg type %d args[2] = %d\n", champ->argsType[2], champ->args[2]);
 	(void)data;
 	tmp = champ->pc;
 	if ((champ->argsType[1] != T_DIR && champ->argsType[1] != T_REG)

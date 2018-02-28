@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/07 10:57:58 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/02/28 16:11:34 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,13 @@ static void		get_one_param(t_champion *champion, int argsize, int n, int *pos)
 	node = champion->pc;
 	while (++i < *pos)
 		node = node->next;
-	if (n == DIR_SIZE && champion->op.has_idx == 1)
-		argsize = 2;
+	if (champion->argsType[n] == DIR_CODE && champion->op.has_idx == 0)
+		argsize = 4;
 	i = -1;
 	while (++i < argsize)
 	{
 		nb += (node->contentn << ((argsize - (i + 1)) * 8));
+		ft_printf("%d/%d : %d\n", i, argsize, nb);
 		node = node->next;
 	}
 	*pos += i;
@@ -71,7 +72,9 @@ static void		get_params(t_champion *champion)
 	int			argsize;
 
 	i = 0;
-	pos = 0;
+	pos = 2;
+	if (champion->op.nb_params == 1 && champion->op.param_types[0] == 2)
+		pos = 0;
 	while (i < champion->op.nb_params)
 	{
 		if (champion->argsType[i] == REG_CODE)
@@ -83,6 +86,10 @@ static void		get_params(t_champion *champion)
 		get_one_param(champion, argsize, i, &pos);
 		i++;
 	}
+	champion->ipc += pos;
+	i = 0;
+	while (i++ < pos)
+		champion->pc = champion->pc->next;
 }
 
 int				do_next_op(t_data *data)
@@ -94,8 +101,12 @@ int				do_next_op(t_data *data)
 		champion = champion->next;
 	while (champion != NULL)
 	{
-		get_params_type(champion);
-		get_params(champion);
+		if (champion->nextOp == 0)
+		{
+			get_params_type(champion);
+			get_params(champion);
+			champion->op.func(data, champion);
+		}
 		champion = champion->prev;
 	}
 	return (1);

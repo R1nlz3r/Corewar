@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:33:27 by zaz               #+#    #+#             */
-/*   Updated: 2018/02/26 16:35:59 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/02/28 15:57:24 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 */
 
 # define IND_SIZE				2
-# define REG_SIZE				4
+# define REG_SIZE				1
 # define DIR_SIZE				REG_SIZE
 
 # define REG_CODE				1

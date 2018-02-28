@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/02/27 10:38:30 by dwald            ###   ########.fr       */
+/*   Updated: 2018/02/28 15:15:16 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,27 +16,30 @@ int				vm_start(t_data *data)
 {
 	int		i;
 
-	printf("%d\n", data->champions->reg[0]);
-	if (data->dump == 0)
+	if (data->dump == -1)
 		display_map(data);
 	while (1)
 	{
-		if (data->dump == 0)
+		if (data->dump == -1)
 			key_hub(data);
 		if (data->pause != 1)
 		{
+			printf("Cycle : %d\n", data->cycle);
 			prepare_next_op(data);
 			do_next_op(data);
-			data->cycle++;
-			data->cyclec++;
-			if (data->dump != 0)
+			if (data->dump != -1)
 			{
+				if (data->dump == 0)
+					dump(data);
 				if (data->cycle % data->dump == 0)
 					dump(data);
 			}
-			else if (data->speed > 0 && !(data->cycle % data->speed))
+			data->cycle++;
+			data->cyclec++;
+			if (data->dump == -1
+				&& data->speed > 0 && !(data->cycle % data->speed))
 				display_map(data);
-			else if (data->speed < 0)
+			else if (data->dump == -1 && data->speed < 0)
 			{
 				i = data->speed;
 				while (i++)
