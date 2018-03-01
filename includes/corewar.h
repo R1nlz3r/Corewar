@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/28 14:23:20 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/03/01 16:33:59 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct			s_champion
 	bool				carry;
 	int					lastLive; //number of the cycle where he called live
 	int					liveNbr; //capitals in variable name not allowed by Norme
+	int					previousLive; // number of live in the previous cycles
 	t_node				*pc;
 	int					ipc;
 	char				name[PROG_NAME_LENGTH + 1];
