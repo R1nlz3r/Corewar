@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/02 16:30:34 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/02 16:43:57 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	else if (champ->argsType[1] == T_IND)
 	{
 		pc_dest = champ->ipc + (champ->args[0] % IDX_MOD);
-		while (champ->ipc > pc_dest--)
+		while (champ->ipc < pc_dest--)
 			tmp = tmp->next;
 		parameter[0] = tmp->contentn;
 	}
@@ -59,11 +59,9 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	tmp = champ->pc;
 	ft_printf(YELLOW"sti pc = %d, carry %d\n"RESET,tmp->id,champ->carry);
 	ft_printf(YELLOW"champ ipc = %d, pc_dest = %d\n"RESET,champ->ipc, pc_dest);
-	int j = 1;
 	while (champ->ipc < pc_dest--)
 		tmp = tmp->next;
-	// ft_printf(RED"****HELLO******\n");
-	ft_printf(RED"sti pc = %d j = %d\n"RESET, tmp->id, j);
+	ft_printf(RED"sti pc = %d\n"RESET, tmp->id);
 	tmp->contentn = champ->reg[champ->args[0]];
 	number_to_hex_str(tmp->contentn, (unsigned char(*)[])&(tmp->content)); //wrong param format
 	return (1);

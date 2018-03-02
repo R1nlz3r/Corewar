@@ -34,7 +34,7 @@ int		corewar_st(t_data *data, t_champion *champ)
 	else if (champ->argsType[1] == T_IND)
 	{
 		pc_dest = champ->ipc + (champ->args[0] % IDX_MOD);
-		while (champ->ipc > pc_dest--)
+		while (champ->ipc < pc_dest--)
 			tmp = tmp->next;
 		tmp->contentn = champ->reg[champ->args[1]];
 		number_to_hex_str(tmp->contentn,(unsigned char(*)[]) &(tmp->content));
