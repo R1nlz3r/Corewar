@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:53:06 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/01 14:55:12 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/02 17:13:20 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			parsing_champ(int fd, t_data *data)
 		if (error == -1)
 			asm_error("Error gnl", 1, data, NULL);
 		++data->line;
-		if (line[0] != '#')
+		if (line[0] != COMMENT_CHAR)
 		{
 			if (data->name != 1 || data->comment != 1)
 				header(line, data);
