@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:50:54 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/26 17:42:43 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/01 15:28:16 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ void			bad_char(char *line, t_data *data)
 	while (line[++count] != '\0')
 	{
 		if (line[count] == '#')
-			break;
+			break ;
 		flag = 0;
 		count2 = -1;
 		while (tmp[++count2] != '\0')
 			if (tmp[count2] == line[count])
 				++flag;
 		if (flag == 0)
-			{
-				asm_error("", 0, data, NULL);
-				asm_error("Bad char in instruction", 1, data, line);
-			}
+		{
+			asm_error("", 0, data, NULL);
+			asm_error("Bad char in instruction", 1, data, line);
+		}
 	}
 }
 
