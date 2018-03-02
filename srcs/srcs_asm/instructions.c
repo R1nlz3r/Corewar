@@ -6,22 +6,23 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 17:50:26 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/01 18:16:36 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/02 13:57:27 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int		check_label(char **tab, int count_word, int count)
+static int		check_label(char **tab, int count_word)
 {
 	char		*tmp;
 	int			flag;
+	int			count;
 	int			count2;
 
 	if (count_word != 0)
 		return (-1);
 	tmp = LABEL_CHARS;
-	--count;
+	count = -1;
 	while (tab[count_word][++count] != '\0' || tab[count_word][count] != ','
 		|| tab[count_word][count] != ':')
 	{
@@ -48,7 +49,7 @@ void			instructions(char *line, t_data *data)
 	while (tab[++count_word] != NULL)
 	{
 		if (tab[count_word][ft_strlen(tab[count_word]) - 1] == ':')
-			if (check_label(tab, count_word, 0) == -1)
+			if (check_label(tab, count_word) == -1)
 			{
 				asm_error("", 0, data, NULL);
 				asm_error("Bad Label", 1, data, line);
