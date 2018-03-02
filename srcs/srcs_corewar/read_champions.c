@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:34:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/02 16:26:43 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/02 16:43:32 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static int			read_champion(t_data *data, t_champion *champion)
 	i = 2;
 	while (i < REG_NUMBER + 1)
 		champion->reg[i++] = 0;
-	i = -1;
 	read_file(data, fd, champion);
 	if (champion->size > CHAMP_MAX_SIZE)
 	{
