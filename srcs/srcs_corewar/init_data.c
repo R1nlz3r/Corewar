@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/28 14:47:43 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/03/02 13:40:07 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int			new_champion(t_data *data, char *filename, int number)
 	}
 	new->carry = 0;
 	new->number = number;
-	new->reg[0] = -number;
+	new->reg[1] = -number;
 	if (data->champions == NULL)
 		data->champions = new;
 	else

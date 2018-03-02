@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:34:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/26 17:43:35 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/02 13:49:23 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,13 @@ static int			read_champion(t_data *data, t_champion *champion)
 
 	if ((fd = open(champion->filename, O_RDONLY)) == -1)
 		corewar_error(data, "Can't open champion.\n");
-	i = 1;
-	while (i < REG_NUMBER)
+	champion->reg[0] = 0;
+	i = 2;
+	while (i < REG_NUMBER + 1)
 		champion->reg[i++] = 0;
+	i = -1;
+	while (++i < REG_NUMBER + 1)
+		ft_printf(RED"reg[%d] = %d\n"RESET, i, champion->reg[i]);
 	read_file(data, fd, champion);
 	if (champion->size > CHAMP_MAX_SIZE)
 	{
