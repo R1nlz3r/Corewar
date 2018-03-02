@@ -41,7 +41,7 @@ int		corewar_ldi(t_data *data, t_champion *champ)
 	else if (champ->argsType[0] == T_IND)
 	{
 		pc_dest = champ->ipc + (champ->args[0] % IDX_MOD); //remove %  for lldi
-		while (champ->ipc > pc_dest--)
+		while (champ->ipc < pc_dest--)
 			tmp = tmp->next;
 		parameter[1] = (int)tmp->contentn;
 	}
@@ -54,7 +54,7 @@ int		corewar_ldi(t_data *data, t_champion *champ)
 	pc_dest = parameter[0] + parameter[1];
 	champ->carry = (pc_dest == 0) ? 1 : 0;
 	tmp = champ->pc;
-	while (champ->ipc > pc_dest--)
+	while (champ->ipc < pc_dest--)
 		tmp = tmp->next;
 	champ->reg[champ->args[2]] = (int)tmp->contentn;
 	return (1);

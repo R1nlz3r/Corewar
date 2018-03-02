@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/01 16:33:59 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/03/02 13:39:44 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct			s_champion
 	unsigned int		size;
 	unsigned char		code[MEM_SIZE];
 	char				comment[COMMENT_LENGTH + 1];
-	int					reg[REG_NUMBER + 1];
+	int					reg[REG_NUMBER + 2];
 	char				argsType[3];//capitals in variable name not allowed by Norme
 	int					args[3];
 

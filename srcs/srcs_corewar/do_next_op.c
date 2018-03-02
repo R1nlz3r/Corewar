@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/28 16:11:34 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/03/02 15:20:56 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ static void		get_params(t_champion *champion)
 		i++;
 	}
 	champion->ipc += pos;
+	ft_printf(CYAN"\n*****ipc = %d*****\n"RESET, champion->ipc);
 	i = 0;
 	while (i++ < pos)
 		champion->pc = champion->pc->next;

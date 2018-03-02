@@ -24,7 +24,7 @@ int		corewar_zjmp(t_data *data, t_champion *champ)
 	if (champ->carry == 1)
 	{
 		pc_dest = champ->args[0] + champ->ipc;
-		while (champ->ipc > pc_dest--)
+		while (champ->ipc < pc_dest--)
 			tmp = tmp->next;
 //assigning new node pointer (memory emplacement in VM's RAM)
 		champ->pc = tmp;

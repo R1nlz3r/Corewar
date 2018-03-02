@@ -34,7 +34,7 @@ int		corewar_ld(t_data *data, t_champion *champ)
 	else if (champ->argsType[0] == T_IND)
 	{
 		pc_dest = champ->ipc + (champ->args[0] % IDX_MOD); // remove % for lld 
-		while (champ->ipc > pc_dest--)
+		while (champ->ipc < pc_dest--)
 			tmp = tmp->next;
 		champ->reg[champ->args[1]] = (int)tmp->contentn;
 	}

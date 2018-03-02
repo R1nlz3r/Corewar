@@ -3,3 +3,4 @@
 asm
 corewar
 libft.a
+*.sw*
