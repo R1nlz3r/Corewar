@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:50:54 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/01 15:28:16 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/02 17:22:19 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			bad_char(char *line, t_data *data)
 	tmp = GOOD_CHAR;
 	while (line[++count] != '\0')
 	{
-		if (line[count] == '#')
+		if (line[count] == COMMENT_CHAR)
 			break ;
 		flag = 0;
 		count2 = -1;
@@ -60,14 +60,15 @@ void			asm_error(char *error, int flag, t_data *data, char *str)
 	char		*line;
 
 	ft_putstr_fd(RED, 2);
-	if (flag == 0)
+	if (flag == 0 || flag == 2)
 	{
 		ft_putstr_fd("Syntaxe error[L", 2);
 		line = ft_itoa(data->line);
 		ft_putstr_fd(line, 2);
 		free(line);
 		ft_putstr_fd("]: ", 2);
-		return ;
+		if (flag == 0)
+			return ;
 	}
 	if (str != NULL)
 		free(str);
