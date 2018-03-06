@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/02 16:43:57 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/06 17:56:34 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,7 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	ft_printf(GREEN"pc %d\n"RESET, champ->pc->id);
 	for (int i = 0; i < 3; i++)
 		ft_printf(GREEN"arg type %d args[%d] = %d\n"RESET, champ->argsType[i], i, champ->args[i]);
-	// ft_printf(YELLOW"\n*****arg type %d r[%d] = %d*****\n"RESET, champ->argsType[0], champ->args[0], champ->reg[champ->args[0]]);
-	// ft_printf(YELLOW"\nchampion register reg[%d] = %x\n"RESET, 0, champ->reg[0]);
 	(void)data;
-	tmp = champ->pc;
 	if (champ->argsType[0] != T_REG || (champ->argsType[2] != T_DIR
 	&& champ->argsType[2] != T_REG))
 		return (-1);
@@ -42,8 +39,7 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	else if (champ->argsType[1] == T_IND)
 	{
 		pc_dest = champ->ipc + (champ->args[0] % IDX_MOD);
-		while (champ->ipc < pc_dest--)
-			tmp = tmp->next;
+		tmp = find_pc_node(champ, pc_dest);
 		parameter[0] = tmp->contentn;
 	}
 	else if (champ->argsType[1] == T_DIR)
@@ -56,13 +52,8 @@ int		corewar_sti(t_data *data, t_champion *champ)
 //get final address and stock there reg[param1]
 	pc_dest = parameter[0] + parameter[1];
 	champ->carry = (pc_dest == 0) ? 1 : 0;
-	tmp = champ->pc;
 	ft_printf(YELLOW"sti pc = %d, carry %d\n"RESET,tmp->id,champ->carry);
 	ft_printf(YELLOW"champ ipc = %d, pc_dest = %d\n"RESET,champ->ipc, pc_dest);
-	while (champ->ipc < pc_dest--)
-		tmp = tmp->next;
-	ft_printf(RED"sti pc = %d\n"RESET, tmp->id);
-	tmp->contentn = champ->reg[champ->args[0]];
-	number_to_hex_str(tmp->contentn, (unsigned char(*)[])&(tmp->content)); //wrong param format
+	write_in_ram(champ, pc_dest);
 	return (1);
 }
