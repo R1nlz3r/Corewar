@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/06 17:56:34 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/07 10:13:27 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	ft_printf(GREEN"pc %d\n"RESET, champ->pc->id);
 	for (int i = 0; i < 3; i++)
 		ft_printf(GREEN"arg type %d args[%d] = %d\n"RESET, champ->argsType[i], i, champ->args[i]);
+	tmp = NULL;
 	(void)data;
 	if (champ->argsType[0] != T_REG || (champ->argsType[2] != T_DIR
 	&& champ->argsType[2] != T_REG))

@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 16:59:56 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/01/09 17:29:11 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/07 10:14:25 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int					corewar_lld(t_data *data, t_champion *champ)
 {
+	(void)data;
+	(void)champ;
 	return (1);
 }
