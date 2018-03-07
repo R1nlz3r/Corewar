@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/02 13:40:07 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/07 15:36:18 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ static int			manage_args(t_data *data, int ac, char **av)
 		{
 			if (i + 1 >= ac || !ft_isnumber(av[i + 1]))
 				return (-1);
-			data->dump = ft_atoi(av[i + 1]);
-			i++;
+			data->dump = ft_atoi(av[i++ + 1]);
 		}
 		else if (strcmp(av[i], "-n") == 0)
 		{
@@ -107,6 +106,8 @@ static int			manage_args(t_data *data, int ac, char **av)
 				return (-1);
 			i += 2;
 		}
+		else if (strcmp(av[i], "-g") == 0)
+			data->graph = 1;
 		else if (prepare_champion(data, av[i], -512, 0) == -1)
 			return (-1);
 	}
@@ -123,6 +124,7 @@ t_data				*init_data(int ac, char **av)
 		return (NULL);
 	data->map = NULL;
 	data->dump = -1;
+	data->graph = 0;
 	data->champions = NULL;
 	data->nb_champion = 0;
 	data->cycle = 1;

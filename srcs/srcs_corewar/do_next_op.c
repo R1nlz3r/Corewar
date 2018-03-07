@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/02 15:20:56 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/07 15:22:31 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void		get_one_param(t_champion *champion, int argsize, int n, int *pos)
 	while (++i < argsize)
 	{
 		nb += (node->contentn << ((argsize - (i + 1)) * 8));
-		ft_printf("%d/%d : %d\n", i, argsize, nb);
+		// ft_printf("%d/%d : %d\n", i, argsize, nb);
 		node = node->next;
 	}
 	*pos += i;
@@ -87,7 +87,7 @@ static void		get_params(t_champion *champion)
 		i++;
 	}
 	champion->ipc += pos;
-	ft_printf(CYAN"\n*****ipc = %d*****\n"RESET, champion->ipc);
+	// ft_printf(CYAN"\n*****ipc = %d*****\n"RESET, champion->ipc);
 	i = 0;
 	while (i++ < pos)
 		champion->pc = champion->pc->next;

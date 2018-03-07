@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/02/28 15:15:16 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/03/07 15:51:56 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int				vm_start(t_data *data)
 {
 	int		i;
 
-	if (data->dump == -1)
+	if (data->graph == 1)
 		display_map(data);
 	while (1)
 	{
-		if (data->dump == -1)
+		if (data->graph == 1)
 			key_hub(data);
 		if (data->pause != 1)
 		{
@@ -36,10 +36,10 @@ int				vm_start(t_data *data)
 			}
 			data->cycle++;
 			data->cyclec++;
-			if (data->dump == -1
+			if (data->graph == 1
 				&& data->speed > 0 && !(data->cycle % data->speed))
 				display_map(data);
-			else if (data->dump == -1 && data->speed < 0)
+			else if (data->graph == 1 && data->speed < 0)
 			{
 				i = data->speed;
 				while (i++)

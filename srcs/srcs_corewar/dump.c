@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 11:23:49 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/28 15:43:03 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/03/07 15:23:33 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void				dump(t_data *data)
 
 	i = 0;
 	node = data->map;
-	ft_printf("%d ipc\n", data->champions->ipc);
+	// ft_printf("%d ipc\n", data->champions->ipc);
 	while (i < MEM_SIZE)
 	{
 		if (i % 64 == 0)

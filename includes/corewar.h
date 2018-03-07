@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/06 17:57:40 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/07 15:29:14 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct			s_champion
 typedef struct			s_data
 {
 	int					dump;
+	int					graph;
 	t_champion			*champions;
 	int					nb_champion;
 	t_node				*map;
