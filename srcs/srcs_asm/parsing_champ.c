@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:53:06 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/02 17:13:20 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/07 18:34:30 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void			parsing_champ(int fd, t_data *data)
 
 	line = NULL;
 	data->line = 0;
+	data->check_cmd = 0;
 	while ((error = get_next_line(fd, &line)))
 	{
 		if (error == -1)
@@ -26,14 +27,20 @@ void			parsing_champ(int fd, t_data *data)
 		++data->line;
 		if (line[0] != COMMENT_CHAR)
 		{
+			//printf("aaaa\n");
 			if (data->name != 1 || data->comment != 1)
 				header(line, data);
+			//printf("bbbb\n");
 			if (!ft_strstr(line, NAME_CMD_STRING)
 				&& !ft_strstr(line, COMMENT_CMD_STRING) && line[0] != 0)
-				instructions(line, data);
+				if (instructions(line, data) == 1)
+					++data->check_cmd;
+			//printf("cccc\n");
 			free(line);
 		}
 	}
+	if (data->check_cmd == 0)
+		asm_error("Syntaxe error: no instructions", 1, data, NULL);
 	if (data->name == 0)
 		asm_error("Syntaxe error: need a program name", 1, data, NULL);
 	if (data->comment == 0)
