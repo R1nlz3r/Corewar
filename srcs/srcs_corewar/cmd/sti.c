@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/07 10:13:27 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/07 14:49:59 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ int		corewar_sti(t_data *data, t_champion *champ)
 //get final address and stock there reg[param1]
 	pc_dest = parameter[0] + parameter[1];
 	champ->carry = (pc_dest == 0) ? 1 : 0;
-	ft_printf(YELLOW"sti pc = %d, carry %d\n"RESET,tmp->id,champ->carry);
 	ft_printf(YELLOW"champ ipc = %d, pc_dest = %d\n"RESET,champ->ipc, pc_dest);
 	write_in_ram(champ, pc_dest);
+	ft_printf(YELLOW"******TEST*******\n"RESET);
 	return (1);
 }
