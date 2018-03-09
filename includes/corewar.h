@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/07 15:29:14 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/09 15:57:31 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,4 +203,5 @@ int						corewar_xor(t_data *data, t_champion *champ);
 int						corewar_zjmp(t_data *data, t_champion *champ);
 t_node					*find_pc_node(t_champion *champ, short pc_dest);
 void					write_in_ram(t_champion*champ, short pc_dest);
+int						mem_mod(int n);
 #endif

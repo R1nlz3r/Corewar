@@ -6,11 +6,20 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:13:30 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/06 17:59:41 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/09 15:56:47 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+int		mem_mod(int n)
+{
+	if (n < 0)
+		return (MEM_SIZE + n % MEM_SIZE);
+	else
+		return (n % MEM_SIZE);
+}
+
 
 t_node			*find_pc_node(t_champion *champ, short pc_dest)
 {
