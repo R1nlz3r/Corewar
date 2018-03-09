@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/09 17:17:46 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/09 17:27:27 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ with no valid argument type\n", champ->number);
 	if (verbose_operations(data) == 1)
 	{
 		ft_printf(CYAN"Player #%i | sti r%i %i %i\n\
-	  | -> store to %i + %i = %i (with pc and mod %i) value %i\n"RESET,
+	  | -> store to %i + %i = %i (with pc and mod %i) register value %i\n"RESET,
 		champ->number, champ->args[0], parameter[0], parameter[1], parameter[0],
 		parameter[1], parameter[0] + parameter[1], pc_dest,
 		champ->reg[champ->args[0]]);
