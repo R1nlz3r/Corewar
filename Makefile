@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/02/26 17:51:47 by kda-silv         ###   ########.fr        #
+#    Updated: 2018/03/09 18:46:31 by kda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,24 @@ SRCS_ASM			=	main.c \
 						error.c \
 						parsing_champ.c \
 						header.c \
-						instructions.c \
+						check_arguments.c \
+						check_core.c \
+						instructions/live.c \
+						instructions/ld.c \
+						instructions/st.c \
+						instructions/add.c \
+						instructions/sub.c \
+						instructions/and.c \
+						instructions/or.c \
+						instructions/xor.c \
+						instructions/zjmp.c \
+						instructions/ldi.c \
+						instructions/sti.c \
+						instructions/fork.c \
+						instructions/lld.c \
+						instructions/lldi.c \
+						instructions/lfork.c \
+						instructions/aff.c \
 						do_cor.c
 
 SRCS_ASM_FULL		=	$(addprefix $(SRCS_ASM_DIR), $(SRCS_ASM))
