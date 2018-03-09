@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:13:30 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/09 15:56:47 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/09 17:22:32 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,16 @@ static	t_node	*write_in_pc_node(t_node *pc, char ram_value)
 **  1111 1111	1111 1111	1111 1111	1111 1111  => 32 bits => 4 bytes
 */
 
-void			write_in_ram(t_champion *champ, short pc_dest)
+int			write_in_ram(t_champion *champ, short pc_dest)
 {
 	t_node	*pc;
 	int		ram_value;
+	int		pc_origin;
 
 	ram_value = 0;
 	pc = find_pc_node(champ, pc_dest);
-	ft_printf(RED"sti pc = %d\n"RESET, pc->id);
+	pc_origin = pc->id;
+//	ft_printf(RED"sti pc = %d\n"RESET, pc->id);
 	ram_value = champ->reg[champ->args[0]];
 	ram_value = ram_value & 0xFF000000;
 	ram_value = ram_value >> 24;
@@ -71,5 +73,5 @@ void			write_in_ram(t_champion *champ, short pc_dest)
 	ram_value = champ->reg[champ->args[0]];
 	ram_value = ram_value & 0x000000FF;
 	pc = write_in_pc_node(pc, (char)ram_value);
-	return ;
+	return (pc_origin);
 }

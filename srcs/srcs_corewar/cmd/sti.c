@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/09 16:10:40 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/09 17:17:46 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	&& champ->argsType[2] != T_REG))
 	{
 		//change to ft_dprintf
-		ft_printf("ERROR: Process %i tries to read instruction's %s parameter\ 
-		with no valid argument type\n", champ->number);
+		ft_printf("ERROR: Process %i tries to read instruction's %s parameter \
+with no valid argument type\n", champ->number);
 		return (-1);
 	}
 //  2nd param
@@ -58,7 +58,16 @@ int		corewar_sti(t_data *data, t_champion *champ)
 		parameter[1] = champ->args[2];
 //get final address and stock there reg[param1]
 	pc_dest = mem_mod((parameter[0] + parameter[1]) % IDX_MOD);
-	ft_printf(YELLOW"champ ipc = %d, pc_dest = %d\n"RESET,champ->ipc, pc_dest);
-	write_in_ram(champ, pc_dest);
+//	ft_printf(YELLOW"champ ipc = %d, pc_dest = %d\n"RESET,champ->ipc, pc_dest);
+	pc_dest = write_in_ram(champ, pc_dest);
+//	write_in_ram(champ, pc_dest, parameter[2]); possible adaptation
+	if (verbose_operations(data) == 1)
+	{
+		ft_printf(CYAN"Player #%i | sti r%i %i %i\n\
+	  | -> store to %i + %i = %i (with pc and mod %i) value %i\n"RESET,
+		champ->number, champ->args[0], parameter[0], parameter[1], parameter[0],
+		parameter[1], parameter[0] + parameter[1], pc_dest,
+		champ->reg[champ->args[0]]);
+	}
 	return (1);
 }
