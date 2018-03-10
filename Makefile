@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/02/26 17:51:47 by kda-silv         ###   ########.fr        #
+#    Updated: 2018/03/09 16:25:57 by dwald            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS_COREWAR		=	main.c \
 						dump.c \
 						op.c \
 						init_data.c \
+						verbose_flags.c \
 						read_champions.c \
 						init_map.c \
 						number_to_hex_str.c \
