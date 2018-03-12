@@ -31,27 +31,27 @@ int			corewar_and(t_data *data, t_champion *champ)
 	parameter[0] = champ->argsType[0];
 	parameter[1] = champ->argsType[1];
 	(void)data;
-	if (champ->argsType[2] != T_REG)
+	if (champ->argsType[2] != REG_CODE)
 	{
 		//change to ft_dprintf
 		ft_printf("ERROR: Process %i tries to read instruction's parameter \
 with no valid argument type\n", champ->number);
 		return (-1);
 	}
-	if (parameter[0] == T_REG)
+	if (parameter[0] == REG_CODE)
 		parameter[0] = champ->reg[champ->args[0]];
-	else if (parameter[0] == T_DIR)
+	else if (parameter[0] == DIR_CODE)
 		parameter[0] = champ->args[0];
-/*	else if (parameter[0] == T_IND)
+/*	else if (parameter[0] == IND_CODE)
 	{
 		tmp = find_pc_node(champ, mem_mod(champ->ipc + champ->args[0] % IDX_MOD);
 		parameter[0] = tmp->contentn;
 	}
-	if (parameter[1] == T_REG)
+	if (parameter[1] == REG_CODE)
 		parameter[1] = champ->reg[champ->args[1]];
-	else if (parameter[1] == T_DIR)
+	else if (parameter[1] == DIR_CODE)
 		parameter[1] = champ->args[1];
-	else if (parameter[1] == T_IND)
+	else if (parameter[1] == IND_CODE)
 	{
 
 	}

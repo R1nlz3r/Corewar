@@ -52,7 +52,7 @@ int			corewar_fork(t_data *data, t_champion *champ)
 	t_champion	*parent;
 	t_champion	*child;
 	
-	if (champ->argsType[0] != T_DIR)
+	if (champ->argsType[0] != DIR_CODE)
 		return (-1);
 	pc_dest = champ->ipc + (champ->args[0] % IDX_MOD); //remove % for lfork
 	if (prepare_champion(data, champ->filename, champ->number, true) == -1)

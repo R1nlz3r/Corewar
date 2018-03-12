@@ -30,15 +30,15 @@ int		corewar_ldi(t_data *data, t_champion *champ)
 	// ft_printf("arg type %d args[2] = %d\n", champ->argsType[2], champ->args[2]);
 	(void)data;
 	tmp = champ->pc;
-	if ((champ->argsType[1] != T_DIR && champ->argsType[1] != T_REG)
-	|| champ->argsType[2] != T_REG)
+	if ((champ->argsType[1] != DIR_CODE && champ->argsType[1] != REG_CODE)
+	|| champ->argsType[2] != REG_CODE)
 		return (-1);
 //1st param
-	if (champ->argsType[0] == T_REG)
+	if (champ->argsType[0] == REG_CODE)
 		parameter[0] = champ->reg[champ->args[1]];
-	else if (champ->argsType[0] == T_DIR)
+	else if (champ->argsType[0] == DIR_CODE)
 		parameter[0] = champ->args[0];
-	else if (champ->argsType[0] == T_IND)
+	else if (champ->argsType[0] == IND_CODE)
 	{
 		pc_dest = champ->ipc + (champ->args[0] % IDX_MOD); //remove %  for lldi
 		while (champ->ipc < pc_dest--)
@@ -46,9 +46,9 @@ int		corewar_ldi(t_data *data, t_champion *champ)
 		parameter[1] = (int)tmp->contentn;
 	}
 //  2nd param
-	if (champ->argsType[1] == T_REG)
+	if (champ->argsType[1] == REG_CODE)
 		parameter[1] = champ->reg[champ->args[1]];
-	else if (champ->argsType[1] == T_DIR)
+	else if (champ->argsType[1] == DIR_CODE)
 		parameter[1] = champ->args[1];
 //get final address and stock its value in reg[param2]
 	pc_dest = parameter[0] + parameter[1];

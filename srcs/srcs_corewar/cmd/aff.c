@@ -25,7 +25,7 @@ int		corewar_aff(t_data *data, t_champion *champ)
 
 	(void)data;
 	character = 0;
-	if (champ->argsType[0] != T_REG)
+	if (champ->argsType[0] != REG_CODE)
 		return (-1);
 	if ((char)(champ->reg[champ->args[0]]) == 0)
 		champ->carry = 1;

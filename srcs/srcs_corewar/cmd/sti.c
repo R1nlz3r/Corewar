@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/12 17:06:03 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/12 17:27:57 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	tmp = NULL;
 	pc_dest = mem_mod(champ->ipc + champ->args[0] % IDX_MOD);
 	(void)data;
-	if (champ->argsType[0] != T_REG || (champ->argsType[2] != T_DIR
-	&& champ->argsType[2] != T_REG))
+	if (champ->argsType[0] != REG_CODE || (champ->argsType[2] != DIR_CODE
+	&& champ->argsType[2] != REG_CODE))
 	{
 		//change to ft_dprintf
 		ft_printf("ERROR: Process %i tries to read instruction's parameter \
@@ -42,19 +42,19 @@ with no valid argument type\n", champ->number);
 		return (-1);
 	}
 //  2nd param
-	if (champ->argsType[1] == T_REG)
+	if (champ->argsType[1] == REG_CODE)
 		parameter[0] = champ->reg[champ->args[1]];
-	else if (champ->argsType[1] == T_IND)
+	else if (champ->argsType[1] == IND_CODE)
 	{
 		ft_printf(RED"Looking for indirect value\n"RESET);
 		parameter[0] = find_indirect_value(champ, 1);
 	}
-	else if (champ->argsType[1] == T_DIR)
+	else if (champ->argsType[1] == DIR_CODE)
 		parameter[0] = champ->args[1];
 //	3rd param
-	if (champ->argsType[2] == T_REG)
+	if (champ->argsType[2] == REG_CODE)
 		parameter[1] = champ->reg[champ->args[2]];
-	else if (champ->argsType[2] == T_DIR)
+	else if (champ->argsType[2] == DIR_CODE)
 		parameter[1] = champ->args[2];
 //get final address and stock there reg[param1]
 	pc_dest = mem_mod((parameter[0] + parameter[1]) % IDX_MOD);

@@ -19,7 +19,7 @@ int		corewar_zjmp(t_data *data, t_champion *champ)
 
 	(void)data;
 	tmp = champ->pc;
-	if (champ->argsType[0] != T_DIR)
+	if (champ->argsType[0] != DIR_CODE)
 		return (-1);
 	if (champ->carry == 1)
 	{

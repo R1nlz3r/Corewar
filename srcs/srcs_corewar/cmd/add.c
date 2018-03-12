@@ -15,14 +15,14 @@
 /*
 ** Take three registries, add the first two, and place the result in the third,
 ** right before modifying the carry.
-** T_REG param[2] = T_REG param[0] + T_REG param[1]
+** REG_CODE param[2] = REG_CODE param[0] + REG_CODE param[1]
 */
 
 int		corewar_add(t_data *data, t_champion *champ)
 {
 	(void)data;
-	if (champ->argsType[0] != T_REG || champ->argsType[1] != T_REG
-	|| champ->argsType[2] != T_REG)
+	if (champ->argsType[0] != REG_CODE || champ->argsType[1] != REG_CODE
+	|| champ->argsType[2] != REG_CODE)
 		return (-1);
 	champ->reg[champ->args[0]] = champ->reg[champ->args[1]]
 	+ champ->reg[champ->args[2]];

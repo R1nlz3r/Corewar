@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 15:53:45 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/12 17:07:25 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/12 17:23:06 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ int		corewar_st(t_data *data, t_champion *champ)
 	//end of tests
 	(void)data;
 	tmp = champ->pc;
-	if (champ->argsType[0] != T_REG || (champ->argsType[1] != T_IND
-	&& champ->argsType[1] != T_REG))
+	if (champ->argsType[0] != REG_CODE || (champ->argsType[1] != IND_CODE
+	&& champ->argsType[1] != REG_CODE))
 	{
 		//change to ft_dprintf
 		ft_printf("ERROR: Process %i tries to read instruction's parameter \
@@ -43,13 +43,13 @@ with no valid argument type\n", champ->number);
 		return (-1);
 	}
 	ft_printf(RED"HERE\n"RESET);
-	if (champ->argsType[1] == T_REG)
+	if (champ->argsType[1] == REG_CODE)
 	{
 		champ->reg[champ->args[1]] = champ->reg[champ->args[0]];
 		parameter[0] = champ->reg[champ->args[1]];
 		flag_indirect = false;
 	}
-	else if (champ->argsType[1] == T_IND)
+	else if (champ->argsType[1] == IND_CODE)
 	{
 		pc_dest = mem_mod(champ->ipc + (champ->args[0] % IDX_MOD));
 		parameter[0] = champ->ipc + champ->args[0];
@@ -67,7 +67,7 @@ with no valid argument type\n", champ->number);
 		champ->number, champ->argsType[0], parameter[0], champ->argsType[0],
 		champ->reg[champ->args[0]], parameter[0]);
 		if (flag_indirect == true)
-			ft_printf(CYAN"(T_IND value with pc and mod %i)\n"RESET, pc_dest);
+			ft_printf(CYAN"(IND_CODE value with pc and mod %i)\n"RESET, pc_dest);
 
 /*		ft_printf(CYAN"Player #%i | st r%i %i %i\n\
 	  | -> store to %i + %i = %i (with pc and mod %i) register value %i\n"RESET,
