@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 15:53:45 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/12 13:03:21 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/12 17:07:25 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,18 @@ int		corewar_st(t_data *data, t_champion *champ)
 	ft_printf("ST called at cycle %d\n", data->cycle);
 	ft_printf(GREEN"pc %d\n"RESET, champ->pc->id);
 	for (int i = 0; i < 3; i++)
-		ft_printf(GREEN"arg type %d args[%d] = %d\n"RESET, champ->argsType[i], i, champ->args[i]);
+		ft_printf(GREEN"argType[%d] %d args[%d] = %d\n"RESET, i, champ->argsType[i], i, champ->args[i]);
 	//end of tests
 	(void)data;
 	tmp = champ->pc;
-/*	if (champ->argsType[0] != T_REG || (champ->argsType[1] != T_IND
+	if (champ->argsType[0] != T_REG || (champ->argsType[1] != T_IND
 	&& champ->argsType[1] != T_REG))
 	{
 		//change to ft_dprintf
-		ft_printf("ERROR: Process %i tries to read instruction's %s parameter \
+		ft_printf("ERROR: Process %i tries to read instruction's parameter \
 with no valid argument type\n", champ->number);
 		return (-1);
-	}*/
+	}
 	ft_printf(RED"HERE\n"RESET);
 	if (champ->argsType[1] == T_REG)
 	{
@@ -60,7 +60,7 @@ with no valid argument type\n", champ->number);
 		number_to_hex_str(tmp->contentn,(unsigned char(*)[]) &(tmp->content));
 		pc_dest = mem_mod(champ->ipc + (champ->args[0] % IDX_MOD));
 	}
-	if (verbose_operations(data) == 1)
+	if (verbose_operations(data) == 1) //check the printf args if 100 % correct
 	{
 		ft_printf(CYAN"Player #%i | st r%i %i\n\
 	  | -> store register %i value %i to %i\n"RESET,

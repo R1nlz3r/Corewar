@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/09 17:27:27 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/12 17:06:03 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,18 @@ int		corewar_sti(t_data *data, t_champion *champ)
 
 	// Display tests
 	ft_printf("STI called at cycle %d\n", data->cycle);
-//	ft_printf(GREEN"pc %d\n"RESET, champ->pc->id);
-//	for (int i = 0; i < 3; i++)
-//		ft_printf(GREEN"arg type %d args[%d] = %d\n"RESET, champ->argsType[i], i, champ->args[i]);
+	ft_printf(GREEN"pc %d\n"RESET, champ->pc->id);
+	for (int i = 0; i < 3; i++)
+		ft_printf(GREEN"argType[%d] = %d args[%d] = %d\n"RESET, i, champ->argsType[i], i, champ->args[i]);
 	//end of tests
 	tmp = NULL;
+	pc_dest = mem_mod(champ->ipc + champ->args[0] % IDX_MOD);
 	(void)data;
 	if (champ->argsType[0] != T_REG || (champ->argsType[2] != T_DIR
 	&& champ->argsType[2] != T_REG))
 	{
 		//change to ft_dprintf
-		ft_printf("ERROR: Process %i tries to read instruction's %s parameter \
+		ft_printf("ERROR: Process %i tries to read instruction's parameter \
 with no valid argument type\n", champ->number);
 		return (-1);
 	}
@@ -45,9 +46,8 @@ with no valid argument type\n", champ->number);
 		parameter[0] = champ->reg[champ->args[1]];
 	else if (champ->argsType[1] == T_IND)
 	{
-		pc_dest = mem_mod(champ->ipc + champ->args[0] % IDX_MOD);
-		tmp = find_pc_node(champ, pc_dest);
-		parameter[0] = tmp->contentn;
+		ft_printf(RED"Looking for indirect value\n"RESET);
+		parameter[0] = find_indirect_value(champ, 1);
 	}
 	else if (champ->argsType[1] == T_DIR)
 		parameter[0] = champ->args[1];

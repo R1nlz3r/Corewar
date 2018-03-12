@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:13:30 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/09 17:22:32 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/12 16:39:16 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int		mem_mod(int n)
 		return (n % MEM_SIZE);
 }
 
-
 t_node			*find_pc_node(t_champion *champ, short pc_dest)
 {
 	t_node	*node;
@@ -30,6 +29,16 @@ t_node			*find_pc_node(t_champion *champ, short pc_dest)
 		node = node->next;
 	return (node);
 }
+
+int				find_indirect_value(t_champion *champ, int index)
+{
+	short	pc_dest;
+	t_node	*node;
+
+	pc_dest = mem_mod(champ->ipc + champ->args[index] % IDX_MOD);
+	node = find_pc_node(champ, pc_dest);
+	return (node->contentn);
+}	
 
 static	t_node	*write_in_pc_node(t_node *pc, char ram_value)
 {
