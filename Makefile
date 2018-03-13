@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/03/12 10:50:20 by dwald            ###   ########.fr        #
+#    Updated: 2018/03/13 17:17:53 by cfrouin          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRCS_COREWAR_DIR	=	srcs/srcs_corewar/
 
 SRCS_COREWAR		=	main.c \
 						dump.c \
+						debug.c \
 						op.c \
 						init_data.c \
 						verbose_flags.c \

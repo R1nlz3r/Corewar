@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/12 17:27:57 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/13 17:24:39 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 /*
 ** Take a registry and two indexes (potentially registries) add the two indexes
 ** and use this result as an address where the value of the first parameter
-** will be copied. 
+** will be copied.
 */
 
 int		corewar_sti(t_data *data, t_champion *champ)
@@ -25,10 +25,7 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	int		parameter[2];
 
 	// Display tests
-	ft_printf("STI called at cycle %d\n", data->cycle);
-	ft_printf(GREEN"pc %d\n"RESET, champ->pc->id);
-	for (int i = 0; i < 3; i++)
-		ft_printf(GREEN"argType[%d] = %d args[%d] = %d\n"RESET, i, champ->argsType[i], i, champ->args[i]);
+	dump_state("STI", data, champ);
 	//end of tests
 	tmp = NULL;
 	pc_dest = mem_mod(champ->ipc + champ->args[0] % IDX_MOD);

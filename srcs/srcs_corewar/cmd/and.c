@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:00:20 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/12 17:08:00 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/13 17:18:50 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,7 @@
 int			corewar_and(t_data *data, t_champion *champ)
 {
 	// Display tests
-	ft_printf("AND called at cycle %d\n", data->cycle);
-	ft_printf(GREEN"pc %d\n"RESET, champ->pc->id);
-	for (int i = 0; i < 3; i++)
-		ft_printf(GREEN"arg type %d args[%d] = %d\n"RESET, champ->argsType[i], i, champ->args[i]);
+	dump_state("AND", data, champ);
 	//end of tests
 
 	int		parameter[2];
