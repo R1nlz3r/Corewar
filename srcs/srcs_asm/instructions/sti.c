@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:57:25 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/13 16:34:18 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/13 17:22:29 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,11 @@ static void		good_args(t_data *data, char *line)
 					, 2, data, line);
 		}
 		else
+		{
 			if (data->args[count] != REG && data->args[count] != DIR)
 				asm_error("Ldi: Not REGISTRE or DIRECT Argument"
 					, 2, data, line);
+		}
 }
 
 void			sti(t_data *data, char *line, char **tab, int count_word)

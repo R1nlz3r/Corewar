@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:55:08 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/13 14:51:09 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/13 17:23:07 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@ static void		good_args(t_data *data, char *line)
 		else if (count == 1)
 		{
 			if (data->args[count] != REG && data->args[count] != INDIR)
-				asm_error("St: Not REGISTRE or INDIRECT Argument", 2, data, line);
+				asm_error("St: Not REGISTRE or INDIRECT Argument"
+					, 2, data, line);
 		}
 		else
+		{
 			if (data->args[count] != -1)
 				asm_error("St: Only 2 Arguments", 2, data, line);
+		}
 }
 
 void			st(t_data *data, char *line, char **tab, int count_word)

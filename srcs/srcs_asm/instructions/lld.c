@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:58:26 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/13 17:11:19 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/13 17:23:59 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ static void		good_args(t_data *data, char *line)
 				asm_error("Lld: Not REGISTRE Argument", 2, data, line);
 		}
 		else
+		{
 			if (data->args[count] != -1)
 				asm_error("Lld: Only 1 Argument", 2, data, line);
+		}
 }
 
 void			lld(t_data *data, char *line, char **tab, int count_word)

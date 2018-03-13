@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:07:41 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/13 14:31:27 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/13 17:24:25 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ static void		good_args(t_data *data, char *line)
 				asm_error("Live: Not DIRECT Argument", 2, data, line);
 		}
 		else
+		{
 			if (data->args[count] != -1)
 				asm_error("Live: Only 1 Argument", 2, data, line);
+		}
 }
 
 void			live(t_data *data, char *line, char **tab, int count_word)
