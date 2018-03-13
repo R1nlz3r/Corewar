@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/07 15:22:31 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/13 16:30:09 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,16 @@ static void		get_params_type(t_champion *champion)
 	char		byte;
 	int			i;
 
-	i = champion->op.nb_params - 1;
+	i = champion->op.nb_params;
 	node = champion->pc->next;
 	byte = node->contentn;
+	while (i++ < 4)
+		byte = byte >> 2;
+	i = champion->op.nb_params - 1;
 	while (i >= 0)
 	{
-		byte = byte >> 2;
 		champion->argsType[i] = byte & 0b11;
+		byte = byte >> 2;
 		i--;
 	}
 }
