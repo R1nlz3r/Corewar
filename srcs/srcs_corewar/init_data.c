@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/07 15:36:18 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/13 17:07:02 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,7 @@ t_data				*init_data(int ac, char **av)
 		free(data);
 		return (NULL);
 	}
-	data->pause = ((data->dump == -1) ? 1 : 0);
+	data->pause = ((data->graph == 1) ? 1 : 0);
 	data->map = NULL;
 	return (data);
 }
