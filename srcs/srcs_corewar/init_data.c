@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/28 12:26:10 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/13 17:07:02 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/13 17:09:16 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,8 @@ static int			manage_args(t_data *data, int ac, char **av)
 		}
 		else if (strcmp(av[i], "-g") == 0)
 			data->graph = 1;
+		else if (strcmp(av[i], "-d") == 0)
+			data->debug = 1;
 		else if (prepare_champion(data, av[i], -512, 0) == -1)
 			return (-1);
 	}
@@ -122,6 +124,9 @@ t_data				*init_data(int ac, char **av)
 		corewar_error(NULL, "Usage: ./corewar [-dump X] [[-n] champion.cor]\n");
 	if ((data = malloc(sizeof(t_data))) == NULL)
 		return (NULL);
+	// --------------------------------------
+	data->debug = 0;
+	// --------------------------------------
 	data->map = NULL;
 	data->dump = -1;
 	data->graph = 0;
