@@ -6,17 +6,17 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 17:13:29 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/13 17:25:15 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/13 17:31:51 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-void			dump_state(char *str, t_data *data, t_champion *champ)
+void			dump_state(char *msg, t_data *data, t_champion *champ)
 {
 	ft_printf(RED);
-	if (str != NULL)
-		ft_printf("%s\n", str);
+	if (msg != NULL)
+		ft_printf("%s\n", msg);
 	if (data != NULL)
 		ft_printf("Cycle %d\n", data->cycle);
 	if (champ != NULL)
