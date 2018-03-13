@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/13 17:08:03 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/13 17:58:34 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int				vm_start(t_data *data)
 			key_hub(data);
 		if (data->pause != 1)
 		{
-			// printf("Cycle : %d\n", data->cycle);
+			// usleep(25000);
+			// dump_state(NULL, data, data->champions);
 			prepare_next_op(data);
 			do_next_op(data);
 			if (data->dump != -1)

@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:00:20 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/13 17:18:50 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/13 17:34:29 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@
 int			corewar_and(t_data *data, t_champion *champ)
 {
 	// Display tests
-	dump_state("AND", data, champ);
+	if (data->debug)
+		dump_state("AND", data, champ);
 	//end of tests
 
 	int		parameter[2];

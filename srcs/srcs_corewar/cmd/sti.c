@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/13 17:24:39 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/13 17:35:07 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int		corewar_sti(t_data *data, t_champion *champ)
 	int		parameter[2];
 
 	// Display tests
-	dump_state("STI", data, champ);
+	if (data->debug)
+		dump_state("STI", data, champ);
 	//end of tests
 	tmp = NULL;
 	pc_dest = mem_mod(champ->ipc + champ->args[0] % IDX_MOD);
