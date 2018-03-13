@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/13 17:18:33 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/13 17:29:00 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct			s_data
 ** debug.c
 ** Contains all debug functions
 */
-void					dump_state(char *str, t_data *data, t_champion *champ);
+void					dump_state(char *msg, t_data *data, t_champion *champ);
 
 /*
 ** dump.c
