@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 15:53:06 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/09 16:46:25 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/13 13:07:42 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void			parsing_champ(int fd, t_data *data)
 				header(line, data);
 			if (!ft_strstr(line, NAME_CMD_STRING)
 				&& !ft_strstr(line, COMMENT_CMD_STRING) && line[0] != 0)
-				if (check_core(line, data, -1) == 1)
+				if (check_core(line, data, 0) == 1)
 					++data->check_cmd;
 			free(line);
 		}
