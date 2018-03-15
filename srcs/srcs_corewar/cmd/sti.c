@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/13 17:35:07 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/15 18:32:27 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ with no valid argument type\n", champ->number);
 	{
 		ft_printf(RED"Looking for indirect value\n"RESET);
 		parameter[0] = find_indirect_value(champ, 1);
+//		ft_printf("param[0] %d\n", parameter[0]);
 	}
 	else if (champ->argsType[1] == DIR_CODE)
 		parameter[0] = champ->args[1];
@@ -61,11 +62,11 @@ with no valid argument type\n", champ->number);
 //	write_in_ram(champ, pc_dest, parameter[2]); possible adaptation
 	if (verbose_operations(data) == 1)
 	{
-		ft_printf(CYAN"Player #%i | sti r%i %i %i\n\
-	  | -> store to %i + %i = %i (with pc and mod %i) register value %i\n"RESET,
-		champ->number, champ->args[0], parameter[0], parameter[1], parameter[0],
-		parameter[1], parameter[0] + parameter[1], pc_dest,
-		champ->reg[champ->args[0]]);
+		ft_printf(CYAN"Player #%i | sti r%i %i %i\n",
+		champ->number, champ->args[0], parameter[0], parameter[1]);
+		ft_printf("          | -> store to %i + %i = %i (with pc and mod %i) \
+register value %i\n"RESET, parameter[0], parameter[1],
+		parameter[0] + parameter[1], pc_dest, champ->reg[champ->args[0]]);
 	}
 	return (1);
 }
