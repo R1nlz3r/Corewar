@@ -6,11 +6,32 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/15 18:32:27 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/16 15:55:32 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static	int		check_error_sti(int param1, int param2, int param3, int player)
+{
+	bool	error;
+
+	error = false;
+	if ((param1 > 3 || param1 < 1) || (param2 > 3 || param2 < 1) 
+	|| (param3 > 3 || param3 < 1))
+		error = true;
+	else if (param1 != REG_CODE || (param3 != DIR_CODE && param3 != REG_CODE))
+		error = true;
+	if (error == true)
+	{
+		//change to ft_dprintf
+		ft_printf("ERROR: Process %i tries to read instruction's parameter \
+with no valid argument type\n", player);
+		return (-1);
+	}
+	else
+		return (0);
+}
 
 /*
 ** Take a registry and two indexes (potentially registries) add the two indexes
@@ -22,38 +43,35 @@ int		corewar_sti(t_data *data, t_champion *champ)
 {
 	t_node	*tmp;
 	short	pc_dest;
-	int		parameter[2];
+	int		parameter[3];
 
 	// Display tests
 	if (data->debug)
 		dump_state("STI", data, champ);
-	//end of tests
+	// End of tests
 	tmp = NULL;
-	pc_dest = mem_mod(champ->ipc + champ->args[0] % IDX_MOD);
 	(void)data;
-	if (champ->argsType[0] != REG_CODE || (champ->argsType[2] != DIR_CODE
-	&& champ->argsType[2] != REG_CODE))
-	{
-		//change to ft_dprintf
-		ft_printf("ERROR: Process %i tries to read instruction's parameter \
-with no valid argument type\n", champ->number);
+	parameter[0] = champ->argsType[0];
+	parameter[1] = champ->argsType[1];
+	parameter[2] = champ->argsType[2];
+	if (check_error_sti(parameter[0], parameter[1], parameter[2],
+	champ->number) == -1)
 		return (-1);
-	}
 //  2nd param
-	if (champ->argsType[1] == REG_CODE)
+	if (parameter[1] == REG_CODE)
 		parameter[0] = champ->reg[champ->args[1]];
-	else if (champ->argsType[1] == IND_CODE)
+	else if (parameter[1] == IND_CODE)
 	{
 		ft_printf(RED"Looking for indirect value\n"RESET);
 		parameter[0] = find_indirect_value(champ, 1);
-//		ft_printf("param[0] %d\n", parameter[0]);
+//	ft_printf("param[0] %d\n", parameter[0]);
 	}
-	else if (champ->argsType[1] == DIR_CODE)
+	else if (parameter[1] == DIR_CODE)
 		parameter[0] = champ->args[1];
 //	3rd param
-	if (champ->argsType[2] == REG_CODE)
+	if (parameter[2] == REG_CODE)
 		parameter[1] = champ->reg[champ->args[2]];
-	else if (champ->argsType[2] == DIR_CODE)
+	else if (parameter[2] == DIR_CODE)
 		parameter[1] = champ->args[2];
 //get final address and stock there reg[param1]
 	pc_dest = mem_mod((parameter[0] + parameter[1]) % IDX_MOD);
