@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 16:59:24 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/16 14:10:55 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/16 16:19:52 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int		corewar_xor(t_data *data, t_champion *champ)
 
 	// Display tests
 	if (data->debug)
-		dump_state("OR", data, champ);
+		dump_state("XOR", data, champ);
 	//end of tests
 
 	parameter[0] = champ->argsType[0];
