@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   xor.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/16 16:59:24 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/19 16:42:08 by dwald            ###   ########.fr       */
+/*   Created: 2018/03/19 17:25:07 by dwald             #+#    #+#             */
+/*   Updated: 2018/03/19 17:25:15 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ with no valid argument type\n", player);
 ** in a registry, which is the third argument. Modifies the carry.
 */
 
-int				corewar_xor(t_data *data, t_champion *champ)
+int				corewar_xor(t_data *data, t_champion *champ) //checked shoud be OK
 {
 	int		parameter[2];
 
@@ -70,8 +70,8 @@ int				corewar_xor(t_data *data, t_champion *champ)
 	champ->reg[champ->args[2]] = parameter[0] ^ parameter[1];
 	champ->carry = (champ->reg[champ->args[2]] == 0) ? 1 : 0;
 	if (verbose_operations(data) == 1)
-		ft_printf(CYAN"Player #%i | xor r%d (%d) ^ r%d (%d) = (%d) -> r%d \
-carry = %i\n"RESET, champ->number, champ->args[0], parameter[0], champ->args[1],
-		parameter[1], champ->reg[champ->args[2]], champ->args[2], champ->carry);
+		ft_printf(CYAN"Player #%i | xor %d ^ %d = (%d) -> r%d carry = %i\n"
+		RESET, champ->number, parameter[0],	parameter[1],
+		champ->reg[champ->args[2]], champ->args[2], champ->carry);
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/01 15:47:26 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/19 16:08:46 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/19 17:26:37 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,8 @@
 
 int		corewar_sub(t_data *data, t_champion *champ) //checked, should be OK
 {
-	// Display tests
 	if (data->debug)
 		dump_state("SUB", data, champ);
-	//end of tests
-	(void)data;
 	if (champ->argsType[0] != REG_CODE || champ->argsType[1] != REG_CODE
 	|| champ->argsType[2] != REG_CODE)
 	{

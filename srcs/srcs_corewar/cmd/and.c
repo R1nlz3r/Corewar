@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:00:20 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/19 16:45:50 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/19 16:53:49 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ int			corewar_and(t_data *data, t_champion *champ)
 	champ->carry = (champ->reg[champ->args[2]] == 0) ? 1 : 0;
 //	ft_printf("champ->carry = %d\n",  champ->carry);
 	if (verbose_operations(data) == 1)
-		ft_printf(CYAN"Player #%i | and r%d (%d) & r%d (%d) = (%d) -> r%d \
-		carry = %i\n"RESET, champ->number, champ->args[0], parameter[0],
-		champ->args[1], parameter[1], champ->reg[champ->args[2]], champ->carry);
+		ft_printf(CYAN"Player #%i | and %d & %d = (%d) -> r%d carry = %i\n"
+		RESET, champ->number, parameter[0], parameter[1],
+		champ->reg[champ->args[2]], champ->args[2], champ->carry);
 	return (1);
 }

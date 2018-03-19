@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 16:59:46 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/16 14:05:11 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/19 17:26:04 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,14 @@ with no valid argument type\n", player);
 ** in a registry, which is the third argument. Modifies the carry.
 */
 
-int		corewar_or(t_data *data, t_champion *champ)
+int		corewar_or(t_data *data, t_champion *champ) //checked should be ok
 {
 	int		parameter[2];
 
-	// Display tests
 	if (data->debug)
 		dump_state("OR", data, champ);
-	//end of tests
-
 	parameter[0] = champ->argsType[0];
 	parameter[1] = champ->argsType[1];
-	(void)data;
 	if (check_error_or(parameter[0], parameter[1], champ->argsType[2],
 	champ->number) == -1)
 		return (-1);
@@ -71,6 +67,9 @@ int		corewar_or(t_data *data, t_champion *champ)
 	}
 	champ->reg[champ->args[2]] = parameter[0] | parameter[1];
 	champ->carry = (champ->reg[champ->args[2]] == 0) ? 1 : 0;
-//	ft_printf("champ->carry = %d\n",  champ->carry);
+	if (verbose_operations(data) == 1)
+		ft_printf(CYAN"Player #%i | or %d | %d = (%d) -> r%d carry = %i\n"
+		RESET, champ->number, parameter[0],	parameter[1],
+		champ->reg[champ->args[2]], champ->args[2], champ->carry);
 	return (1);
 }
