@@ -6,21 +6,22 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:25:07 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/19 17:25:15 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/21 17:01:16 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static	int		check_error_xor(int param1, int param2, int param3, int player)
+static	int		check_error_xor(int player, t_champion *champ)
 {
 	bool	error;
 
 	error = false;
-	if ((param1 > 3 || param1 < 1) || (param2 > 3 || param2 < 1)
-	|| (param3 > 3 || param3 < 1))
+	if ((champ->argsType[0] > 3 || champ->argsType[0] < 1)
+	|| (champ->argsType[1] > 3 || champ->argsType[1] < 1)
+	|| (champ->argsType[2] > 3 || champ->argsType[2] < 1))
 		error = true;
-	else if (param3 != REG_CODE)
+	else if (champ->argsType[2] != REG_CODE)
 		error = true;
 	if (error == true)
 	{
@@ -31,6 +32,15 @@ with no valid argument type\n", player);
 	}
 	else
 		return (0);
+}
+
+static	void	verbose_xor(t_data *data, t_champion *champ, int *parameter)
+{
+	if (verbose_operations(data) == 1)
+		ft_printf(CYAN"Player #%i | xor %d ^ %d = (%d) -> r%d carry = %i\n"
+		RESET, champ->number, parameter[0], parameter[1],
+		champ->reg[champ->args[2]], champ->args[2], champ->carry);
+	return ;
 }
 
 /*
@@ -46,8 +56,7 @@ int				corewar_xor(t_data *data, t_champion *champ) //checked shoud be OK
 	parameter[1] = champ->argsType[1];
 	if (data->debug)
 		dump_state("XOR", data, champ);
-	if (check_error_xor(parameter[0], parameter[1], champ->argsType[2],
-	champ->number) == -1)
+	if (check_error_and(champ->number, champ) == -1)
 		return (-1);
 	if (parameter[0] == REG_CODE)
 		parameter[0] = champ->reg[champ->args[0]];
@@ -69,9 +78,6 @@ int				corewar_xor(t_data *data, t_champion *champ) //checked shoud be OK
 	}
 	champ->reg[champ->args[2]] = parameter[0] ^ parameter[1];
 	champ->carry = (champ->reg[champ->args[2]] == 0) ? 1 : 0;
-	if (verbose_operations(data) == 1)
-		ft_printf(CYAN"Player #%i | xor %d ^ %d = (%d) -> r%d carry = %i\n"
-		RESET, champ->number, parameter[0],	parameter[1],
-		champ->reg[champ->args[2]], champ->args[2], champ->carry);
+	verbose_xor(data, champ, parameter);
 	return (1);
 }

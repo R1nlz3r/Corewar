@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:00:20 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/21 16:10:38 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/21 17:03:14 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static	int		check_error_and(int player, t_champion *champ)
 
 	error = false;
 	if ((champ->argsType[0] > 3 || champ->argsType[0] < 1)
-	|| (champ->argsType[1] > 3 || champ->argsType[1] < 1) 
+	|| (champ->argsType[1] > 3 || champ->argsType[1] < 1)
 	|| (champ->argsType[2] > 3 || champ->argsType[2] < 1))
 		error = true;
 	else if (champ->argsType[2] != REG_CODE)
@@ -48,7 +48,7 @@ static	void	verbose_and(t_data *data, t_champion *champ, int *parameter)
 ** in a registry, which is the third argument. Modifies the carry.
 */
 
-int			corewar_and(t_data *data, t_champion *champ)
+int				corewar_and(t_data *data, t_champion *champ)
 {
 	int		parameter[2];
 
@@ -79,9 +79,6 @@ int			corewar_and(t_data *data, t_champion *champ)
 	champ->reg[champ->args[2]] = parameter[0] & parameter[1];
 	champ->carry = (champ->reg[champ->args[2]] == 0) ? 1 : 0;
 //	ft_printf("champ->carry = %d\n",  champ->carry);
-	ft_printf(CYAN"Player #%i | and %d & %d = (%d) -> r%d carry = %i\n"
-	RESET, champ->number, parameter[0], parameter[1],
-	champ->reg[champ->args[2]], champ->args[2], champ->carry);
 	verbose_and(data, champ, parameter);
 	return (1);
 }
