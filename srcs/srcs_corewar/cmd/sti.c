@@ -6,21 +6,25 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/16 15:55:32 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/21 15:39:42 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static	int		check_error_sti(int param1, int param2, int param3, int player)
+static	int		check_error_sti(int param[], int player, t_champion *champ)
 {
 	bool	error;
 
+	param[0] = champ->argsType[0];
+	param[1] = champ->argsType[1];
+	param[2] = champ->argsType[2];
 	error = false;
-	if ((param1 > 3 || param1 < 1) || (param2 > 3 || param2 < 1) 
-	|| (param3 > 3 || param3 < 1))
+	if ((param[0] > 3 || param[0] < 1) || (param[1] > 3 || param[1] < 1) 
+	|| (param[2] > 3 || param[2] < 1))
 		error = true;
-	else if (param1 != REG_CODE || (param3 != DIR_CODE && param3 != REG_CODE))
+	else if (param[0] != REG_CODE || (param[2] != DIR_CODE
+	&& param[2] != REG_CODE))
 		error = true;
 	if (error == true)
 	{
@@ -33,29 +37,34 @@ with no valid argument type\n", player);
 		return (0);
 }
 
+static	void	verbose_sti(t_data *data, t_champion *champ, int *parameter,
+				int pc_dest)
+{
+	if (verbose_operations(data) == 1)
+	{
+		ft_printf(CYAN"Player #%i | sti r%i %i %i\n",
+		champ->number, champ->args[0], parameter[0], parameter[1]);
+		ft_printf("          | -> store to %i + %i = %i (with pc and mod %i) \
+register value %i\n"RESET, parameter[0], parameter[1],
+		parameter[0] + parameter[1], pc_dest, champ->reg[champ->args[0]]);
+	}
+	return ;
+}
+
 /*
 ** Take a registry and two indexes (potentially registries) add the two indexes
 ** and use this result as an address where the value of the first parameter
 ** will be copied.
 */
 
-int		corewar_sti(t_data *data, t_champion *champ)
+int				corewar_sti(t_data *data, t_champion *champ)
 {
-	t_node	*tmp;
 	short	pc_dest;
 	int		parameter[3];
 
-	// Display tests
 	if (data->debug)
 		dump_state("STI", data, champ);
-	// End of tests
-	tmp = NULL;
-	(void)data;
-	parameter[0] = champ->argsType[0];
-	parameter[1] = champ->argsType[1];
-	parameter[2] = champ->argsType[2];
-	if (check_error_sti(parameter[0], parameter[1], parameter[2],
-	champ->number) == -1)
+	if (check_error_sti((int(*))&parameter, champ->number, champ) == -1)
 		return (-1);
 //  2nd param
 	if (parameter[1] == REG_CODE)
@@ -78,13 +87,6 @@ int		corewar_sti(t_data *data, t_champion *champ)
 //	ft_printf(YELLOW"champ ipc = %d, pc_dest = %d\n"RESET,champ->ipc, pc_dest);
 	pc_dest = write_in_ram(champ, pc_dest);
 //	write_in_ram(champ, pc_dest, parameter[2]); possible adaptation
-	if (verbose_operations(data) == 1)
-	{
-		ft_printf(CYAN"Player #%i | sti r%i %i %i\n",
-		champ->number, champ->args[0], parameter[0], parameter[1]);
-		ft_printf("          | -> store to %i + %i = %i (with pc and mod %i) \
-register value %i\n"RESET, parameter[0], parameter[1],
-		parameter[0] + parameter[1], pc_dest, champ->reg[champ->args[0]]);
-	}
+	verbose_sti(data, champ, parameter, pc_dest);
 	return (1);
 }
