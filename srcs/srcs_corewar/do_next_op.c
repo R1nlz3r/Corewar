@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/13 17:46:01 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/03/22 11:11:53 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,8 @@ int				do_next_op(t_data *data)
 	{
 		if (champion->nextOp == 0)
 		{
+			champion->oldpc = champion->pc;
+			champion->oldipc = champion->ipc;
 			get_params_type(champion);
 			get_params(champion);
 			champion->op.func(data, champion);
