@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/22 11:11:53 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/03/22 11:47:50 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ static void		get_params_type(t_champion *champion)
 	int			i;
 
 	i = champion->op.nb_params;
+	if (i == 1)
+	{
+		champion->argsType[0] = champion->op.param_types[0];
+		return ;
+	}
 	node = champion->pc->next;
 	byte = node->contentn;
 	while (i++ < 4)
@@ -61,7 +66,7 @@ static void		get_one_param(t_champion *champion, int argsize, int n, int *pos)
 	while (++i < argsize)
 	{
 		nb += (node->contentn << ((argsize - (i + 1)) * 8));
-		// ft_printf("%d/%d : %d\n", i, argsize, nb);
+		ft_printf("%s %d/%d : %d\n", node->content, i, argsize, nb);
 		node = node->next;
 	}
 	*pos += i;
@@ -77,7 +82,7 @@ static void		get_params(t_champion *champion)
 	i = 0;
 	pos = 2;
 	if (champion->op.nb_params == 1 && champion->op.param_types[0] == 2)
-		pos = 0;
+		pos = 1;
 	while (i < champion->op.nb_params)
 	{
 		if (champion->argsType[i] == REG_CODE)
@@ -91,7 +96,11 @@ static void		get_params(t_champion *champion)
 	}
 	if (champion->op.opcode == 1)
 	{
-		pos = 5;
+		pos = 4;
+	}
+	else if (champion->op.opcode == 9)
+	{
+		pos = 3;
 	}
 	champion->ipc += pos;
 	i = 0;
@@ -108,6 +117,7 @@ int				do_next_op(t_data *data)
 		champion = champion->next;
 	while (champion != NULL)
 	{
+		ft_printf(GREEN"%d - pc : %d\n"RESET, data->cycle, champion->pc->id);
 		if (champion->nextOp == 0)
 		{
 			champion->oldpc = champion->pc;
