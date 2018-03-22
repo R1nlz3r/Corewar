@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 16:59:46 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/21 17:02:19 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/22 11:10:43 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int				corewar_or(t_data *data, t_champion *champ) //checked should be ok
 		dump_state("OR", data, champ);
 	parameter[0] = champ->argsType[0];
 	parameter[1] = champ->argsType[1];
-	if (check_error_and(champ->number, champ) == -1)
+	if (check_error_or(champ->number, champ) == -1)
 		return (-1);
 	if (parameter[0] == REG_CODE)
 		parameter[0] = champ->reg[champ->args[0]];
