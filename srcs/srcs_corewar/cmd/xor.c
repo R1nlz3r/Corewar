@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/19 17:25:07 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/21 17:01:16 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/22 11:10:53 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int				corewar_xor(t_data *data, t_champion *champ) //checked shoud be OK
 	parameter[1] = champ->argsType[1];
 	if (data->debug)
 		dump_state("XOR", data, champ);
-	if (check_error_and(champ->number, champ) == -1)
+	if (check_error_xor(champ->number, champ) == -1)
 		return (-1);
 	if (parameter[0] == REG_CODE)
 		parameter[0] = champ->reg[champ->args[0]];
