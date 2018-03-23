@@ -6,13 +6,13 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/21 15:39:42 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/23 16:22:25 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-static	int		check_error_sti(int param[], int player, t_champion *champ)
+static	int		check_error_sti(int param[], t_champion *champ)
 {
 	bool	error;
 
@@ -30,7 +30,7 @@ static	int		check_error_sti(int param[], int player, t_champion *champ)
 	{
 		//change to ft_dprintf
 		ft_printf("ERROR: Process %i tries to read instruction's parameter \
-with no valid argument type\n", player);
+with no valid argument type\n", champ->number);
 		return (-1);
 	}
 	else
@@ -64,7 +64,7 @@ int				corewar_sti(t_data *data, t_champion *champ)
 
 	if (data->debug)
 		dump_state("STI", data, champ);
-	if (check_error_sti((int(*))&parameter, champ->number, champ) == -1)
+	if (check_error_sti((int(*))&parameter, champ) == -1)
 		return (-1);
 //  2nd param
 	if (parameter[1] == REG_CODE)
@@ -72,7 +72,7 @@ int				corewar_sti(t_data *data, t_champion *champ)
 	else if (parameter[1] == IND_CODE)
 	{
 		ft_printf(RED"Looking for indirect value\n"RESET);
-		parameter[0] = find_indirect_value(champ, 1);
+		parameter[0] = find_indirect_value(champ, champ->args[1] % IDX_MOD);
 //	ft_printf("param[0] %d\n", parameter[0]);
 	}
 	else if (parameter[1] == DIR_CODE)
@@ -82,7 +82,7 @@ int				corewar_sti(t_data *data, t_champion *champ)
 		parameter[1] = champ->reg[champ->args[2]];
 	else if (parameter[2] == DIR_CODE)
 		parameter[1] = champ->args[2];
-//get final address and stock there reg[param1]
+//	get final address and stock there reg[param1]
 	pc_dest = mem_mod((parameter[0] + parameter[1]) % IDX_MOD);
 //	ft_printf(YELLOW"champ ipc = %d, pc_dest = %d\n"RESET,champ->ipc, pc_dest);
 	pc_dest = write_in_ram(champ, pc_dest);

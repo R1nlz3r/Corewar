@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:46:06 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/23 15:11:29 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/23 15:19:48 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,14 @@ int		corewar_zjmp(t_data *data, t_champion *champ)
 	{
 	//	ft_printf(CYAN"champ->args[0] = %d\n"RESET,champ->args[0]);
 	//	ft_printf(CYAN"champ->args[0] % IDX_MOD = %d\n"RESET,champ->args[0]%IDX_MOD);
-//		ft_printf(CYAN"oldpc = %d oldipc= %d pc_dest = %d\n"RESET, champ->oldpc->id, champ->oldipc, pc_dest);
+	//	ft_printf(CYAN"oldpc = %d oldipc= %d pc_dest = %d\n"RESET, champ->oldpc->id, champ->oldipc, pc_dest);
 		while (champ->pc->id != pc_dest)
 			champ->pc = champ->pc->next;
 		if (verbose_operations(data))
 			ft_printf("Player #%d | zjmp %d OK\n", champ->number, index);
 	}
 	else
-	{
 		if (verbose_operations(data))
 			ft_printf("Player #%d | zjmp %d FAILED\n", champ->number, index);
-	}
 	return (1);
 }
