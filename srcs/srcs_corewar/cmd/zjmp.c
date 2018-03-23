@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:46:06 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/23 15:03:49 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/23 15:11:29 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static	int		check_error_zjmp(int param, int player)
 {
-	if (champ->argsType[0] != DIR_CODE)
+	if (param != DIR_CODE)
 	{
 		//change to ft_dprintf
 		ft_printf("ERROR: Process %i tries to read instruction's parameter \
