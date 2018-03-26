@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:13:30 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/26 15:03:15 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/26 19:10:31 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,22 +32,77 @@ t_node			*find_pc_node(t_champion *champ, short pc_dest)
 	return (node);
 }
 
+/*
+**  long string conversion to integer
+*/
+
+/*static	int		longstr_hex_to_number(char str[])
+{
+	int		nbr;
+	int		val;
+	int		len;
+	int		i;
+	char	base;
+
+    nbr = 0;
+	val = 0;
+	i = 0;
+	base = "0123456789ABCDEF";
+	len = ft_strlen(str);
+	while (i < len)
+	{
+		val = 16 * ;
+		nbr = 16 * i;
+		i++;
+		val = get_index_tab(g_hex_tab, str[i]);
+		nbr += i;
+	}
+	return (nbr);
+}
+*/
+
+int				find_indirect_value(t_champion *champ, int index)
+{
+	return (0);
+}
+
+/*
+**	Reads 32 bits of memory, resulting string interprets as
+**  hex number, converts it in integer and returns. 
+*/
+
+/*
 int				find_indirect_value(t_champion *champ, int index)
 {
 	short	pc_dest;
 	t_node	*node;
+	int		i;
+	char	hex_val[5];
 
 	// Display tests
 //	ft_printf(GREEN"champ->ipc = %d "RESET, champ->ipc);
-	ft_printf(GREEN"champ->oldpc->id = %d "RESET, champ->oldpc->id);
 //ft_printf(GREEN"champ->args[%d] = %d\n"RESET,champ->ipc,index,champ->args[index]);
 	//end of tests
-	pc_dest = mem_mod(champ->oldpc->id + index);
-	ft_printf(GREEN"pc_dest = %d "RESET, pc_dest);
-	node = find_pc_node(champ, pc_dest);
-	ft_printf(GREEN"node->id = %d "RESET, node->id);
-	return (node->contentn);
+	i = 0;
+	node = champ->oldpc;
+	pc_dest = champ->oldpc->id + index % IDX_MOD;
+	while (pc_dest < 0)
+		pc_dest = pc_dest + MEM_SIZE;
+	ft_printf(GREEN"pc_dest = %d\n"RESET, pc_dest);
+	while (i < 4)
+	{
+		while (node->id != (pc_dest + i) % MEM_SIZE)
+			node = node->next;
+		ft_printf(GREEN"node->id = %d content hexa string = %s num_int: %i\n"RESET, node->id, node->content, node->contentn);
+		val[i] = node->content;
+		i++;
+	}
+	hex_val[4] = '\0';
+	ft_printf("val = %s\n", hex_val);
+	i = longstr_hex_to_number(hex_val); 
+	return (i);
 }	
+*/
 
 static	t_node	*write_in_pc_node(t_node *pc, char ram_value)
 {

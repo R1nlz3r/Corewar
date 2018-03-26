@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/26 14:56:19 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/26 18:24:15 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int				corewar_sti(t_data *data, t_champion *champ)
 		parameter[0] = champ->reg[champ->args[1]];
 	else if (parameter[1] == IND_CODE)
 	{
-		ft_printf(RED"Looking for indirect value\n"RESET);
+		ft_printf(YELLOW"Looking for indirect value\n"RESET);
 		parameter[0] = find_indirect_value(champ, champ->args[1] % IDX_MOD);
 //	ft_printf("param[0] %d\n", parameter[0]);
 	}

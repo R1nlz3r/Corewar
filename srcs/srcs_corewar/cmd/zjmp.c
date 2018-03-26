@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:46:06 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/26 16:46:22 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/26 17:12:05 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ int		corewar_zjmp(t_data *data, t_champion *champ)
 		if (verbose_operations(data))
 			ft_printf("Player #%d | zjmp %d (%d) OK (PC: %d)\n", champ->number,
 			champ->args[0], index, champ->pc->id);
+		/*
+			champ->pc->id = 0;
+
+		*/
 	}
 	else
 		if (verbose_operations(data))
