@@ -6,7 +6,7 @@
 /*   By: dwald <dwald@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 13:27:32 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/23 16:22:25 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/26 14:56:19 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@ int				corewar_sti(t_data *data, t_champion *champ)
 	else if (parameter[2] == DIR_CODE)
 		parameter[1] = champ->args[2];
 //	get final address and stock there reg[param1]
+ft_printf(YELLOW"parameter[0] = %d param[1] = %d\n"RESET,parameter[0],parameter[1]);
 	pc_dest = mem_mod((parameter[0] + parameter[1]) % IDX_MOD);
-//	ft_printf(YELLOW"champ ipc = %d, pc_dest = %d\n"RESET,champ->ipc, pc_dest);
+	ft_printf(YELLOW"champ ipc = %d pc_dest = %d\n"RESET,champ->pc->id, pc_dest);
 	pc_dest = write_in_ram(champ, pc_dest);
 //	write_in_ram(champ, pc_dest, parameter[2]); possible adaptation
 	verbose_sti(data, champ, parameter, pc_dest);

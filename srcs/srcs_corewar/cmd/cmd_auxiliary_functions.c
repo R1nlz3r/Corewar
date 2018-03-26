@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:13:30 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/23 16:39:42 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/26 15:03:15 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ t_node			*find_pc_node(t_champion *champ, short pc_dest)
 
 	node = champ->oldpc;
 //	ft_printf(GREEN"pc_dest = %d "RESET, pc_dest);
-	while (node->id != pc_dest + 1)
+	while (node->id != pc_dest)
 		node = node->next;
-//	ft_printf(GREEN"pc_dest = %d "RESET, pc_dest);
+//	ft_printf(GREEN"node->id = %d\n"RESET, node->id);
 	return (node);
 }
 
