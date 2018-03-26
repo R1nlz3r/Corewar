@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/26 13:29:15 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/26 14:25:26 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/26 17:07:54 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ static int		strlen_words(char *str, char c1, char c2)
 	return (nb);
 }
 
-static char	**copy_word(char *str, char **tab, int count, int count_tab)
+static char		**copy_word(char *str, char **tab, int count, int count_tab)
 {
-	int		tmp;
-	int		len;
-	int		count2;
+	int			tmp;
+	int			len;
+	int			count2;
 
 	tmp = count - 1;
 	len = 0;
@@ -80,7 +80,7 @@ char			**ft_word_tab_asm(char *str)
 	int			tmp;
 
 	count = -1;
-	while (str[++count]  != '\0')
+	while (str[++count] != '\0')
 	{
 		if (str[count] == ',')
 		{
