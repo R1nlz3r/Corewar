@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 17:50:26 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/13 13:53:38 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/26 15:36:08 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void		check_instruction(char **tab, int count_word, t_data *data
 	data->args[0] = -1;
 	data->args[1] = -1;
 	data->args[2] = -1;
+	data->nbr_arg = 0;
 	while (instructions[++count] != NULL)
 		if (ft_strcmp(tab[count_word], instructions[count]) == 0)
 		{
@@ -94,6 +95,8 @@ static int		error_start_line(char **tab, t_data *data, char *line)
 	count = 0;
 	if (tab[0] == NULL)
 		return (0);
+	if (tab[0][0] == COMMENT_CHAR)
+		return (0);
 	while (tab[0][count] != '\0' && tab[0][count] != LABEL_CHAR)
 		++count;
 	if (tab[0][count] == LABEL_CHAR && count > 0 && tab[0][count - 1] == '%'
@@ -107,7 +110,7 @@ int				check_core(char *line, t_data *data, int count_word)
 	char		**tab;
 
 	bad_char(line, data);
-	if ((tab = ft_word_tab(line)) == NULL)
+	if ((tab = ft_word_tab_asm(line)) == NULL)
 		asm_error("Error Malloc", 1, data, line);
 	if (error_start_line(tab, data, line) == 0)
 		return (0);
@@ -117,10 +120,13 @@ int				check_core(char *line, t_data *data, int count_word)
 			asm_error("Bad Label", 2, data, line);
 		else
 			++count_word;
+		if (tab[count_word] == NULL)
+		{
+			ft_word_tab_free(tab);
+			return (1);
+		}
 	}
 	check_instruction(tab, count_word, data, line);
-	if (tab[count_word + 2] != NULL && tab[count_word + 2][0] != COMMENT_CHAR)
-		asm_error("One instruction by line", 2, data, line);
 	ft_word_tab_free(tab);
 	return (1);
 }

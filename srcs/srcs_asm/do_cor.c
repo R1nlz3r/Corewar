@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:49:10 by kda-silv          #+#    #+#             */
-/*   Updated: 2017/12/15 17:53:28 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/26 14:53:27 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,18 @@ static int		create_file(t_data *data, char *source)
 {
 	int			fd;
 	int			count;
-	char		*file_cor;
 
 	count = (int)ft_strlen(source) + 2;
-	if ((file_cor = ft_memalloc(count * sizeof(char))) == NULL)
+	if ((data->file_cor = ft_memalloc(count * sizeof(char))) == NULL)
 		asm_error("Error malloc", 1, data, NULL);
-	if ((file_cor = ft_strcat(file_cor, source)) == NULL)
-		asm_error("Error malloc", 1, data, file_cor);
-	file_cor[count - 3] = 'c';
-	file_cor[count - 2] = 'o';
-	file_cor[count - 1] = 'r';
-	file_cor[count] = '\0';
-	if ((fd = open(file_cor, O_RDWR | O_CREAT | O_TRUNC, 0755)) == -1)
-		asm_error("Error creat file", 1, data, file_cor);
-	free(file_cor);
+	if ((data->file_cor = ft_strcat(data->file_cor, source)) == NULL)
+		asm_error("Error malloc", 1, data, data->file_cor);
+	data->file_cor[count - 3] = 'c';
+	data->file_cor[count - 2] = 'o';
+	data->file_cor[count - 1] = 'r';
+	data->file_cor[count] = '\0';
+	if ((fd = open(data->file_cor, O_RDWR | O_CREAT | O_TRUNC, 0755)) == -1)
+		asm_error("Error creat file", 1, data, data->file_cor);
 	return (fd);
 }
 

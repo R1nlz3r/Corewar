@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/03/13 17:17:53 by cfrouin          ###   ########.fr        #
+#    Updated: 2018/03/26 13:39:24 by kda-silv         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,9 @@ SRCS_ASM			=	main.c \
 						error.c \
 						parsing_champ.c \
 						header.c \
-						check_arguments.c \
+						ft_word_tab_asm.c \
 						check_core.c \
+						check_arguments.c \
 						instructions/live.c \
 						instructions/ld.c \
 						instructions/st.c \
