@@ -6,11 +6,19 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/05 11:46:06 by dwald             #+#    #+#             */
-/*   Updated: 2018/03/23 15:19:48 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/26 16:46:22 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
+
+static int     idx_address(int val)
+{
+    if (val >= ADDRESS_MAX / 2)
+        val -= ADDRESS_MAX;
+    val %= IDX_MOD;
+    return (val);
+}
 
 static	int		check_error_zjmp(int param, int player)
 {
@@ -35,7 +43,7 @@ int		corewar_zjmp(t_data *data, t_champion *champ)
 		dump_state("ZJUMP", data, champ);
 	if (check_error_zjmp(champ->argsType[0], champ->number) == -1)
 		return (-1);
-	pc_dest = mem_mod(champ->oldpc->id + champ->args[0]);
+	pc_dest = mem_mod(champ->oldpc->id + idx_address(champ->args[0]));
 	index = pc_dest - champ->oldpc->id;
 	if (champ->carry == 1)
 	{
@@ -45,10 +53,12 @@ int		corewar_zjmp(t_data *data, t_champion *champ)
 		while (champ->pc->id != pc_dest)
 			champ->pc = champ->pc->next;
 		if (verbose_operations(data))
-			ft_printf("Player #%d | zjmp %d OK\n", champ->number, index);
+			ft_printf("Player #%d | zjmp %d (%d) OK (PC: %d)\n", champ->number,
+			champ->args[0], index, champ->pc->id);
 	}
 	else
 		if (verbose_operations(data))
-			ft_printf("Player #%d | zjmp %d FAILED\n", champ->number, index);
+			ft_printf("Player #%d | zjmp %d (%d) FAILED (PC: %d)\n",
+			champ->number, champ->args[0], index, champ->pc->id);
 	return (1);
 }
