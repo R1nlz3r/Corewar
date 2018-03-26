@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:55:08 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/13 17:23:07 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/26 15:18:12 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void		good_args(t_data *data, char *line)
 		else
 		{
 			if (data->args[count] != -1)
-				asm_error("St: Only 2 Arguments", 2, data, line);
+				asm_error("St: Need 2 Arguments", 2, data, line);
 		}
 }
 
@@ -41,7 +41,7 @@ void			st(t_data *data, char *line, char **tab, int count_word)
 	if (tab[count_word] == NULL)
 		asm_error("St: Argument missed", 2, data, line);
 	if (tab[count_word][0] == 'r' || tab[count_word][0] == DIRECT_CHAR
-		|| tab[count_word][0] == '-'
+		|| tab[count_word][0] == LABEL_CHAR || tab[count_word][0] == '-'
 		|| (tab[count_word][0] >= '0' && tab[count_word][0] <= '9'))
 		check_args(tab, count_word, data, line);
 	else

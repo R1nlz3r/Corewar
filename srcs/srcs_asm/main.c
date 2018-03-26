@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:53 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/26 15:08:23 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/26 15:24:02 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,10 @@ int				main(int ac, char **av)
 	printf("|%s|\n", data.header.prog_name);
 	printf("|%s|\n", data.header.comment);
 	do_cor(&data, av[1]);
+	ft_putstr_fd(GREEN, 1);
+	ft_putstr_fd(data.file_cor, 1);
+	ft_putstr_fd(" have been created !\n", 1);
+	ft_putstr_fd(RESET, 1);
+	free(data.file_cor);
 	return (0);
 }

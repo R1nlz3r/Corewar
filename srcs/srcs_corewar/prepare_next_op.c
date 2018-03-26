@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 13:31:15 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/07 10:20:19 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/13 17:48:41 by cfrouin          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int		get_next_op(t_champion *champion)
 		}
 		i++;
 	}
+	champion->ipc++;
+	champion->pc = champion->pc->next;
 	return (-1);
 }
 

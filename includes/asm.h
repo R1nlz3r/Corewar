@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:31:04 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/13 17:35:38 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/26 14:52:15 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef	struct		s_data
 	int				args[3];
 	int				nbr_arg;
 	char			*line;
+	char			*file_cor;
 }					t_data;
 
 /*
@@ -57,6 +58,11 @@ void				parsing_champ(int fd, t_data *data);
 ** header.c
 */
 void				header(char *line, t_data *data);
+
+/*
+** ft_word_tab_asm.c
+*/
+char				**ft_word_tab_asm(char *str);
 
 /*
 ** check_core.c

@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/09 15:56:52 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/13 17:21:39 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/26 15:18:28 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void			xor(t_data *data, char *line, char **tab, int count_word)
 	if (tab[count_word] == NULL)
 		asm_error("And: Argument missed", 2, data, line);
 	if (tab[count_word][0] == 'r' || tab[count_word][0] == DIRECT_CHAR
-		|| tab[count_word][0] == '-'
+		|| tab[count_word][0] == LABEL_CHAR || tab[count_word][0] == '-'
 		|| (tab[count_word][0] >= '0' && tab[count_word][0] <= '9'))
 		check_args(tab, count_word, data, line);
 	else
