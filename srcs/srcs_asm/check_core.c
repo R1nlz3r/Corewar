@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/26 17:50:26 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/26 15:36:08 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/30 14:54:03 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ int				check_core(char *line, t_data *data, int count_word)
 			return (1);
 		}
 	}
+	if (tab[count_word][0] == COMMENT_CHAR)
+		return (1);
 	check_instruction(tab, count_word, data, line);
 	ft_word_tab_free(tab);
 	return (1);
