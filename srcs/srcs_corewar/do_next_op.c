@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/23 16:55:29 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/03/28 18:52:58 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ static void		get_params(t_champion *champion)
 	}
 	if (champion->op.opcode == 1)
 	{
-		pos = 5;
+		pos = 4;
 	}
 	else if (champion->op.opcode == 9)
 	{
@@ -117,10 +117,10 @@ int				do_next_op(t_data *data)
 		champion = champion->next;
 	while (champion != NULL)
 	{
-		if (data->debug)
-			ft_printf(GREEN"%d - pc : %d\n"RESET, data->cycle, champion->pc->id);
 		if (champion->nextOp == 0)
 		{
+			if (data->debug)
+				ft_printf(BLUE"%s\n"RESET, champion->op.name);
 			champion->oldpc = champion->pc;
 			champion->oldipc = champion->ipc;
 			get_params_type(champion);
