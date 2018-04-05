@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/03/26 13:39:24 by kda-silv         ###   ########.fr        #
+#    Updated: 2018/04/05 15:37:38 by dwald            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,8 @@ SRCS_COREWAR		=	main.c \
 						cmd/sub.c \
 						cmd/xor.c \
 						cmd/zjmp.c \
-						cmd/cmd_auxiliary_functions.c
+						cmd/cmd_auxiliary_functions.c \
+						cmd/ft_atoi_base.c
 
 SRCS_COREWAR_FULL	=	$(addprefix $(SRCS_COREWAR_DIR), $(SRCS_COREWAR))
 
