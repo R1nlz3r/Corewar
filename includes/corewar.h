@@ -6,7 +6,11 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2018/04/03 15:53:34 by cyrillefrouin    ###   ########.fr       */
+=======
+/*   Updated: 2018/04/05 15:14:41 by dwald            ###   ########.fr       */
+>>>>>>> 39e5a3eac18a93672ed523517f57629b4763b6f3
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,4 +227,6 @@ t_node					*find_pc_node(t_champion *champ, short pc_dest);
 int						write_in_ram(t_champion*champ, short pc_dest);
 int						find_indirect_value(t_champion *champ, int index);
 int						mem_mod(int n);
+int						ft_atoi_base(const char *str, int base);
+
 #endif
