@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/03/26 13:39:24 by kda-silv         ###   ########.fr        #
+#    Updated: 2018/04/03 15:54:10 by cyrillefrouin    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ SRCS_COREWAR		=	main.c \
 						init_map.c \
 						number_to_hex_str.c \
 						vm.c \
+						check_live.c \
 						prepare_next_op.c \
 						do_next_op.c \
 						vm_check_live.c \

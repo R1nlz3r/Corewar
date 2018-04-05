@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/03/28 18:53:06 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/04/05 15:48:04 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,13 @@ int				vm_start(t_data *data)
 				}
 			}
 		}
-		// printf("argsType[0] : %d\nargsType[1] : %d\nargsType[2] : %d\n",
-			// data->champions->argsType[0], data->champions->argsType[1], data->champions->argsType[2]);
-		// printf("args[0] : %d\nargs[1] : %d\nargs[2] : %d\n",
-			// data->champions->args[0], data->champions->args[1], data->champions->args[2]);
-		// data->champion
-		// if (champion == NULL || data->nb_champion == 1)
-		// 	break ;
-		// if (data->cyclec == data->cycletodie)
-		// {
-		// 	ft_printf("-- %d champions are alive\n", data->nb_champion);
-		// 	vm_check_live(data);
-		// 	ft_printf("-- %d champions are alive\n", data->nb_champion);
-		// 	data->cyclec = 0;
-		// 	data->cycletodie -= CYCLE_DELTA;
-		// }
+		// COMMENT FROM HERE TO DISABLE END OF GAME
+		check_live(data);
+		if (data->nb_champion <= 1)
+		{
+			ft_printf(YELLOW"-------\nEND OF GAME\n-------\n"RESET);
+			return (1);
+		}
 	}
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/22 11:11:05 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/04/03 15:53:34 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ typedef struct			s_data
 ** debug.c
 ** Contains all debug functions
 */
+
 void					dump_state(char *msg, t_data *data, t_champion *champ);
 
 /*
@@ -107,6 +108,13 @@ void					dump(t_data *data);
 
 t_data					*init_data(int ac, char **av);
 int						verbose_operations(t_data *data);
+
+/*
+** check_live.c
+** Check living champions after CYCLE_TO_DIE and kill the ones that didn't live
+**/
+
+int						check_live(t_data *data);
 
 /*
 ** read_champion.c
