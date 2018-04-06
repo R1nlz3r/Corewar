@@ -6,7 +6,7 @@
 /*   By: mapandel <mapandel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/31 20:04:16 by mapandel          #+#    #+#             */
-/*   Updated: 2018/02/07 20:18:49 by mapandel         ###   ########.fr       */
+/*   Updated: 2018/03/07 17:27:15 by mapandel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,13 +78,13 @@ static void		init_legend(t_data *data)
 	while (i < data->nb_champion)
 	{
 		ft_printf("\033[%d;200HPlayer -%d : ", i * 4 + 12, i + 1);
-		if (!i)
+		if (tmp->number == 1)
 			ft_putstr("\033[1;32m");
-		else if (i == 1)
+		else if (tmp->number == 2)
 			ft_putstr("\033[1;34m");
-		else if (i == 2)
+		else if (tmp->number == 3)
 			ft_putstr("\033[1;31m");
-		else if (i == 3)
+		else if (tmp->number == 4)
 			ft_putstr("\033[1;36m");
 		ft_putstr(tmp->name);
 		ft_printf("\033[0;97m\033[%d;202HLast live :", i * 4 + 13);

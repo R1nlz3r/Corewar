@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 15:53:03 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/02 15:20:56 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/28 18:52:58 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,21 @@ static void		get_params_type(t_champion *champion)
 	char		byte;
 	int			i;
 
-	i = champion->op.nb_params - 1;
+	i = champion->op.nb_params;
+	if (i == 1)
+	{
+		champion->argsType[0] = champion->op.param_types[0];
+		return ;
+	}
 	node = champion->pc->next;
 	byte = node->contentn;
+	while (i++ < 4)
+		byte = byte >> 2;
+	i = champion->op.nb_params - 1;
 	while (i >= 0)
 	{
-		byte = byte >> 2;
 		champion->argsType[i] = byte & 0b11;
+		byte = byte >> 2;
 		i--;
 	}
 }
@@ -58,7 +66,7 @@ static void		get_one_param(t_champion *champion, int argsize, int n, int *pos)
 	while (++i < argsize)
 	{
 		nb += (node->contentn << ((argsize - (i + 1)) * 8));
-		ft_printf("%d/%d : %d\n", i, argsize, nb);
+		ft_printf("%s %d/%d : %d\n", node->content, i, argsize, nb);
 		node = node->next;
 	}
 	*pos += i;
@@ -74,7 +82,7 @@ static void		get_params(t_champion *champion)
 	i = 0;
 	pos = 2;
 	if (champion->op.nb_params == 1 && champion->op.param_types[0] == 2)
-		pos = 0;
+		pos = 1;
 	while (i < champion->op.nb_params)
 	{
 		if (champion->argsType[i] == REG_CODE)
@@ -86,8 +94,15 @@ static void		get_params(t_champion *champion)
 		get_one_param(champion, argsize, i, &pos);
 		i++;
 	}
+	if (champion->op.opcode == 1)
+	{
+		pos = 4;
+	}
+	else if (champion->op.opcode == 9)
+	{
+		pos = 3;
+	}
 	champion->ipc += pos;
-	ft_printf(CYAN"\n*****ipc = %d*****\n"RESET, champion->ipc);
 	i = 0;
 	while (i++ < pos)
 		champion->pc = champion->pc->next;
@@ -104,6 +119,10 @@ int				do_next_op(t_data *data)
 	{
 		if (champion->nextOp == 0)
 		{
+			if (data->debug)
+				ft_printf(BLUE"%s\n"RESET, champion->op.name);
+			champion->oldpc = champion->pc;
+			champion->oldipc = champion->ipc;
 			get_params_type(champion);
 			get_params(champion);
 			champion->op.func(data, champion);

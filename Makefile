@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2017/11/13 15:07:13 by cyrillef          #+#    #+#              #
-#    Updated: 2018/02/26 17:51:47 by kda-silv         ###   ########.fr        #
+#    Created: 2018/04/05 15:49:50 by cyrillef          #+#    #+#              #
+#    Updated: 2018/04/05 15:49:50 by cyrillefrouin    ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,25 @@ SRCS_ASM			=	main.c \
 						error.c \
 						parsing_champ.c \
 						header.c \
-						instructions.c \
+						ft_word_tab_asm.c \
+						check_core.c \
+						check_arguments.c \
+						instructions/live.c \
+						instructions/ld.c \
+						instructions/st.c \
+						instructions/add.c \
+						instructions/sub.c \
+						instructions/and.c \
+						instructions/or.c \
+						instructions/xor.c \
+						instructions/zjmp.c \
+						instructions/ldi.c \
+						instructions/sti.c \
+						instructions/fork.c \
+						instructions/lld.c \
+						instructions/lldi.c \
+						instructions/lfork.c \
+						instructions/aff.c \
 						do_cor.c
 
 SRCS_ASM_FULL		=	$(addprefix $(SRCS_ASM_DIR), $(SRCS_ASM))
@@ -32,12 +50,15 @@ SRCS_COREWAR_DIR	=	srcs/srcs_corewar/
 
 SRCS_COREWAR		=	main.c \
 						dump.c \
+						debug.c \
 						op.c \
 						init_data.c \
+						verbose_flags.c \
 						read_champions.c \
 						init_map.c \
 						number_to_hex_str.c \
 						vm.c \
+						check_live.c \
 						prepare_next_op.c \
 						do_next_op.c \
 						vm_check_live.c \
@@ -61,7 +82,8 @@ SRCS_COREWAR		=	main.c \
 						cmd/sub.c \
 						cmd/xor.c \
 						cmd/zjmp.c \
-						cmd/cmd_auxiliary_functions.c
+						cmd/cmd_auxiliary_functions.c \
+						cmd/ft_atoi_base.c
 
 SRCS_COREWAR_FULL	=	$(addprefix $(SRCS_COREWAR_DIR), $(SRCS_COREWAR))
 

@@ -26,12 +26,12 @@ int		corewar_ld(t_data *data, t_champion *champ)
 
 	(void)data;
 	tmp = champ->pc;
-	if ((champ->argsType[0] != T_DIR && champ->argsType[0] != T_IND)
-	|| champ->argsType[1] != T_REG)
+	if ((champ->argsType[0] != DIR_CODE && champ->argsType[0] != IND_CODE)
+	|| champ->argsType[1] != REG_CODE)
 		return (-1);
-	if (champ->argsType[0] == T_DIR)
+	if (champ->argsType[0] == DIR_CODE)
 		champ->reg[champ->args[1]] = champ->args[0];
-	else if (champ->argsType[0] == T_IND)
+	else if (champ->argsType[0] == IND_CODE)
 	{
 		pc_dest = champ->ipc + (champ->args[0] % IDX_MOD); // remove % for lld 
 		while (champ->ipc < pc_dest--)

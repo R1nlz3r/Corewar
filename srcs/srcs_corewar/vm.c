@@ -6,7 +6,7 @@
 /*   By: cfrouin <cfrouin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/15 15:40:32 by cfrouin           #+#    #+#             */
-/*   Updated: 2018/02/28 15:15:16 by cyrillefrouin    ###   ########.fr       */
+/*   Updated: 2018/04/05 15:48:04 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,30 +16,29 @@ int				vm_start(t_data *data)
 {
 	int		i;
 
-	if (data->dump == -1)
+	if (data->graph == 1)
 		display_map(data);
 	while (1)
 	{
-		if (data->dump == -1)
+		if (data->graph == 1)
 			key_hub(data);
 		if (data->pause != 1)
 		{
-			printf("Cycle : %d\n", data->cycle);
+			// usleep(25000);
+			dump_state(NULL, data, data->champions);
 			prepare_next_op(data);
 			do_next_op(data);
 			if (data->dump != -1)
 			{
-				if (data->dump == 0)
-					dump(data);
-				if (data->cycle % data->dump == 0)
+				if (data->dump == 0 || data->cycle % data->dump == 0)
 					dump(data);
 			}
 			data->cycle++;
 			data->cyclec++;
-			if (data->dump == -1
+			if (data->graph == 1
 				&& data->speed > 0 && !(data->cycle % data->speed))
 				display_map(data);
-			else if (data->dump == -1 && data->speed < 0)
+			else if (data->graph == 1 && data->speed < 0)
 			{
 				i = data->speed;
 				while (i++)
@@ -53,21 +52,13 @@ int				vm_start(t_data *data)
 				}
 			}
 		}
-		// printf("argsType[0] : %d\nargsType[1] : %d\nargsType[2] : %d\n",
-			// data->champions->argsType[0], data->champions->argsType[1], data->champions->argsType[2]);
-		// printf("args[0] : %d\nargs[1] : %d\nargs[2] : %d\n",
-			// data->champions->args[0], data->champions->args[1], data->champions->args[2]);
-		// data->champion
-		// if (champion == NULL || data->nb_champion == 1)
-		// 	break ;
-		// if (data->cyclec == data->cycletodie)
-		// {
-		// 	ft_printf("-- %d champions are alive\n", data->nb_champion);
-		// 	vm_check_live(data);
-		// 	ft_printf("-- %d champions are alive\n", data->nb_champion);
-		// 	data->cyclec = 0;
-		// 	data->cycletodie -= CYCLE_DELTA;
-		// }
+		// COMMENT FROM HERE TO DISABLE END OF GAME
+		check_live(data);
+		if (data->nb_champion <= 1)
+		{
+			ft_printf(YELLOW"-------\nEND OF GAME\n-------\n"RESET);
+			return (1);
+		}
 	}
 	return (1);
 }

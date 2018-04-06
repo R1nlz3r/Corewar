@@ -6,7 +6,7 @@
 /*   By: kda-silv <kda-silv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/27 11:42:13 by kda-silv          #+#    #+#             */
-/*   Updated: 2018/03/01 15:34:17 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/07 14:59:07 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ static char		**fill_tab(char *str, char **tab, int count, int count_tab)
 			ft_strncpy(tab[count_tab], str + count, (size_t)(tmp - count)))
 			== NULL)
 			return (NULL);
+		tab[count_tab][tmp - count] = '\0';
 		count = tmp;
 		++count_tab;
 	}

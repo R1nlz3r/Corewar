@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 12:50:54 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/03/02 17:22:19 by kda-silv         ###   ########.fr       */
+/*   Updated: 2018/03/13 17:50:14 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void			asm_error(char *error, int flag, t_data *data, char *str)
 	if (flag == 0 || flag == 2)
 	{
 		ft_putstr_fd("Syntaxe error[L", 2);
-		line = ft_itoa(data->line);
+		line = ft_itoa(data->nbr_line);
 		ft_putstr_fd(line, 2);
 		free(line);
 		ft_putstr_fd("]: ", 2);

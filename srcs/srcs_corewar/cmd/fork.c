@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:03:12 by dwald             #+#    #+#             */
-/*   Updated: 2018/02/07 18:28:28 by dwald            ###   ########.fr       */
+/*   Updated: 2018/03/19 13:03:08 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,14 @@ int			corewar_fork(t_data *data, t_champion *champ)
 	t_champion	*parent;
 	t_champion	*child;
 	
-	if (champ->argsType[0] != T_DIR)
+	if (champ->argsType[0] != DIR_CODE)
+	{
+		//change to ft_dprintf
+		ft_printf("ERROR: Process %i tries to read instruction's parameter \
+with no valid argument type\n", champ->number);
 		return (-1);
-	pc_dest = champ->ipc + (champ->args[0] % IDX_MOD); //remove % for lfork
+	}
+	pc_dest = mem_mod(champ->ipc + (champ->args[0] % IDX_MOD)); //remove % for lfork
 	if (prepare_champion(data, champ->filename, champ->number, true) == -1)
 		return (-1);
 	//copy_champion

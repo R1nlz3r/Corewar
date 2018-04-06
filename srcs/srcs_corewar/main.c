@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/13 15:19:50 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/02/26 17:43:41 by cfrouin          ###   ########.fr       */
+/*   Updated: 2018/04/03 16:14:36 by cyrillefrouin    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void			win(t_data *data)
 	t_champion	*player;
 
 	player = data->champions;
-	while (player->next != NULL)
+	while (player->alive == 0 && player->next != NULL)
 		player = player->next;
 	ft_printf("Player %d (%s) won!\n", player->number, player->name);
 }

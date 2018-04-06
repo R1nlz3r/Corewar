@@ -55,6 +55,3 @@ wait:	live %66
 	zjmp %:ecriture
 
 ecriture: zjmp %:wait
-
-
-
