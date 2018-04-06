@@ -6,7 +6,7 @@
 /*   By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 15:23:20 by cyrillef          #+#    #+#             */
-/*   Updated: 2018/04/06 11:25:21 by dwald            ###   ########.fr       */
+/*   Updated: 2018/04/06 12:03:06 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,13 +220,9 @@ int						corewar_sub(t_data *data, t_champion *champ);
 int						corewar_xor(t_data *data, t_champion *champ);
 int						corewar_zjmp(t_data *data, t_champion *champ);
 t_node					*find_pc_node(t_champion *champ, short pc_dest);
-<<<<<<< HEAD
-void					write_in_ram(t_champion *champ, short pc_dest);
-=======
 int						write_in_ram(t_champion*champ, short pc_dest);
 int						find_indirect_value(t_champion *champ, int index);
 int						mem_mod(int n);
 int						ft_atoi_base(const char *str, int base);
 
->>>>>>> master
 #endif

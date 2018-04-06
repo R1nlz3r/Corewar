@@ -6,7 +6,7 @@
 /*   By: dwald <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:13:30 by dwald             #+#    #+#             */
-/*   Updated: 2018/04/06 11:55:50 by dwald            ###   ########.fr       */
+/*   Updated: 2018/04/06 12:04:10 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,20 @@ t_node			*find_pc_node(t_champion *champ, short pc_dest)
 	return (node);
 }
 
-
+/*
 int				find_indirect_value(t_champion *champ, int index)
 {
 	
 	return (0);
 }
-
+*/
 
 /*
 **	Reads 32 bits of memory, resulting string interprets as
 **  hex number, converts it in integer and returns this number. 
 */
 
-/*int				find_indirect_value(t_champion *champ, int index)
+int				find_indirect_value(t_champion *champ, int index)
 {
 	short	pc_dest;
 	t_node	*node;
@@ -77,7 +77,7 @@ int				find_indirect_value(t_champion *champ, int index)
 //	i = ft_atoi_base(hex_val, 16); 
 //	ft_printf(GREEN"i = %d\n"RESET, i);
 	return (i);
-}*/	
+}	
 
 static	t_node	*write_in_pc_node(t_node *pc, char ram_value)
 {
