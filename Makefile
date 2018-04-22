@@ -6,7 +6,7 @@
 #    By: cyrillef <cyrillef@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/05 15:49:50 by cyrillef          #+#    #+#              #
-#    Updated: 2018/04/21 12:37:54 by cfrouin          ###   ########.fr        #
+#    Updated: 2018/04/22 16:59:24 by dwald            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ SRCS_COREWAR		=	main.c \
 						cmd/sub.c \
 						cmd/xor.c \
 						cmd/zjmp.c \
+						cmd/ljmp.c \
 						cmd/cmd_auxiliary_functions.c \
 						cmd/vm_address_management.c \
 						cmd/ft_atoi_base.c \
