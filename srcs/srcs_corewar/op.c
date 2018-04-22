@@ -6,7 +6,7 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2018/04/22 17:19:35 by dwald            ###   ########.fr       */
+/*   Updated: 2018/04/22 17:42:56 by kda-silv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ t_op g_op_tab[18] =
 		"long load index", 1, 1, &corewar_lldi},
 	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1, &corewar_lfork},
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0, &corewar_aff},
-	{0, 0, {0}, 0, 0, 0, 0, 0, NULL}
 	{"ljmp", 1, {T_DIR}, 17, 30, "long jump if zero", 0, 1, &corewar_ljmp},
+	{0, 0, {0}, 0, 0, 0, 0, 0, NULL}
 };
