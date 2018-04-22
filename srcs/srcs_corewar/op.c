@@ -6,13 +6,13 @@
 /*   By: zaz <zaz@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/10/04 11:43:01 by zaz               #+#    #+#             */
-/*   Updated: 2018/04/22 17:01:47 by dwald            ###   ########.fr       */
+/*   Updated: 2018/04/22 17:19:35 by dwald            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-t_op g_op_tab[17] =
+t_op g_op_tab[18] =
 {
 	{"live", 1, {T_DIR}, 1, 10, "alive", 0, 0, &corewar_live},
 	{"ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0, &corewar_ld},
@@ -27,7 +27,6 @@ t_op g_op_tab[17] =
 	{"xor", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
 		"ou (xor  r1, r2, r3   r1^r2 -> r3", 1, 0, &corewar_xor},
 	{"zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1, &corewar_zjmp},
-	{"ljmp", 1, {T_DIR}, 9, 20, "long jump if zero", 0, 1, &corewar_ljmp},
 	{"ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
 		"load index", 1, 1, &corewar_ldi},
 	{"sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
@@ -39,4 +38,5 @@ t_op g_op_tab[17] =
 	{"lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1, &corewar_lfork},
 	{"aff", 1, {T_REG}, 16, 2, "aff", 1, 0, &corewar_aff},
 	{0, 0, {0}, 0, 0, 0, 0, 0, NULL}
+	{"ljmp", 1, {T_DIR}, 17, 30, "long jump if zero", 0, 1, &corewar_ljmp},
 };
