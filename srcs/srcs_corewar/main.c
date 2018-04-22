@@ -51,6 +51,6 @@ int				main(int ac, char **av)
 		corewar_error(data, "Error during vm execution\n");
 	win(data);
 	free_data(data);
-	ft_putstr("\033[H\033[J\e[?25h");
+	ft_putstr("\e[?25h");
 	return (0);
 }
